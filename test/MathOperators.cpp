@@ -9,11 +9,6 @@
 #include "Number.h"
 #include "BinaryMathOperator.h"
 
-// DO NOT COMMIT
-#include <iostream>
-using std::cout;
-using std::endl;
-
 using namespace Calculator;
 
 class MathOperatorsTest : public CppUnit::TestFixture {
@@ -107,8 +102,6 @@ public:
     float expected[] = { 0.0, 0.5 };
     test(input, sizeof(input)/sizeof(float), BinaryMathOperator::Operation::DIVIDE, expected, sizeof(expected)/sizeof(float));
   }
-
-
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION(MathOperatorsTest);
