@@ -1,0 +1,8 @@
+.DS_Store
+*.d
+doc_built
+*~
+*.bak
+*.o
+*.d
+*/*.exe

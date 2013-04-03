@@ -1,0 +1,21 @@
+#include <memory>
+#include <vector>
+#include <string>
+
+#include "StackItem.h"
+#include "Stack.h"
+#include "Error.h"
+
+namespace Calculator {
+  
+  StackItem::~StackItem() {
+  }
+  
+  std::string StackItem::operator()(Stack& stack, StackOperator::Ptr ofThis) {
+    // Ooops... this violates shared_ptr.....
+
+    stack.push(std::dynamic_pointer_cast<StackItem, StackOperator>(ofThis));
+    return Error::Ok;
+  }
+
+} // namespace Calculator
