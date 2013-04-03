@@ -12,12 +12,16 @@ using namespace std;
 
 namespace Calculator {
 
+Executive::~Executive() {
+}
+
 Executive::Executive(Stack& theStack)
   : stack(theStack), operationCount(0)
 {
 }
 
 void Executive::process(StackOperatorFactory& factory, istream& input, ostream& output) {
+  output << toString() << endl;
   while(true) {
     std::string command;
     input >> command;
@@ -44,6 +48,13 @@ std::string Executive::process(StackOperatorFactory& factory, const std::string&
   if(0 == input.compare("quit")) {
     return "";
   }
+
+ if(0 == input.compare("help")) {
+    std::ostringstream os;
+    os << "Help" << endl;
+    doHelp(os);
+    return os.str();
+  }
   
   StackOperator::Ptr op = factory.create(input);
   if(!op) {
@@ -69,32 +80,31 @@ unsigned int Executive::getOperationCount() const {
   return operationCount;
 }
 
+void Executive::doHelp(ostream& output) const {
+  output << "Stack-based calculator." << endl;
+  output << "Commands:" << endl;
+  output << "\tquit -- exit the program" << endl;
+  output << "\thelp -- help for the program" << endl;
+}
+
 FixedOperatorExecutive::FixedOperatorExecutive(StackOperatorFactory& theFactory, Stack& theStack)
-    : executive(theStack), factory(theFactory)
+    : Executive(theStack), factory(theFactory)
     {
     }
 
 void FixedOperatorExecutive::doHelp(ostream& output) const {
-  output << "Stack-based calculator." << endl<< endl;
-  output << "Commands:" << endl;
-  output << "quit -- exit the program" << endl;
+  Executive::doHelp(output);
 
-  output << factory.getHelp();
   output << endl;
-  
-  output << executive.toString() << endl;
+  output << factory.getHelp();
 }
 
 void FixedOperatorExecutive::process(istream& input, ostream& output) {
-  executive.process(factory, input, output);
+  Executive::process(factory, input, output);
 }
 
-std::string FixedOperatorExecutive::process(const std::string& input){
-  return executive.process(factory, input);
-}
-
-std::string FixedOperatorExecutive::process(StackOperator::Ptr oper) {
-  return executive.process(oper);
+std::string FixedOperatorExecutive::process(const std::string& input) {
+  return Executive::process(factory, input);
 }
 
 } // namespace Caclulator

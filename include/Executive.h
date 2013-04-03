@@ -12,6 +12,7 @@ namespace Calculator {
   
   class Executive {
   public:
+    ~Executive();
     Executive(Stack& stack);
     
     Executive(const Executive&) = delete;
@@ -26,12 +27,14 @@ namespace Calculator {
     
     unsigned int getOperationCount() const;
 
+    virtual void doHelp(ostream& output) const;
+
   private:
     Stack& stack;
     unsigned int operationCount;
   };
 
-  class FixedOperatorExecutive {
+  class FixedOperatorExecutive : private Executive {
   public:
     FixedOperatorExecutive(StackOperatorFactory& theFactory, Stack& theStack);
 
@@ -43,10 +46,8 @@ namespace Calculator {
     void doHelp(ostream& output) const;
     void process(istream& input, ostream& output);
     std::string process(const std::string& input);
-    std::string process(StackOperator::Ptr oper);
 
   private:
-    Executive executive;
     StackOperatorFactory& factory;
   };
   
