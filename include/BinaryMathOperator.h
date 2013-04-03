@@ -50,7 +50,7 @@ namespace Calculator {
     virtual std::string operator()(Stack& stack, StackOperator::Ptr ofThis);
     
   private:
-    Operation op;
+    const Operation op;
   };
 
   /** Create BinaryMathOperation from a string */

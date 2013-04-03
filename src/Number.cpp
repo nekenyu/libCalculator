@@ -27,7 +27,7 @@ namespace Calculator {
   NumberCreator::~NumberCreator() { }
 
   std::string NumberCreator::getHelp() const {
-    return "[#*][.#*] -- number to push onto the stack";
+    return "[number] -- Any of many formats of number to push onto the stack";
   }
 
   StackOperator::Ptr NumberCreator::create(const std::string& str) {

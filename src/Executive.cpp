@@ -12,9 +12,6 @@ using namespace std;
 
 namespace Calculator {
 
-Executive::~Executive() {
-}
-
 Executive::Executive(Stack& theStack)
   : stack(theStack), operationCount(0)
 {
@@ -52,7 +49,7 @@ std::string Executive::process(StackOperatorFactory& factory, const std::string&
  if(0 == input.compare("help")) {
     std::ostringstream os;
     os << "Help" << endl;
-    doHelp(os);
+    doHelp(factory, os);
     return os.str();
   }
   
@@ -80,31 +77,31 @@ unsigned int Executive::getOperationCount() const {
   return operationCount;
 }
 
-void Executive::doHelp(ostream& output) const {
+  void Executive::doHelp(const StackOperatorFactory& factory, ostream& output) const {
   output << "Stack-based calculator." << endl;
   output << "Commands:" << endl;
   output << "\tquit -- exit the program" << endl;
   output << "\thelp -- help for the program" << endl;
-}
-
-FixedOperatorExecutive::FixedOperatorExecutive(StackOperatorFactory& theFactory, Stack& theStack)
-    : Executive(theStack), factory(theFactory)
-    {
-    }
-
-void FixedOperatorExecutive::doHelp(ostream& output) const {
-  Executive::doHelp(output);
 
   output << endl;
   output << factory.getHelp();
 }
 
+FixedOperatorExecutive::FixedOperatorExecutive(StackOperatorFactory& theFactory, Stack& theStack)
+    : executive(theStack), factory(theFactory)
+    {
+    }
+
+void FixedOperatorExecutive::doHelp(ostream& output) const {
+  executive.doHelp(factory, output);
+}
+
 void FixedOperatorExecutive::process(istream& input, ostream& output) {
-  Executive::process(factory, input, output);
+  executive.process(factory, input, output);
 }
 
 std::string FixedOperatorExecutive::process(const std::string& input) {
-  return Executive::process(factory, input);
+  return executive.process(factory, input);
 }
 
 } // namespace Caclulator

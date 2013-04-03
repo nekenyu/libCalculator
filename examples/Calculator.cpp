@@ -9,6 +9,7 @@ using namespace std;
 #include "StackOperatorFactory.h"
 #include "Number.h"
 #include "BinaryMathOperator.h"
+#include "StackManipulator.h"
 #include "Executive.h"
 
 using namespace Calculator;
@@ -19,6 +20,7 @@ int main(int argc, char** argv) {
   StackOperatorFactory factory;
   factory.addCreator(StackOperatorCreator::Ptr(new NumberCreator()));
   factory.addCreator(StackOperatorCreator::Ptr(new BinaryMathCreator()));
+  factory.addCreator(StackOperatorCreator::Ptr(new StackManipulatorCreator()));
 
   // Create Stack
   Stack stack;
