@@ -20,6 +20,10 @@ namespace {
 
 namespace Calculator {
 
+  Number::Ptr Number::create(float theValue) {
+    return Ptr(new Number(theValue));
+  }
+
   Number::~Number() {
   }
   
@@ -51,7 +55,7 @@ namespace Calculator {
       char c;
       is >> c;
       if(is.eof()) {
-	return StackOperator::Ptr(new Number(f));
+	return Number::create(f);
       }
     }
 

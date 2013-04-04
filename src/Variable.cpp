@@ -9,6 +9,10 @@
 
 namespace Calculator {
 
+  Variable::Ptr Variable::create(const std::string& theName) {
+    return Ptr(new Variable(theName));
+  }
+
   Variable::~Variable() {
   }
   
@@ -33,7 +37,7 @@ namespace Calculator {
 
   StackOperator::Ptr VariableCreator::create(const std::string& str) {
     if(0 == str.find('$')) {
-      return StackOperator::Ptr(new Variable(str));
+      return Variable::create(str);
     }
 
     return StackOperator::Ptr();

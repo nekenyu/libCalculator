@@ -27,8 +27,17 @@ namespace Calculator {
 	SWAP
 	};
     
+    /** Create to perform operation.
+     *
+     * @param operation to perform
+     *
+     * @return StackManipulator created
+     */
+    static StackManipulator::Ptr create(Operation operation);
+
     ~StackManipulator();
 
+  private:
     /** Create to perform operation.
      *
      * @param operation to perform

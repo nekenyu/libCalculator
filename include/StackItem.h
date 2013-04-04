@@ -18,6 +18,15 @@ namespace Calculator {
     
     virtual ~StackItem();
     
+  protected:
+    StackItem() = default;
+    
+    StackItem(const StackItem&) = delete;
+    StackItem(StackItem&&) = delete;
+    StackItem& operator=(const StackItem&) = delete;
+    StackItem& operator=(StackItem&&) = delete;
+      
+  public:
     /** Execute this item modifying stack.
      *
      * @param stack to process on

@@ -16,6 +16,8 @@ namespace Calculator {
    */
   class BinaryMathOperator : public StackOperator {
   public:
+    typedef std::shared_ptr<BinaryMathOperator> Ptr;
+
     /** \enum Operation Operations supported */
     enum class Operation {
       /** Add the two values */
@@ -33,20 +35,30 @@ namespace Calculator {
 	/** Raise top to the exponent second */
 	EXPONENT
 	};
-    
-    ~BinaryMathOperator();
 
     /** Create to perform operation.
      *
-     * @param operation to perform
+     * @param op to perform
+     *
+     * @return BinaryMathOperator created
      */
-    BinaryMathOperator(Operation operation);
+    static BinaryMathOperator::Ptr create(Operation op);
+
+    ~BinaryMathOperator();
+
+  protected:
+    /** Create to perform operation.
+     *
+     * @param op to perform
+     */
+    BinaryMathOperator(Operation op);
     
     BinaryMathOperator(const BinaryMathOperator&) = delete;
     BinaryMathOperator(BinaryMathOperator&&) = delete;
     BinaryMathOperator& operator=(const BinaryMathOperator&) = delete;
     BinaryMathOperator& operator=(BinaryMathOperator&&) = delete;
 
+  public:
     virtual std::string operator()(Stack& stack, StackOperator::Ptr ofThis);
     
   private:

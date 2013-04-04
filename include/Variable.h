@@ -17,14 +17,30 @@ namespace Calculator {
   public:
     typedef std::shared_ptr<Variable> Ptr;
 
+    /** Create with theName to represent.
+     *
+     * @param theName to be stored in this
+     *
+     * @return the Variable created
+     */
+    static Variable::Ptr create(const std::string& theName);
+
     virtual ~Variable();
 
+  protected:
     /** Create with theName to represent.
      *
      * @param theName to be stored in this
      */
     Variable(const std::string& theName);
 
+    Variable() = delete;
+    Variable(const Variable&) = delete;
+    Variable(Variable&&) = delete;
+    Variable& operator=(const Variable&) = delete;
+    Variable& operator=(Variable&&) = delete;
+      
+  public:
     /** @return the name of this Variable */
     const std::string& getName() const;
 

@@ -17,14 +17,30 @@ namespace Calculator {
   public:
     typedef std::shared_ptr<Number> Ptr;
 
-    virtual ~Number();
+    /** Create with theValue to represent.
+     *
+     * @param theValue to be stored in this
+     *
+     * @return Number created
+     */
+    static Number::Ptr create(float theValue);
 
+    virtual ~Number();
+    
+   protected:
     /** Create with theValue to represent.
      *
      * @param theValue to be stored in this
      */
     Number(float theValue);
-    
+
+    Number() = delete;
+    Number(const Number&) = delete;
+    Number(Number&&) = delete;
+    Number& operator=(const Number&) = delete;
+    Number& operator=(Number&&) = delete;
+      
+  public:
     /** @return the value this represents */
     float getValue() const;
 

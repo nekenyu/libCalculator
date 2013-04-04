@@ -7,7 +7,7 @@
  * @param value to push as number
  */
 inline void push(Stack& stack, float value) {
-   stack.push(StackItem::Ptr(new Number(value)));
+  stack.push(Number::create(value));
 }
 
 /** Push all of input onto stack

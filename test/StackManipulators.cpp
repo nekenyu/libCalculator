@@ -39,7 +39,7 @@ private:
 
     const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
 
-    StackOperator::Ptr op(new StackManipulator(oper));
+    StackOperator::Ptr op = StackManipulator::create(oper);
     const std::string result = (*op)(stack, op);
     if(inputLength < required) {
       CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
@@ -59,7 +59,7 @@ private:
 
     const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
 
-    StackOperator::Ptr op(new StackManipulator(oper));
+    StackOperator::Ptr op = StackManipulator::create(oper);
     const std::string result = (*op)(stack, op);
 
     CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
@@ -72,7 +72,7 @@ private:
 
     const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
 
-    StackOperator::Ptr op(new StackManipulator(oper));
+    StackOperator::Ptr op = StackManipulator::create(oper);
     const std::string result = (*op)(stack, op);
 
     CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));

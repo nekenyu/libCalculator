@@ -10,11 +10,15 @@
 
 namespace Calculator {
 
+  StackManipulator::Ptr StackManipulator::create(Operation theOp) {
+    return Ptr(new StackManipulator(theOp));
+  }
+
   StackManipulator::~StackManipulator() {
   }
 
-  StackManipulator::StackManipulator(Operation operation)
-    :op(operation)
+  StackManipulator::StackManipulator(Operation theOp)
+    :op(theOp)
   {
   }
   
@@ -85,7 +89,7 @@ namespace Calculator {
       return StackOperator::Ptr();
     }
 
-    return StackOperator::Ptr(new StackManipulator(op));
+    return StackManipulator::create(op);
   }
 
 } // namespace Calculator

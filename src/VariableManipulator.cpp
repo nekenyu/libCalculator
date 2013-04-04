@@ -11,6 +11,10 @@
 
 namespace Calculator {
 
+  VariableManipulator::Ptr VariableManipulator::create(Operation op) {
+    return Ptr(new VariableManipulator(op));
+  }
+
   VariableManipulator::~VariableManipulator() {
   }
 
@@ -87,7 +91,7 @@ namespace Calculator {
       return StackOperator::Ptr();
     }
 
-    return StackOperator::Ptr(new VariableManipulator(op));
+    return VariableManipulator::create(op);
   }
 
 } // namespace Calculator

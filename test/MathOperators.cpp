@@ -33,7 +33,7 @@ private:
     Stack stack;
     push(stack, input);
 
-    StackOperator::Ptr op(new BinaryMathOperator(oper));
+    StackOperator::Ptr op = BinaryMathOperator::create(oper);
     const std::string result = (*op)(stack, op);
     if(inputLength < 2) {
       CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
@@ -51,7 +51,7 @@ private:
     Stack stack;
     push(stack, input);
 
-    StackOperator::Ptr op(new BinaryMathOperator(oper));
+    StackOperator::Ptr op = BinaryMathOperator::create(oper);
     const std::string result = (*op)(stack, op);
 
     CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
@@ -62,7 +62,7 @@ private:
   void test(BinaryMathOperator::Operation oper) {
     Stack stack;
 
-    StackOperator::Ptr op(new BinaryMathOperator(oper));
+    StackOperator::Ptr op = BinaryMathOperator::create(oper);
     const std::string result = (*op)(stack, op);
 
     CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));

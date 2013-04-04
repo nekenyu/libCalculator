@@ -14,7 +14,16 @@ namespace Calculator {
     typedef std::shared_ptr<StackOperator> Ptr;
 
     virtual ~StackOperator() { }
+
+  protected:
+    StackOperator() = default;
     
+    StackOperator(const StackOperator&) = delete;
+    StackOperator(StackOperator&&) = delete;
+    StackOperator& operator=(const StackOperator&) = delete;
+    StackOperator& operator=(StackOperator&&) = delete;
+      
+  public:
     /** Execute this operator on stack
      *
      * @param stack to operate on

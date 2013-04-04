@@ -97,6 +97,10 @@ namespace {
 
 namespace Calculator {
 
+  BinaryMathOperator::Ptr BinaryMathOperator::create(Operation op) {
+    return Ptr(new BinaryMathOperator(op));
+  }
+
   BinaryMathOperator::~BinaryMathOperator() {
   }
 
@@ -136,7 +140,9 @@ namespace Calculator {
     }
 
     stack.popAfter(iter);
-    stack.push(StackItem::Ptr(new Number((info->getFunction()(first->getValue(), second->getValue())))));
+    Number::Ptr item = Number::create(info->getFunction()(first->getValue(), second->getValue()));
+    (*item)(stack, item);
+
     return Error::Ok;
   }
 
@@ -150,7 +156,7 @@ namespace Calculator {
   StackOperator::Ptr BinaryMathCreator::create(const std::string& str) {
     const OpInfo* info = opInfoMap[str];
     if(nullptr != info) {
-      return StackOperator::Ptr(new BinaryMathOperator(info->getOp()));
+      return BinaryMathOperator::create(info->getOp());
     } else {
       return StackOperator::Ptr();
     }

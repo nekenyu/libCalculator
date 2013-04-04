@@ -41,7 +41,7 @@ public:
 
   void testPushOne() {
     Stack stack;
-    stack.push(StackItem::Ptr(new Number(0.0)));
+    stack.push(Number::create(0.0));
 
     float input[] = { 0.0 };
     verify(stack, input);
@@ -49,11 +49,11 @@ public:
 
   void testPushFive() {
     Stack stack;
-    stack.push(StackItem::Ptr(new Number(0.0)));
-    stack.push(StackItem::Ptr(new Number(2.0)));
-    stack.push(StackItem::Ptr(new Number(3.0)));
-    stack.push(StackItem::Ptr(new Number(4.0)));
-    stack.push(StackItem::Ptr(new Number(5.0)));
+    stack.push(Number::create(0.0));
+    stack.push(Number::create(2.0));
+    stack.push(Number::create(3.0));
+    stack.push(Number::create(4.0));
+    stack.push(Number::create(5.0));
 
     float input[] = { 0.0, 2.0, 3.0, 4.0, 5.0 };
     verify(stack, input);
@@ -128,8 +128,8 @@ public:
   }
 
   void testIterDereference() {
-    Variable::Ptr variable(new Variable("$test"));
-    Number::Ptr number(new Number(1.2345));
+    Variable::Ptr variable = Variable::create("$test");
+    Number::Ptr number = Number::create(1.2345);
 
     Stack stack;
     stack.getVariables().set(variable->getName(), number);
@@ -155,8 +155,8 @@ public:
   }
 
   void testIterGets() {
-    Variable::Ptr variable(new Variable("$test"));
-    Number::Ptr number(new Number(1.2345));
+    Variable::Ptr variable = Variable::create("$test");
+    Number::Ptr number = Number::create(1.2345);
 
     Stack stack;
     stack.getVariables().set(variable->getName(), number);
@@ -200,8 +200,8 @@ public:
   }
 
   void testIterAs() {
-    Variable::Ptr variable(new Variable("$test"));
-    Number::Ptr number(new Number(1.2345));
+    Variable::Ptr variable = Variable::create("$test");
+    Number::Ptr number = Number::create(1.2345);
 
     Stack stack;
     stack.getVariables().set(variable->getName(), number);
@@ -246,8 +246,8 @@ public:
   }
 
   void testIterGetsAs() {
-    Variable::Ptr variable(new Variable("$test"));
-    Number::Ptr number(new Number(1.2345));
+    Variable::Ptr variable = Variable::create("$test");
+    Number::Ptr number = Number::create(1.2345);
 
     Stack stack;
     stack.getVariables().set(variable->getName(), number);

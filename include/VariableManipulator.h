@@ -15,6 +15,8 @@ namespace Calculator {
    */
   class VariableManipulator : public StackOperator {
   public:
+    typedef std::shared_ptr<VariableManipulator> Ptr;
+
     /** \enum Operation Operations supported */
     enum class Operation {
       /** Write the value in next-to-top to variable in top*/
@@ -24,13 +26,22 @@ namespace Calculator {
 	READ
       };
     
-    ~VariableManipulator();
-
     /** Create to perform operation.
      *
-     * @param operation to perform
+     * @param op to perform
+     *
+     * @return VariableManipulator created
      */
-    VariableManipulator(Operation operation);
+    static VariableManipulator::Ptr create(Operation op);
+
+    ~VariableManipulator();
+
+  protected:
+    /** Create to perform operation.
+     *
+     * @param op to perform
+     */
+    VariableManipulator(Operation op);
     
     VariableManipulator(const VariableManipulator&) = delete;
     VariableManipulator(VariableManipulator&&) = delete;
