@@ -1,7 +1,6 @@
 #include <memory>
 #include <vector>
 #include <map>
-#include <iostream>
 #include <sstream>
 #include <string>
 
@@ -18,7 +17,7 @@ Executive::Executive(Stack& theStack)
 {
 }
 
-void Executive::process(StackOperatorFactory& factory, istream& input, ostream& output) {
+void Executive::process(StackOperatorFactory& factory, std::istream& input, std::ostream& output) {
   output << toString() << endl;
   while(true) {
     std::string command;
@@ -89,15 +88,15 @@ unsigned int Executive::getOperationCount() const {
 }
 
 FixedOperatorExecutive::FixedOperatorExecutive(StackOperatorFactory& theFactory, Stack& theStack)
-    : executive(theStack), factory(theFactory)
-    {
-    }
-
-void FixedOperatorExecutive::doHelp(ostream& output) const {
+  : executive(theStack), factory(theFactory)
+{
+}
+  
+void FixedOperatorExecutive::doHelp(std::ostream& output) const {
   executive.doHelp(factory, output);
 }
 
-void FixedOperatorExecutive::process(istream& input, ostream& output) {
+void FixedOperatorExecutive::process(std::istream& input, std::ostream& output) {
   executive.process(factory, input, output);
 }
 

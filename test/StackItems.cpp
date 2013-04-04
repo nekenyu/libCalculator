@@ -4,11 +4,6 @@
 #include <memory>
 #include <limits>
 
-// DO NOT COMMIT
-#include <iostream>
-using std::cout;
-using std::endl;
-
 #include "Error.h"
 #include "Stack.h"
 #include "Number.h"

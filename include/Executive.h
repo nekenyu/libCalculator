@@ -36,7 +36,7 @@ namespace Calculator {
      * @param input to read commands from
      * @param output to write status to
      */
-    void process(StackOperatorFactory& factory, istream& input, ostream& output);
+    void process(StackOperatorFactory& factory, std::istream& input, std::ostream& output);
 
     /** Process commands from input and pushing generated info to output
      *
@@ -65,7 +65,7 @@ namespace Calculator {
      * @param factory providing commands to get help from
      * @param output to write help info to
      */
-    void doHelp(const StackOperatorFactory& factory, ostream& output) const;
+    void doHelp(const StackOperatorFactory& factory, std::ostream& output) const;
 
   private:
     Stack& stack;
@@ -84,14 +84,14 @@ namespace Calculator {
     FixedOperatorExecutive& operator=(const Executive&) = delete;
     FixedOperatorExecutive& operator=(Executive&&) = delete;
     
-    void doHelp(ostream& output) const;
+    void doHelp(std::ostream& output) const;
 
     /** Process commands from input and pushing generated info to output
      *
      * @param input to read commands from
      * @param output to write status to
      */
-    void process(istream& input, ostream& output);
+    void process(std::istream& input, std::ostream& output);
 
     /** Process commands from input and pushing generated info to output
      *
