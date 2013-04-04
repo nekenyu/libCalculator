@@ -110,24 +110,31 @@ namespace Calculator {
       return Error::StackUnderflow;
     }
 
-    StackItem::Ptr first;
-    StackItem::Ptr second;
+    Number::Ptr first;
+    Number::Ptr second;
     StackIterator iter = stack.begin();
     iter >> first >> second;
-    stack.popAfter(iter);
+    // Defer stack.popAfter() until after evaluation
+
+    if(!first) {
+      return Error::atPosition(0, Error::NotANumber);
+    }
+
+    if(!second) {
+      return Error::atPosition(1, Error::NotANumber);
+    }
 
     // Do the math
     float result = 0.0;
     const OpInfo* info = opInfoMap[op];
-    if(nullptr != info) {
-      stack.push(StackItem::Ptr(new Number((info->getFunction()(first->getValue(), second->getValue())))));
-      return Error::Ok;
-    } else {
+    if(nullptr == info) {
       // Internal error....  Not sure what to do.
-      second->operator()(stack, second);
-      first->operator()(stack, first);
       return "Internal Error: Missing BinaryMathOperator.";
     }
+
+    stack.popAfter(iter);
+    stack.push(StackItem::Ptr(new Number((info->getFunction()(first->getValue(), second->getValue())))));
+    return Error::Ok;
   }
 
   BinaryMathCreator::~BinaryMathCreator() {
