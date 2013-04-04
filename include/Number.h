@@ -25,7 +25,9 @@ namespace Calculator {
      */
     Number(float theValue);
     
-    virtual float getValue() const;
+    /** @return the value this represents */
+    float getValue() const;
+
     virtual std::string toString() const;
     
   private:

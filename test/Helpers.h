@@ -47,7 +47,7 @@ void verify(Stack& stack, const float(&expected)[length]) {
   
   StackIterator iter = stack.begin();
   for(unsigned int i = 0; i < length; ++i, ++iter) {
-    StackItem::Ptr value = *iter;
+    Number::Ptr value = iter.as<Number>();
     CPPUNIT_ASSERT(value);
     CPPUNIT_ASSERT(abs(expected[length - 1 - i] - value->getValue()) < 2 * std::numeric_limits<float>::epsilon());
   }

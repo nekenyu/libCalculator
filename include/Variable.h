@@ -28,7 +28,6 @@ namespace Calculator {
     /** @return the name of this Variable */
     const std::string& getName() const;
 
-    virtual float getValue() const;
     virtual std::string toString() const;
     
   private:

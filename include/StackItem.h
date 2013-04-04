@@ -26,9 +26,6 @@ namespace Calculator {
      */
     virtual std::string operator()(Stack& stack, StackOperator::Ptr ofThis);
 
-    /** @return the value this represents */
-    virtual float getValue() const = 0;
-    
     /** @return string representation of this */
     virtual std::string toString() const = 0;
   };

@@ -44,7 +44,7 @@ private:
   void verify(StackOperator::Ptr created, const float expected) {
       CPPUNIT_ASSERT(created);
       
-      StackItem::Ptr asStackItem = std::dynamic_pointer_cast<StackItem, StackOperator>(created);
+      Number::Ptr asStackItem = std::dynamic_pointer_cast<Number, StackOperator>(created);
       CPPUNIT_ASSERT(asStackItem);
       
       CPPUNIT_ASSERT(abs(asStackItem->getValue() - expected) < 2 * std::numeric_limits<float>::epsilon());

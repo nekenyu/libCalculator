@@ -21,10 +21,6 @@ namespace Calculator {
     return name;
   }
 
-  float Variable::getValue() const {
-    return 0.0; // TODO: implement this
-  }
-  
   std::string Variable::toString() const {
     return name;
   }
