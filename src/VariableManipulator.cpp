@@ -29,7 +29,7 @@ namespace Calculator {
       StackItem::Ptr value;
       StackIterator iter = stack.begin();
       iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> variable
-	   >> value;
+	   >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> value;
       // stack.popAfter() deferred until after variable evaluation
 
       if(!variable) {

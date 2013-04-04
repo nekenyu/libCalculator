@@ -116,6 +116,9 @@ namespace Calculator {
     iter >> first >> second;
     // Defer stack.popAfter() until after evaluation
 
+    // TODO: Cannot failures distinguish between not a number, unset variable,
+    // and cyclic variable name
+
     if(!first) {
       return Error::atPosition(0, Error::NotANumber);
     }

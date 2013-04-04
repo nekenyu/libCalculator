@@ -18,7 +18,26 @@ namespace {
       return in;
     }
 
-    return variables.get(asVariable->getName());
+    std::set<std::string> varNames;
+
+    StackItem::Ptr item = in;
+    while(item) {
+      Variable::Ptr itemAsVar = std::dynamic_pointer_cast<Variable, StackItem>(item);
+      if(!itemAsVar) {
+	return item;
+      }
+
+      // Add the current name to the list we've been through, unless already
+      // present.  If already present, we have a circle and cannot dereference
+      auto result = varNames.insert(itemAsVar->getName());
+      if(!result.second) {
+	return StackItem::Ptr();
+      }
+
+      // Dereference curr. An unset reference will be caught by the while loop
+      item = variables.get(itemAsVar->getName());
+    }
+    return StackItem::Ptr();
   }
 } // anonymous namespace
 
