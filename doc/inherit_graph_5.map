@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs." alt="" coords="6,107,173,149"/>
+<area shape="rect" id="node2" href="$class_calculator_1_1_binary_math_creator.html" title="Create BinaryMathOperation from a string." alt="" coords="225,5,415,32"/>
+<area shape="rect" id="node3" href="$class_calculator_1_1_number_creator.html" title="Creates Numbers from strings that convert to numbers." alt="" coords="235,56,405,83"/>
+<area shape="rect" id="node4" href="$class_calculator_1_1_stack_manipulator_creator.html" title="Create StackManipulator from a string." alt="" coords="229,107,411,149"/>
+<area shape="rect" id="node5" href="$class_calculator_1_1_variable_creator.html" title="Creates Variables from strings that convert to variables." alt="" coords="234,173,406,200"/>
+<area shape="rect" id="node6" href="$class_calculator_1_1_variable_manipulator_creator.html" title="Create VariableManipulator from a string." alt="" coords="221,225,419,266"/>
+</map>

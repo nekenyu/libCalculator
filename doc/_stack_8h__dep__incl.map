@@ -1,0 +1,10 @@
+<map id="include/Stack.h" name="include/Stack.h">
+<area shape="rect" id="node2" href="$_binary_math_operator_8cpp.html" title="src/BinaryMathOperator.cpp" alt="" coords="5,80,187,107"/>
+<area shape="rect" id="node3" href="$_executive_8cpp.html" title="src/Executive.cpp" alt="" coords="212,80,335,107"/>
+<area shape="rect" id="node4" href="$_number_8cpp.html" title="src/Number.cpp" alt="" coords="359,80,469,107"/>
+<area shape="rect" id="node5" href="$_stack_8cpp.html" title="src/Stack.cpp" alt="" coords="495,80,593,107"/>
+<area shape="rect" id="node6" href="$_stack_item_8cpp.html" title="src/StackItem.cpp" alt="" coords="617,80,740,107"/>
+<area shape="rect" id="node7" href="$_stack_manipulator_8cpp.html" title="src/StackManipulator.cpp" alt="" coords="764,80,929,107"/>
+<area shape="rect" id="node8" href="$_variable_8cpp.html" title="src/Variable.cpp" alt="" coords="953,80,1068,107"/>
+<area shape="rect" id="node9" href="$_variable_manipulator_8cpp.html" title="src/VariableManipulator.cpp" alt="" coords="1093,80,1272,107"/>
+</map>

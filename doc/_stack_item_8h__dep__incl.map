@@ -1,0 +1,15 @@
+<map id="include/StackItem.h" name="include/StackItem.h">
+<area shape="rect" id="node2" href="$_stack_item_8cpp.html" title="src/StackItem.cpp" alt="" coords="5,229,128,256"/>
+<area shape="rect" id="node3" href="$_number_8h.html" title="include/Number.h" alt="" coords="434,155,552,181"/>
+<area shape="rect" id="node8" href="$_stack_8h.html" title="include/Stack.h" alt="" coords="577,155,684,181"/>
+<area shape="rect" id="node12" href="$_variable_set_8h.html" title="include/VariableSet.h" alt="" coords="646,80,785,107"/>
+<area shape="rect" id="node14" href="$_variable_8h.html" title="include/Variable.h" alt="" coords="971,155,1092,181"/>
+<area shape="rect" id="node4" href="$_binary_math_operator_8cpp.html" title="src/BinaryMathOperator.cpp" alt="" coords="153,229,335,256"/>
+<area shape="rect" id="node5" href="$_number_8cpp.html" title="src/Number.cpp" alt="" coords="359,229,469,256"/>
+<area shape="rect" id="node6" href="$_stack_manipulator_8cpp.html" title="src/StackManipulator.cpp" alt="" coords="495,229,660,256"/>
+<area shape="rect" id="node7" href="$_variable_manipulator_8cpp.html" title="src/VariableManipulator.cpp" alt="" coords="685,229,864,256"/>
+<area shape="rect" id="node9" href="$_executive_8cpp.html" title="src/Executive.cpp" alt="" coords="889,229,1012,256"/>
+<area shape="rect" id="node10" href="$_stack_8cpp.html" title="src/Stack.cpp" alt="" coords="1036,229,1135,256"/>
+<area shape="rect" id="node11" href="$_variable_8cpp.html" title="src/Variable.cpp" alt="" coords="1159,229,1273,256"/>
+<area shape="rect" id="node13" href="$_variable_set_8cpp.html" title="src/VariableSet.cpp" alt="" coords="708,155,841,181"/>
+</map>
