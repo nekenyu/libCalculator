@@ -49,7 +49,7 @@ f.process(is, os);
 
 const float expected[] = { -5.0 };
 verify(stack, expected);
-// TODO: Consider verifying variables
+/** \todo Consider verifying variables */
 }
 
 {
@@ -60,7 +60,7 @@ std::ostringstream os;
 f.process(is, os);
 const float expected[] = { 25.0, 2.5 };
 verify(stack, expected);
-// TODO: Consider verifying variables
+/** \todo Consider verifying variables */
 }
 }
 

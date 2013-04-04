@@ -250,18 +250,15 @@ public:
     Number::Ptr number = Number::create(1.2345);
 
     Stack stack;
+    stack.push(variable);
+    stack.push(variable);
+    stack.push(variable);
+    stack.push(variable);
+    stack.push(variable);
     stack.getVariables().set(variable->getName(), number);
-    stack.push(variable);
-    stack.push(variable);
-    stack.push(variable);
-    stack.push(variable);
-    stack.push(variable);
 
     float expected[] = { number->getValue(), number->getValue(), number->getValue(), number->getValue(), number->getValue() };
     verify(stack, expected);
-
-    StackIterator iter = stack.begin();
-    CPPUNIT_ASSERT(stack.end() != iter);
 
     StackItem::Ptr item1;
     Number::Ptr item2;
@@ -269,10 +266,11 @@ public:
     Number::Ptr item4;
     Number::Ptr item5;
 
+    StackIterator iter = stack.begin();
+    CPPUNIT_ASSERT(stack.end() != iter);
     iter >> item1
 	 >> item2
-	 >> StackIterator::Hint::NO_DEREFERENCE_NEXT
-	 >> item3
+	 >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> item3
 	 >> item4
 	 >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> StackIterator::Hint::DEREFERENCE_NEXT >> item5;
     CPPUNIT_ASSERT(stack.end() == iter);

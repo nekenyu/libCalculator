@@ -3,9 +3,6 @@
 
 namespace Calculator {
 
-  /** \namespace Error
-   * \brief Error / Return values of Stack Operations to ensure consistency.
-   */
   namespace Error {
     /** Operation was successful */
     const std::string Ok = "Ok";

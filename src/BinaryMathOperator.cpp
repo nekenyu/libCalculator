@@ -108,7 +108,11 @@ namespace Calculator {
     :op(operation)
   {
   }
-  
+
+  /** \todo Stack dereferencing cannot distinguish between not a number, unset
+   * variable, and cyclic variable name.  So, here we report not a number in
+   * all cases.
+   */  
   std::string BinaryMathOperator::operator()(Stack& stack, StackOperator::Ptr ofThis) {
     if(stack.getDepth() < 2) {
       return Error::StackUnderflow;
@@ -119,9 +123,6 @@ namespace Calculator {
     StackIterator iter = stack.begin();
     iter >> first >> second;
     // Defer stack.popAfter() until after evaluation
-
-    // TODO: Cannot failures distinguish between not a number, unset variable,
-    // and cyclic variable name
 
     if(!first) {
       return Error::atPosition(0, Error::NotANumber);

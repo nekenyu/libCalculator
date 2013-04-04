@@ -1,0 +1,20 @@
+/**
+\mainpage Calculator
+
+\section intro_sec Introduction
+This is a class stack-based calculator primarily in library form.  \ref Calculator.cpp shows what is needed to run a Calculator via the Executive classes.
+
+This was designed around supporting both variables and numbers, as well as potentially other types.  This required a generic stack.  To read, evaluate, type convert, and prevent dereferencing variables, the StackIterator class and its assocated operator>> methods were created as shown in \ref StackReadingExample.cpp.
+
+Within the provided executives, parsing was made simple:
+- words are read on standard cin >> std::string boundaries
+- the words are parsed in order by StackOperatorFactory to find the first StackOperation created by a StackOperatorCreator instance
+
+Obviously, it would be more desirable for "2 2+" to immediately give "4", but string processing was not the objective.
+\todo Improve string processing.
+
+Source Code Examples:
+- \ref Calculator.cpp
+- \ref StackReadingExample.cpp
+
+*/

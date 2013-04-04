@@ -4,8 +4,6 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 #include "Stack.h"
 #include "StackOperatorFactory.h"
 #include "Number.h"
@@ -32,8 +30,8 @@ int main(int argc, char** argv) {
 
   // Run from cin/cout
   FixedOperatorExecutive exec(factory, stack);
-  exec.doHelp(cout);
-  exec.process(cin, cout);
+  exec.doHelp(std::cout);
+  exec.process(std::cin, std::cout);
 
   return 0;
 }
