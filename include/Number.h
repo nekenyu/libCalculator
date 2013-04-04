@@ -15,6 +15,8 @@ namespace Calculator {
    */
   class Number : public StackItem {
   public:
+    typedef std::shared_ptr<Number> Ptr;
+
     virtual ~Number();
 
     /** Create with theValue to represent.
@@ -29,6 +31,9 @@ namespace Calculator {
   private:
     /** The value this represents */
     const float value;
+
+    /** The value this represents */
+    const std::string valueString;
   };
 
   /** Creates Numbers from strings that convert to numbers */

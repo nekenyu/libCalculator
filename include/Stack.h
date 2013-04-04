@@ -5,7 +5,148 @@
 #include "StackItem.h"
 #endif // STACK_ITEM_H
 
+#ifndef VARIABLE_SET_H
+#include "VariableSet.h"
+#endif // VARIABLE_SET_H
+
 namespace Calculator {
+
+class StackIteratorPimpl;
+
+/** \class StackIterator 
+ * \brief Iterator over a Stack from top to bottom
+ */
+class StackIterator {
+private:
+typedef std::shared_ptr<StackIteratorPimpl> PimplPtr;
+
+public:
+/** Hint for accessing the value at an iterator */
+enum class Hint {
+/** Dereference the next read */
+DEREFERENCE_NEXT,
+/** Do not dereference the next read */
+  NO_DEREFERENCE_NEXT
+  };
+
+~StackIterator() = default;
+
+// Note: Usage of Calculator::VariableSet is to eliminate a bug in Doxygen name resolution with namespaces...
+StackIterator(const Calculator::VariableSet& theVariables, const std::vector<StackItem::Ptr>::iterator& theIter);
+
+StackIterator() = delete;
+StackIterator(const StackIterator&);
+StackIterator(StackIterator&&) = default;
+StackIterator& operator=(const StackIterator&);
+StackIterator& operator=(StackIterator&&) = default;
+
+/** Pre-increment: Move to the next position away from the top.
+ *
+ * @return this iterator
+ */
+StackIterator& operator++();
+
+/** Post-increment: Move to the next position away from the top, but return the
+ * a copy of this iterator without the modification.
+ *
+ * @return a copy of this iterator before the increment.
+ */
+StackIterator operator++(int);
+
+/** Return true if this iterator is the same position as rhs.
+ * 
+ * @param rhs to compare this iterator to
+ *
+ * @return true if this iterator and rhs refer to the same position, otherwise
+ * false
+ */
+bool operator==(const StackIterator& rhs) const;
+
+/** Return true if this iterator is not the same position as rhs.
+ * 
+ * @param rhs to compare this iterator to
+ *
+ * @return false if this iterator and rhs refer to the same position, otherwise
+ * true
+ */
+bool operator!=(const StackIterator& rhs) const;
+
+/** @return the object at the current position as per the current hint and reset
+ * the hint for the next read to Hint::DEREFERENCE_NEXT
+ */
+StackItem::Ptr operator*();
+
+/** @return the current item without dereferencing, ignoring the hint entirely
+ */
+StackItem::Ptr noDereference();
+
+/** Set the current hint for reading the value to theHint.
+ *
+ * @param theHint to set the hint for the next read to
+ *
+ * @return this iterator
+ */
+StackIterator& setHint(Hint theHint);
+
+/** Convenience method to read the current value by operator->* (respecting the
+ * current hint) and return it to a T::Ptr by std::dynamic_pointer_cast.  If
+ * the cast fails, the returned value is empty
+ *
+ * @tparam T desired type to cast the value to
+ *
+ * @return the current value from operator* as a T::Ptr, which may be empty if
+ * the cast failed
+ */
+template<typename T>
+auto as() -> typename T::Ptr {
+typename T::Ptr asT = std::dynamic_pointer_cast<T, StackItem>(this->operator*());
+return asT;
+}
+
+/** @return the private implementation */
+PimplPtr getPimpl();
+
+private:
+/** The private implementation */
+PimplPtr pimpl;
+};
+
+/** Set the iter's hint and return the iter.
+ *
+ * @param iter to set hint on
+ * @param hint to set
+ *
+ * @return iter
+ */
+StackIterator& operator>>(StackIterator& iter, StackIterator::Hint hint);
+
+/** Set t to *iter and return iter.
+ *
+ * @param iter to read from
+ * @param t to set *iter into
+ *
+ * @return iter
+ */
+StackIterator& operator>>(StackIterator& iter, StackItem::Ptr& t);
+
+/** Convenience function to read the current value of iter by the template as()
+ * (respecting the current hint) and set to t. If the cast fails in t, the set
+ *  value is empty
+ *
+ * @tparam T desired type to cast the value to
+ *
+ * @param iter to read from
+ * @param t to set iter.as<T>() into
+ *
+ * @return iter
+ */
+template<typename T>
+StackIterator& operator>>(StackIterator& iter, T& t) {
+t = iter.template as<typename T::element_type>();
+++iter;
+return iter;
+}
+
   
   /** Stack of values to process from.
    *
@@ -31,29 +172,48 @@ namespace Calculator {
     /** @return number of StackItems on the Stack */
     Count getDepth() const;
 
+    /** @return the VariableSet */
+    VariableSet& getVariables();
+
+    /** @return StackIterator at the top of the Stack */
+    StackIterator begin(); // TODO: should be const
+
+    /** @return StackIterator after the bottom of the Stack */
+    StackIterator end();  // TODO: should be const
+
+    /** Pop all items after iter on the Stack */
+    void popAfter(StackIterator& iter);
+
+    /** Get the value of in: if a variable, look it up, otherwise itself
+     *
+     * @param in StackItem::Ptr to dereference
+     *
+     * @return StackItem holding the value of the variable in, or in itself
+     *
+     * \note Unset variables are returned invalid
+     */
+    StackItem::Ptr dereference(StackItem::Ptr in) const;
+
     /** Push item onto the stack
      *
      * @param item to push
      */
     void push(StackItem::Ptr item);
-    
-    /** Pop count items from stack and place into to.  If there are not enough
-     * StackItems on the Stack, returns false and nothing is one.
-     *
-     * @param count of items to pop
-     * @param to array[count] to receive items popped such that the last item
-     * push()ed onto the stack is to[0].
-     *
-     * @return true if count items were popped, false if getDepth() < count.
-     */
-    bool pop(Count count, StackItem::Ptr* to);
-    
+
     /** Create string representation of the current contents of the Stack */
     std::string toString() const;
 
   private:
     /** Implementation of the Stack */
     SubStack impl;
+
+    /** Variables used in the Stack
+     *
+     * This could be isolated into a derived class to provide both types; however,
+     * this would require a cast for the Variable suppor classes to get/set the
+     * variables...  We will just add it to the only Stack class for now.
+     */
+    VariableSet variables;
   };
   
 } // namespace Calculator

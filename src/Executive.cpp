@@ -1,5 +1,6 @@
 #include <memory>
 #include <vector>
+#include <map>
 #include <iostream>
 #include <sstream>
 #include <string>

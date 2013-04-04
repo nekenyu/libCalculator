@@ -10,6 +10,7 @@
 #include "BinaryMathOperator.h"
 
 using namespace Calculator;
+#include "Helpers.h"
 
 class MathOperatorsTest : public CppUnit::TestFixture {
 private:
@@ -27,80 +28,85 @@ private:
   CPPUNIT_TEST_SUITE_END();
 
 private:
-  void push(Stack& stack, float value) {
-    stack.push(StackItem::Ptr(new Number(value)));
-  }
-
-  void destructiveVerify(Stack& stack, const float* const expected, const size_t expectedLength) {
-    StackItem::Ptr values[expectedLength];
-    const bool popped = stack.pop(expectedLength, values);
-    CPPUNIT_ASSERT(popped);
-    CPPUNIT_ASSERT(0 == stack.getDepth());
-
-    // Compare expected to values in opposite order...  pop() buts top first
-    // while test results put top to the right.
-    for(int i = 0; i < expectedLength; ++i) {
-      CPPUNIT_ASSERT(abs(expected[i] - values[expectedLength - 1 -i]->getValue()) < 2 * std::numeric_limits<float>::epsilon());
-    }
-  }
-
-  void test(const float* const input, const size_t inputLength, BinaryMathOperator::Operation oper, const float* const expected, const size_t expectedLength) {
+  template<unsigned int inputLength, unsigned int expectedLength>
+  void test(const float (&input)[inputLength], BinaryMathOperator::Operation oper, const float (&expected)[expectedLength]) {
     Stack stack;
-    for(int i = 0; i < inputLength; ++i) {
-      push(stack, input[i]);
-    }
+    push(stack, input);
 
     StackOperator::Ptr op(new BinaryMathOperator(oper));
     const std::string result = (*op)(stack, op);
     if(inputLength < 2) {
       CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
       CPPUNIT_ASSERT(inputLength == stack.getDepth());
-      destructiveVerify(stack, input, inputLength);
+      verify(stack, input);
     } else {
       CPPUNIT_ASSERT(0 == Error::Ok.compare(result));
       CPPUNIT_ASSERT(expectedLength == stack.getDepth());
-      destructiveVerify(stack, expected, expectedLength);
+      verify(stack, expected);
     }
+  }
+
+  template<unsigned int inputLength>
+  void test(const float (&input)[inputLength], BinaryMathOperator::Operation oper) {
+    Stack stack;
+    push(stack, input);
+
+    StackOperator::Ptr op(new BinaryMathOperator(oper));
+    const std::string result = (*op)(stack, op);
+
+    CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
+    CPPUNIT_ASSERT(inputLength == stack.getDepth());
+    verify(stack, input);
+  }
+
+  void test(BinaryMathOperator::Operation oper) {
+    Stack stack;
+
+    StackOperator::Ptr op(new BinaryMathOperator(oper));
+    const std::string result = (*op)(stack, op);
+
+    CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
+    CPPUNIT_ASSERT(stack.getDepth() == 0);
   }
 
 public:
   void testAddOfZero() {
-    test(NULL, 0, BinaryMathOperator::Operation::ADD, NULL, 0);
+    test(BinaryMathOperator::Operation::ADD);
   }
 
   void testAddOfOne() {
     float input[] = { 1.0 };
-    test(input, sizeof(input)/sizeof(float), BinaryMathOperator::Operation::ADD, NULL, 0);
+    test(input, BinaryMathOperator::Operation::ADD);
   }
 
   void testAddOfTwo() {
     float input[] = { 1.0, 2.0 };
     float expected[] = { 3.0 };
-    test(input, sizeof(input)/sizeof(float), BinaryMathOperator::Operation::ADD, expected, sizeof(expected)/sizeof(float));
+    test(input, BinaryMathOperator::Operation::ADD, expected);
   }
 
   void testAddOfThree() {
     float input[] = { 0.0, 1.0, 2.0 };
     float expected[] = { 0.0, 3.0 };
-    test(input, sizeof(input)/sizeof(float), BinaryMathOperator::Operation::ADD, expected, sizeof(expected)/sizeof(float));
+    test(input, BinaryMathOperator::Operation::ADD, expected);
   }
 
   void testSubtractOfThree() {
     float input[] = { 0.0, 1.0, 2.0 };
     float expected[] = { 0.0, 1.0 };
-    test(input, sizeof(input)/sizeof(float), BinaryMathOperator::Operation::SUBTRACT, expected, sizeof(expected)/sizeof(float));
+    test(input, BinaryMathOperator::Operation::SUBTRACT, expected);
   }
 
   void testMultiplyOfThree() {
     float input[] = { 0.0, 1.0, 2.0 };
     float expected[] = { 0.0, 2.0 };
-    test(input, sizeof(input)/sizeof(float), BinaryMathOperator::Operation::MULTIPLY, expected, sizeof(expected)/sizeof(float));
+    test(input, BinaryMathOperator::Operation::MULTIPLY, expected);
   }
 
   void testDivideOfThree() {
     float input[] = { 0.0, 2.0, 1.0 };
     float expected[] = { 0.0, 0.5 };
-    test(input, sizeof(input)/sizeof(float), BinaryMathOperator::Operation::DIVIDE, expected, sizeof(expected)/sizeof(float));
+    test(input, BinaryMathOperator::Operation::DIVIDE, expected);
   }
 };
 

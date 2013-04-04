@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <initializer_list>
 
 #include "math.h"
 
@@ -105,21 +106,26 @@ namespace Calculator {
   }
   
   std::string BinaryMathOperator::operator()(Stack& stack, StackOperator::Ptr ofThis) {
-    StackItem::Ptr values[2];
-    if(!stack.pop(2, values)) {
+    if(stack.getDepth() < 2) {
       return Error::StackUnderflow;
     }
-    
+
+    StackItem::Ptr first;
+    StackItem::Ptr second;
+    StackIterator iter = stack.begin();
+    iter >> first >> second;
+    stack.popAfter(iter);
+
     // Do the math
     float result = 0.0;
     const OpInfo* info = opInfoMap[op];
     if(nullptr != info) {
-      stack.push(StackItem::Ptr(new Number((info->getFunction()(values[0]->getValue(), values[1]->getValue())))));
+      stack.push(StackItem::Ptr(new Number((info->getFunction()(first->getValue(), second->getValue())))));
       return Error::Ok;
     } else {
       // Internal error....  Not sure what to do.
-      values[1]->operator()(stack, values[1]);
-      values[0]->operator()(stack, values[0]);
+      second->operator()(stack, second);
+      first->operator()(stack, first);
       return "Internal Error: Missing BinaryMathOperator.";
     }
   }

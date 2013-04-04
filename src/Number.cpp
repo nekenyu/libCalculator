@@ -1,10 +1,22 @@
 #include <memory>
 #include <vector>
+#include <map>
 #include <string>
 #include <sstream>
+#include <initializer_list>
 
 #include "Stack.h"
 #include "Number.h"
+
+namespace {
+
+  std::string format(float f) {
+    std::ostringstream os;
+    os << f;
+    return os.str();
+  }
+
+} // anonymous namespace
 
 namespace Calculator {
 
@@ -12,7 +24,7 @@ namespace Calculator {
   }
   
   Number::Number(float theValue)
-    : value(theValue)
+    : value(theValue), valueString(format(theValue))
   {
   }
   
@@ -21,7 +33,7 @@ namespace Calculator {
   }
   
   std::string Number::toString() const {
-    return std::to_string(value);
+    return valueString;
   }
 
   NumberCreator::~NumberCreator() { }

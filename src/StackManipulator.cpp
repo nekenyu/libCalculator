@@ -20,28 +20,42 @@ namespace Calculator {
   
   std::string StackManipulator::operator()(Stack& stack, StackOperator::Ptr ofThis) {
     if(Operation::POP == op) {
-      StackItem::Ptr values[1];
-      if(!stack.pop(1, values)) {
+      if(stack.getDepth() < 1) {
 	return Error::StackUnderflow;
       }
-      
+
+      StackIterator iter = stack.begin();
+      ++iter;
+      stack.popAfter(iter);
+
       return Error::Ok;
     } else if(Operation::DUP == op) {
-      StackItem::Ptr values[1];
-      if(!stack.pop(1, values)) {
+      if(stack.getDepth() < 1) {
+	return Error::StackUnderflow;
+      }
+
+      StackItem::Ptr item;
+      StackIterator iter = stack.begin();
+      iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> item;
+      // Do NOT stack.popAfter(iter) -- we are keeping it and duplicating it
+      (*item)(stack, item);
+
+      return Error::Ok;
+    } else if(Operation::SWAP == op) {
+      if(stack.getDepth() < 2) {
 	return Error::StackUnderflow;
       }
       
-      (*values[0])(stack, values[0]);
-      (*values[0])(stack, values[0]);
-      return Error::Ok;
-    } else if(Operation::SWAP == op) {
-      StackItem::Ptr values[2];
-      if(!stack.pop(2, values)) {
-	return Error::StackUnderflow;
-      }
-      (*values[0])(stack, values[0]);
-      (*values[1])(stack, values[1]);
+      StackItem::Ptr first;
+      StackItem::Ptr second;
+      StackIterator iter = stack.begin();
+      iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> first
+	   >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> second;
+      stack.popAfter(iter);
+      
+      (*first)(stack, first);
+      (*second)(stack, second);
+
       return Error::Ok;
     } else {
       // Internal error....  Not sure what to do.

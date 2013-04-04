@@ -12,6 +12,12 @@ namespace Calculator {
 
     /** Operation required more items than the Stack had available */
     const std::string StackUnderflow = "Insufficient Stack Arguments";
+
+    /** Operation required a variable.  Item was not a variable. */
+    const std::string NotAVariable = "Value is not a variable";
+
+    /** Operation required a variable.  Variable has not been set. */
+    const std::string VariableNotSet = "Variable is not set";
   };
   
 } // namespace Calculator
