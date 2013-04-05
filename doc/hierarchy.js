@@ -21,5 +21,7 @@ var hierarchy =
       [ "Calculator::VariableManipulatorCreator", "class_calculator_1_1_variable_manipulator_creator.html", null ]
     ] ],
     [ "Calculator::StackOperatorFactory", "class_calculator_1_1_stack_operator_factory.html", null ],
-    [ "Calculator::VariableSet", "class_calculator_1_1_variable_set.html", null ]
+    [ "Calculator::StackPimpl", "class_calculator_1_1_stack_pimpl.html", null ],
+    [ "Calculator::VariableSet", "class_calculator_1_1_variable_set.html", null ],
+    [ "Calculator::VariableSetPimpl", "class_calculator_1_1_variable_set_pimpl.html", null ]
 ];

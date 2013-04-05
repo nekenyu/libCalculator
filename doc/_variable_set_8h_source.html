@@ -123,61 +123,57 @@ $(document).ready(function(){initNavTree('_variable_set_8h_source.html','');});
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef VARIABLE_SET_H</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VARIABLE_SET_H</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef STACK_ITEM_H</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="_stack_item_8h.html">StackItem.h</a>&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif // STACK_ITEM_H</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>Calculator {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/** \class VariableSet</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * \brief All variables belonging to a Stack.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * A variable without a value is acceptable until its value is requested; such a</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * request is not allowed.</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_set.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a> {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">typedef</span> std::map&lt;std::string, StackItem::Ptr&gt; MapType;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/** Construct with an empty variable set */</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<a class="code" href="class_calculator_1_1_variable_set.html#a9d586095ad3bd2dd86b1b212415e59c7" title="Construct with an empty variable set.">VariableSet</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<a class="code" href="class_calculator_1_1_variable_set.html#a9d586095ad3bd2dd86b1b212415e59c7" title="Construct with an empty variable set.">VariableSet</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="class_calculator_1_1_variable_set.html#a9d586095ad3bd2dd86b1b212415e59c7" title="Construct with an empty variable set.">VariableSet</a>(<a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp; <a class="code" href="class_calculator_1_1_variable_set.html#af5fb5beaeebf1f082fcde33646e12e8c">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp; <a class="code" href="class_calculator_1_1_variable_set.html#af5fb5beaeebf1f082fcde33646e12e8c">operator=</a>(<a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/** Get the value of name, if any.</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> * @param name of the variable go get</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * @return StackItem holding the value of the variable</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a> <span class="keyword">get</span>(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/** Set the value of name, overriding existing values</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @param name of the variable go set</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> * @param value holding the value of the variable</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <span class="keyword">set</span>(<span class="keyword">const</span> std::string&amp; name, <a class="code" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a> value);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/** Map of name to value */</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;MapType map;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <span class="comment">// namespace Calculator</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif // VARIABLE_SET_H</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>Calculator {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">class </span>StackItem;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keyword">class </span>VariableSetPimpl;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">  /** \class VariableSet</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">   * \brief All variables belonging to a Stack.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">   * A variable without a value is acceptable until its value is requested; such a</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">   * request is not allowed.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_set.html">   28</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a> {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">    /** Construct with an empty variable set */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="class_calculator_1_1_variable_set.html#a7d10fd5ffc2174653194d36cc544665a" title="Construct with an empty variable set.">VariableSet</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_calculator_1_1_variable_set.html#a7d10fd5ffc2174653194d36cc544665a" title="Construct with an empty variable set.">VariableSet</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_calculator_1_1_variable_set.html#a7d10fd5ffc2174653194d36cc544665a" title="Construct with an empty variable set.">VariableSet</a>(<a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp; <a class="code" href="class_calculator_1_1_variable_set.html#af5fb5beaeebf1f082fcde33646e12e8c">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp; <a class="code" href="class_calculator_1_1_variable_set.html#af5fb5beaeebf1f082fcde33646e12e8c">operator=</a>(<a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">    /** Get the value of name, if any.</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">     * @param name of the variable go get</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     * @return StackItem holding the value of the variable</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::shared_ptr&lt;StackItem&gt; <span class="keyword">get</span>(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">    /** Set the value of name, overriding existing values</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     * @param name of the variable go set</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">     * @param value holding the value of the variable</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <span class="keyword">set</span>(<span class="keyword">const</span> std::string&amp; name, std::shared_ptr&lt;StackItem&gt; value);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">    /** Private implementation */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::shared_ptr&lt;VariableSetPimpl&gt; pimpl;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  };</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;} <span class="comment">// namespace Calculator</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif // VARIABLE_SET_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_variable_set_8h.html">VariableSet.h</a></li>
-    <li class="footer">Generated on Thu Apr 4 2013 15:33:33 for Calculator by
+    <li class="footer">Generated on Fri Apr 5 2013 07:28:28 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

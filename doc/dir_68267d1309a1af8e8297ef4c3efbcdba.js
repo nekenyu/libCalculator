@@ -9,5 +9,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "StackOperatorFactory.cpp", "_stack_operator_factory_8cpp.html", null ],
     [ "Variable.cpp", "_variable_8cpp.html", null ],
     [ "VariableManipulator.cpp", "_variable_manipulator_8cpp.html", null ],
-    [ "VariableSet.cpp", "_variable_set_8cpp.html", null ]
+    [ "VariableSet.cpp", "_variable_set_8cpp.html", [
+      [ "VariableSetPimpl", "class_calculator_1_1_variable_set_pimpl.html", "class_calculator_1_1_variable_set_pimpl" ]
+    ] ]
 ];

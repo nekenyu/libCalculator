@@ -103,15 +103,13 @@ $(document).ready(function(){initNavTree('todo.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_todo000005"></a>page <a class="el" href="index.html">Calculator</a>  </dt>
+<dt><a class="anchor" id="_todo000004"></a>page <a class="el" href="index.html">Calculator</a>  </dt>
 <dd>Improve string processing. </dd>
 <dt><a class="anchor" id="_todo000001"></a>Member <a class="el" href="class_calculator_1_1_binary_math_operator.html#a41d40a250a1fda382315ec9e96b4743c">Calculator::BinaryMathOperator::operator()</a>  (Stack &amp;stack, StackOperator::Ptr ofThis)</dt>
 <dd>Stack dereferencing cannot distinguish between not a number, unset variable, and cyclic variable name. </dd>
 <dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="class_calculator_1_1_stack.html">Calculator::Stack</a>  </dt>
-<dd><p class="startdd">General: Decrease coupling in headers. The main issue is the Type::Ptr references requiring including other headers.</p>
-<p class="enddd">Provide load / save operations. Provide the ability to write and read Calculator.txt files which will restore the existing state. This adds the complexity of resetting an existing stack and variable set.  </p>
-</dd>
-<dt><a class="anchor" id="_todo000004"></a>Class <a class="el" href="class_calculator_1_1_stack_operator_factory.html">Calculator::StackOperatorFactory</a>  </dt>
+<dd>Provide load / save operations. Provide the ability to write and read Calculator.txt files which will restore the existing state. This adds the complexity of resetting an existing stack and variable set.  </dd>
+<dt><a class="anchor" id="_todo000003"></a>Class <a class="el" href="class_calculator_1_1_stack_operator_factory.html">Calculator::StackOperatorFactory</a>  </dt>
 <dd>Create default factories. To avoid requiring including everything, provide a default numeric factory (no variables or stack ops) and a default full factory. </dd>
 </dl>
 </div></div><!-- contents -->
@@ -119,7 +117,7 @@ $(document).ready(function(){initNavTree('todo.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Apr 4 2013 15:33:36 for Calculator by
+    <li class="footer">Generated on Fri Apr 5 2013 07:28:30 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

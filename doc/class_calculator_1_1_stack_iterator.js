@@ -1,11 +1,12 @@
 var class_calculator_1_1_stack_iterator =
 [
+    [ "StackItemPtr", "class_calculator_1_1_stack_iterator.html#ad4f1fc4d8f617f1f2b332fa75e45feed", null ],
     [ "Hint", "class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1", [
       [ "DEREFERENCE_NEXT", "class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1a605664c0b18f92fdc9a172c75d2ddbc6", null ],
       [ "NO_DEREFERENCE_NEXT", "class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1a2abb4f901838f1cdf82a65ced7c0b504", null ]
     ] ],
     [ "~StackIterator", "class_calculator_1_1_stack_iterator.html#a1da201a0de6cc21b8347495e975122be", null ],
-    [ "StackIterator", "class_calculator_1_1_stack_iterator.html#a5922b83f7a0e29e78564f04fa331ef71", null ],
+    [ "StackIterator", "class_calculator_1_1_stack_iterator.html#ad818878c42f31c7a2f95220ccaa6ef1d", null ],
     [ "StackIterator", "class_calculator_1_1_stack_iterator.html#abae192a07f7b99af8b81df7e5ca5bde3", null ],
     [ "StackIterator", "class_calculator_1_1_stack_iterator.html#a6cfcba5b6a2e94958e7f70db526ce1d9", null ],
     [ "StackIterator", "class_calculator_1_1_stack_iterator.html#abff17ea7ce01142ab9c3d9cc8cbf1a7c", null ],

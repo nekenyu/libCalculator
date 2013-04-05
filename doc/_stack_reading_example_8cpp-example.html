@@ -116,15 +116,13 @@ $(document).ready(function(){initNavTree('_stack_reading_example_8cpp-example.ht
 <div class="line"><span class="comment">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><span class="comment">*/</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;limits&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_stack_8h.html">Stack.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_number_8h.html">Number.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_variable_8h.html">Variable.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_variable_set_8h.html">VariableSet.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_error_8h.html">Error.h</a>&quot;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">using namespace </span>Calculator;</div>
@@ -136,14 +134,14 @@ $(document).ready(function(){initNavTree('_stack_reading_example_8cpp-example.ht
 <div class="line">  </div>
 <div class="line">  <span class="comment">// Setup the stack and variables initial values</span></div>
 <div class="line">  <a name="_a2"></a><a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a> stack;</div>
-<div class="line">  stack.<a name="a3"></a><a class="code" href="class_calculator_1_1_stack.html#aa3710fe05c9d0e71fff64a942de917bb" title="Push item onto the stack.">push</a>(variable);</div>
-<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#aa3710fe05c9d0e71fff64a942de917bb" title="Push item onto the stack.">push</a>(variable);</div>
-<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#aa3710fe05c9d0e71fff64a942de917bb" title="Push item onto the stack.">push</a>(variable);</div>
-<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#aa3710fe05c9d0e71fff64a942de917bb" title="Push item onto the stack.">push</a>(variable);</div>
-<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#aa3710fe05c9d0e71fff64a942de917bb" title="Push item onto the stack.">push</a>(variable);</div>
+<div class="line">  stack.<a name="a3"></a><a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
+<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
+<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
+<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
+<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Note that the variable is set after being used.</span></div>
-<div class="line">  stack.<a name="a4"></a><a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>().<a name="a5"></a><a class="code" href="class_calculator_1_1_variable_set.html#addd52578248c3f461716aa20840dc39f" title="Set the value of name, overriding existing values.">set</a>(variable-&gt;getName(), number);</div>
+<div class="line">  stack.<a name="a4"></a><a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>().<a name="a5"></a><a class="code" href="class_calculator_1_1_variable_set.html#aa3947d5890656993e6d6c8d205c22ca4" title="Set the value of name, overriding existing values.">set</a>(variable-&gt;getName(), number);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Create the values we will be reading.  I used item1..item5 for simplicity,</span></div>
 <div class="line">  <span class="comment">// but useful names like top, firstNumber, variableToUpdate, maxValue, and</span></div>
@@ -183,7 +181,7 @@ $(document).ready(function(){initNavTree('_stack_reading_example_8cpp-example.ht
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Apr 4 2013 15:33:33 for Calculator by
+    <li class="footer">Generated on Fri Apr 5 2013 07:28:28 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

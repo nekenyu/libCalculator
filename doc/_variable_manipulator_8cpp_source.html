@@ -121,109 +121,108 @@ $(document).ready(function(){initNavTree('_variable_manipulator_8cpp_source.html
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_error_8h.html">Error.h</a>&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_variable_manipulator_8h.html">VariableManipulator.h</a>&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_variable_8h.html">Variable.h</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_number_8h.html">Number.h</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_stack_8h.html">Stack.h</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>Calculator {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator.html#a978592163a4bcdd19be111057438e9f9">   27</a></span>&#160;  <a class="code" href="class_calculator_1_1_variable_manipulator.html#abaf1e5b40866eeaa2ee6d9b6585bce40">VariableManipulator::Ptr</a> <a class="code" href="class_calculator_1_1_variable_manipulator.html#a978592163a4bcdd19be111057438e9f9" title="Create to perform operation.">VariableManipulator::create</a>(<a class="code" href="class_calculator_1_1_variable_manipulator.html#a92f1098de7b6c850c7fa21eaea9d2a3d" title="Operations supported.">Operation</a> op) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_calculator_1_1_variable_manipulator.html#abaf1e5b40866eeaa2ee6d9b6585bce40">Ptr</a>(<span class="keyword">new</span> <a class="code" href="class_calculator_1_1_variable_manipulator.html#a8f3d42b19a2040ed80e7921ed7edde21" title="Create to perform operation.">VariableManipulator</a>(op));</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator.html#ae115143784b6f8ecc1cdb063425e4ffe">   31</a></span>&#160;  <a class="code" href="class_calculator_1_1_variable_manipulator.html#ae115143784b6f8ecc1cdb063425e4ffe">VariableManipulator::~VariableManipulator</a>() {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator.html#a8f3d42b19a2040ed80e7921ed7edde21">   34</a></span>&#160;  <a class="code" href="class_calculator_1_1_variable_manipulator.html#a8f3d42b19a2040ed80e7921ed7edde21" title="Create to perform operation.">VariableManipulator::VariableManipulator</a>(<a class="code" href="class_calculator_1_1_variable_manipulator.html#a92f1098de7b6c850c7fa21eaea9d2a3d" title="Operations supported.">Operation</a> operation)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    :op(operation)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator.html#a5240e53bb87b6c848e91e23c5a5579c3">   39</a></span>&#160;  std::string <a class="code" href="class_calculator_1_1_variable_manipulator.html#a5240e53bb87b6c848e91e23c5a5579c3" title="Execute this operator on stack.">VariableManipulator::operator()</a>(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; stack, <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> ofThis) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span>(Operation::WRITE == op) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <span class="keywordflow">if</span>(stack.<a class="code" href="class_calculator_1_1_stack.html#a98d898b1d3f064c4bcd76a358e9632e0">getDepth</a>() &lt; 2) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#a531d9470784402828d43f1e5b9f2277b" title="Operation required more items than the Stack had available.">Error::StackUnderflow</a>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <a class="code" href="class_calculator_1_1_variable.html#a9a6ed33ac62e594789ca59606106052e">Variable::Ptr</a> variable;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <a class="code" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a> value;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> iter = stack.<a class="code" href="class_calculator_1_1_stack.html#a3998db32e0c0d5a5e4b6804979e9bc10">begin</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      iter &gt;&gt; StackIterator::Hint::NO_DEREFERENCE_NEXT &gt;&gt; variable</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;       &gt;&gt; StackIterator::Hint::NO_DEREFERENCE_NEXT &gt;&gt; value;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="comment">// stack.popAfter() deferred until after variable evaluation</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordflow">if</span>(!variable) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd" title="Operation required a variable.">Error::NotAVariable</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      stack.<a class="code" href="class_calculator_1_1_stack.html#a996b3ab3326865460805e2c92fa11c7c" title="Pop all items after iter on the Stack.">popAfter</a>(iter);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      stack.<a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>().<a class="code" href="class_calculator_1_1_variable_set.html#addd52578248c3f461716aa20840dc39f" title="Set the value of name, overriding existing values.">set</a>(variable-&gt;getName(), value);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#ab15e782922b81831102ca62da1cb7724" title="Operation was successful.">Error::Ok</a>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(Operation::READ == op) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">if</span>(stack.<a class="code" href="class_calculator_1_1_stack.html#a98d898b1d3f064c4bcd76a358e9632e0">getDepth</a>() &lt; 1) {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#a531d9470784402828d43f1e5b9f2277b" title="Operation required more items than the Stack had available.">Error::StackUnderflow</a>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <a class="code" href="class_calculator_1_1_variable.html#a9a6ed33ac62e594789ca59606106052e">Variable::Ptr</a> variable;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> iter = stack.<a class="code" href="class_calculator_1_1_stack.html#a3998db32e0c0d5a5e4b6804979e9bc10">begin</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      iter &gt;&gt; StackIterator::Hint::NO_DEREFERENCE_NEXT &gt;&gt; variable;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="comment">// stack.popAfter() deferred until after variable evaluation</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keywordflow">if</span>(!variable) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd" title="Operation required a variable.">Error::NotAVariable</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <a class="code" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a> result = stack.<a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>().<a class="code" href="class_calculator_1_1_variable_set.html#a2cf72f7a1f997a0dc6a6616daee0cc93" title="Get the value of name, if any.">get</a>(variable-&gt;getName());</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="keywordflow">if</span>(!result) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#aef3a237d2d65e97572aa10c1926b658c" title="Operation required a variable.">Error::VariableNotSet</a>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      stack.<a class="code" href="class_calculator_1_1_stack.html#a996b3ab3326865460805e2c92fa11c7c" title="Pop all items after iter on the Stack.">popAfter</a>(iter);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      (*result)(stack, result);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#ab15e782922b81831102ca62da1cb7724" title="Operation was successful.">Error::Ok</a>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="comment">// Internal error....  Not sure what to do.</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keywordflow">return</span> <span class="stringliteral">&quot;Internal Error: Missing VariableManipulator.&quot;</span>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#a6026ec8fd8fff8dfd508a010ab58718d">   88</a></span>&#160;  <a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#a6026ec8fd8fff8dfd508a010ab58718d">VariableManipulatorCreator::~VariableManipulatorCreator</a>() {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#ab608e1dd29073daaa21fe65f1c634539">   91</a></span>&#160;  std::string <a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#ab608e1dd29073daaa21fe65f1c634539">VariableManipulatorCreator::getHelp</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> std::string() + </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="stringliteral">&quot;! -- write to the variable top element the value beneath it\n&quot;</span> +</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      <span class="stringliteral">&quot;@ -- replace the top variable with its value&quot;</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#ad7c0ff38922bdaa99576b1a54cadb753">   97</a></span>&#160;  <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> <a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#ad7c0ff38922bdaa99576b1a54cadb753">VariableManipulatorCreator::create</a>(<span class="keyword">const</span> std::string&amp; str) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="class_calculator_1_1_variable_manipulator.html#a92f1098de7b6c850c7fa21eaea9d2a3d" title="Operations supported.">VariableManipulator::Operation</a> op = VariableManipulator::Operation::WRITE;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span>(0 == str.compare(<span class="stringliteral">&quot;!&quot;</span>)) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      op = VariableManipulator::Operation::WRITE;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(0 == str.compare(<span class="stringliteral">&quot;@&quot;</span>)) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      op = VariableManipulator::Operation::READ;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a>();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_calculator_1_1_variable_manipulator.html#a978592163a4bcdd19be111057438e9f9" title="Create to perform operation.">VariableManipulator::create</a>(op);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;} <span class="comment">// namespace Calculator</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_error_8h.html">Error.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_variable_manipulator_8h.html">VariableManipulator.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_variable_8h.html">Variable.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_variable_set_8h.html">VariableSet.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_number_8h.html">Number.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_stack_8h.html">Stack.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>Calculator {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator.html#a978592163a4bcdd19be111057438e9f9">   26</a></span>&#160;  <a class="code" href="class_calculator_1_1_variable_manipulator.html#abaf1e5b40866eeaa2ee6d9b6585bce40">VariableManipulator::Ptr</a> <a class="code" href="class_calculator_1_1_variable_manipulator.html#a978592163a4bcdd19be111057438e9f9" title="Create to perform operation.">VariableManipulator::create</a>(<a class="code" href="class_calculator_1_1_variable_manipulator.html#a92f1098de7b6c850c7fa21eaea9d2a3d" title="Operations supported.">Operation</a> op) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_calculator_1_1_variable_manipulator.html#abaf1e5b40866eeaa2ee6d9b6585bce40">Ptr</a>(<span class="keyword">new</span> <a class="code" href="class_calculator_1_1_variable_manipulator.html#a8f3d42b19a2040ed80e7921ed7edde21" title="Create to perform operation.">VariableManipulator</a>(op));</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator.html#ae115143784b6f8ecc1cdb063425e4ffe">   30</a></span>&#160;  <a class="code" href="class_calculator_1_1_variable_manipulator.html#ae115143784b6f8ecc1cdb063425e4ffe">VariableManipulator::~VariableManipulator</a>() {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator.html#a8f3d42b19a2040ed80e7921ed7edde21">   33</a></span>&#160;  <a class="code" href="class_calculator_1_1_variable_manipulator.html#a8f3d42b19a2040ed80e7921ed7edde21" title="Create to perform operation.">VariableManipulator::VariableManipulator</a>(<a class="code" href="class_calculator_1_1_variable_manipulator.html#a92f1098de7b6c850c7fa21eaea9d2a3d" title="Operations supported.">Operation</a> operation)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    :op(operation)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator.html#a5240e53bb87b6c848e91e23c5a5579c3">   38</a></span>&#160;  std::string <a class="code" href="class_calculator_1_1_variable_manipulator.html#a5240e53bb87b6c848e91e23c5a5579c3" title="Execute this operator on stack.">VariableManipulator::operator()</a>(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; stack, <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> ofThis) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span>(Operation::WRITE == op) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="keywordflow">if</span>(stack.<a class="code" href="class_calculator_1_1_stack.html#a98d898b1d3f064c4bcd76a358e9632e0">getDepth</a>() &lt; 2) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#a531d9470784402828d43f1e5b9f2277b" title="Operation required more items than the Stack had available.">Error::StackUnderflow</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      <a class="code" href="class_calculator_1_1_variable.html#a9a6ed33ac62e594789ca59606106052e">Variable::Ptr</a> variable;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <a class="code" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a> value;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> iter = stack.<a class="code" href="class_calculator_1_1_stack.html#a3998db32e0c0d5a5e4b6804979e9bc10">begin</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      iter &gt;&gt; StackIterator::Hint::NO_DEREFERENCE_NEXT &gt;&gt; variable</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;       &gt;&gt; StackIterator::Hint::NO_DEREFERENCE_NEXT &gt;&gt; value;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="comment">// stack.popAfter() deferred until after variable evaluation</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <span class="keywordflow">if</span>(!variable) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd" title="Operation required a variable.">Error::NotAVariable</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      stack.<a class="code" href="class_calculator_1_1_stack.html#a996b3ab3326865460805e2c92fa11c7c" title="Pop all items after iter on the Stack.">popAfter</a>(iter);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      stack.<a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>().<a class="code" href="class_calculator_1_1_variable_set.html#aa3947d5890656993e6d6c8d205c22ca4" title="Set the value of name, overriding existing values.">set</a>(variable-&gt;getName(), value);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#ab15e782922b81831102ca62da1cb7724" title="Operation was successful.">Error::Ok</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(Operation::READ == op) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="keywordflow">if</span>(stack.<a class="code" href="class_calculator_1_1_stack.html#a98d898b1d3f064c4bcd76a358e9632e0">getDepth</a>() &lt; 1) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#a531d9470784402828d43f1e5b9f2277b" title="Operation required more items than the Stack had available.">Error::StackUnderflow</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <a class="code" href="class_calculator_1_1_variable.html#a9a6ed33ac62e594789ca59606106052e">Variable::Ptr</a> variable;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> iter = stack.<a class="code" href="class_calculator_1_1_stack.html#a3998db32e0c0d5a5e4b6804979e9bc10">begin</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      iter &gt;&gt; StackIterator::Hint::NO_DEREFERENCE_NEXT &gt;&gt; variable;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="comment">// stack.popAfter() deferred until after variable evaluation</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">if</span>(!variable) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd" title="Operation required a variable.">Error::NotAVariable</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <a class="code" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a> result = stack.<a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>().<a class="code" href="class_calculator_1_1_variable_set.html#aeb8702053a64ab2919f32f5869492b1c" title="Get the value of name, if any.">get</a>(variable-&gt;getName());</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keywordflow">if</span>(!result) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#aef3a237d2d65e97572aa10c1926b658c" title="Operation required a variable.">Error::VariableNotSet</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      stack.<a class="code" href="class_calculator_1_1_stack.html#a996b3ab3326865460805e2c92fa11c7c" title="Pop all items after iter on the Stack.">popAfter</a>(iter);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      (*result)(stack, result);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespace_calculator_1_1_error.html#ab15e782922b81831102ca62da1cb7724" title="Operation was successful.">Error::Ok</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="comment">// Internal error....  Not sure what to do.</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keywordflow">return</span> <span class="stringliteral">&quot;Internal Error: Missing VariableManipulator.&quot;</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#a6026ec8fd8fff8dfd508a010ab58718d">   87</a></span>&#160;  <a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#a6026ec8fd8fff8dfd508a010ab58718d">VariableManipulatorCreator::~VariableManipulatorCreator</a>() {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#ab608e1dd29073daaa21fe65f1c634539">   90</a></span>&#160;  std::string <a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#ab608e1dd29073daaa21fe65f1c634539">VariableManipulatorCreator::getHelp</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> std::string() + </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="stringliteral">&quot;! -- write to the variable top element the value beneath it\n&quot;</span> +</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="stringliteral">&quot;@ -- replace the top variable with its value&quot;</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#ad7c0ff38922bdaa99576b1a54cadb753">   96</a></span>&#160;  <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> <a class="code" href="class_calculator_1_1_variable_manipulator_creator.html#ad7c0ff38922bdaa99576b1a54cadb753">VariableManipulatorCreator::create</a>(<span class="keyword">const</span> std::string&amp; str) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="class_calculator_1_1_variable_manipulator.html#a92f1098de7b6c850c7fa21eaea9d2a3d" title="Operations supported.">VariableManipulator::Operation</a> op = VariableManipulator::Operation::WRITE;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span>(0 == str.compare(<span class="stringliteral">&quot;!&quot;</span>)) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      op = VariableManipulator::Operation::WRITE;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(0 == str.compare(<span class="stringliteral">&quot;@&quot;</span>)) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      op = VariableManipulator::Operation::READ;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a>();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_calculator_1_1_variable_manipulator.html#a978592163a4bcdd19be111057438e9f9" title="Create to perform operation.">VariableManipulator::create</a>(op);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <span class="comment">// namespace Calculator</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_variable_manipulator_8cpp.html">VariableManipulator.cpp</a></li>
-    <li class="footer">Generated on Thu Apr 4 2013 15:33:33 for Calculator by
+    <li class="footer">Generated on Fri Apr 5 2013 07:28:28 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>
