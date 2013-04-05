@@ -24,9 +24,18 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 using namespace Calculator;
 
 int main(int argc, char** argv) {
- 
+  bool full = true;
+  if(argc > 1) {
+    if(0 == std::string("-numbers").compare(argv[1])) {
+      full = false;
+    } else {
+      std::cout << argv[0] << " <-numbers> -- Creates a calculator which is optionally numbers-only." << std::endl;
+      return 0;
+    }
+  }
+
   // Create operation factory
-  StackOperatorFactory factory = Factories::getFullFactory();
+  StackOperatorFactory factory = full ? Factories::getFullFactory() : Factories::getNumbersFactory();
 
   // Create Stack
   Stack stack;
