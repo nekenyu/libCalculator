@@ -14,30 +14,28 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef  STACK_H
 #define  STACK_H
 
-#ifndef STACK_ITEM_H
-#include "StackItem.h"
-#endif // STACK_ITEM_H
-
-#ifndef VARIABLE_SET_H
-#include "VariableSet.h"
-#endif // VARIABLE_SET_H
-
 namespace Calculator {
-
+  
+  class StackItem;
+  class StackIteratorPimpl;
+  class StackPimpl;
+  class VariableSet;
+  
   /*
    * StackIterator
    */
 
-  class StackIteratorPimpl;
-  
   /** \class StackIterator 
    * \brief Iterator over a Stack from top to bottom
    */
   class StackIterator {
   private:
     typedef std::shared_ptr<StackIteratorPimpl> PimplPtr;
-    
+
   public:
+    /** Equivalent of StackItem::Ptr; */
+    typedef std::shared_ptr<StackItem> StackItemPtr;
+
     /** Hint for accessing the value at an iterator */
     enum class Hint {
       /** Dereference the next read */
@@ -48,8 +46,18 @@ namespace Calculator {
     
     ~StackIterator() = default;
     
-    // Note: Usage of Calculator::VariableSet is to eliminate a bug in Doxygen name resolution with namespaces...
-    StackIterator(const Calculator::VariableSet& theVariables, const std::vector<StackItem::Ptr>::iterator& theIter);
+    /** Create with reference to the variables and the implementint iterator.
+     *
+     * @param theVariables the constant VariableSet to use for dereferencing
+     * variables
+     * @param theIter Stack::Ptr the low-level implementation of this class
+     *
+     * \note Usage of Calculator::VariableSet is to eliminate a bug in Doxygen
+     * name resolution with namespaces...
+     *
+     * \note theIter is a stack::Ptr
+     */
+    StackIterator(const Calculator::VariableSet& theVariables, const std::vector<StackItemPtr>::iterator& theIter);
     
     StackIterator() = delete;
     StackIterator(const StackIterator&);
@@ -91,11 +99,11 @@ namespace Calculator {
     /** @return the object at the current position as per the current hint and reset
      * the hint for the next read to Hint::DEREFERENCE_NEXT
      */
-    StackItem::Ptr operator*();
+    StackItemPtr operator*();
     
     /** @return the current item without dereferencing, ignoring the hint entirely
      */
-    StackItem::Ptr noDereference();
+    StackItemPtr noDereference();
     
     /** Set the current hint for reading the value to theHint.
      *
@@ -144,7 +152,7 @@ namespace Calculator {
    *
    * @return iter
    */
-  StackIterator& operator>>(StackIterator& iter, StackItem::Ptr& t);
+  StackIterator& operator>>(StackIterator& iter, std::shared_ptr<StackItem>& t);
   
   /** Convenience function to read the current value of iter by the template as()
    * (respecting the current hint) and set to t. If the cast fails in t, the set
@@ -183,10 +191,8 @@ namespace Calculator {
    */
   class Stack {
   private:
-    typedef std::vector<StackItem::Ptr> SubStack;
-    typedef SubStack::iterator SubStackIter;
-    typedef SubStack::const_iterator SubStackCIter;
-    typedef SubStack::reverse_iterator SubStackRIter;
+    typedef std::shared_ptr<StackPimpl> PimplPtr;
+    typedef std::shared_ptr<StackItem> StackItemPtr;
 
   public:
     /** Count of StackItems */
@@ -204,10 +210,24 @@ namespace Calculator {
     /** @return the VariableSet */
     VariableSet& getVariables();
 
-    /** @return StackIterator at the top of the Stack */
+    /** @return StackIterator at the top of the Stack
+     *
+     * \note This should be a const method; however, the underlying
+     * implementation (STL) would only provide a const_iterator.  This would be
+     * just fine for its use; however, std::vector::erase requires a non-const
+     * iterator, which means this must be non-const.  I could const cast around
+     * this, but I'll go simpler.
+     */
     StackIterator begin();
 
-    /** @return StackIterator after the bottom of the Stack */
+    /** @return StackIterator after the bottom of the Stack
+     *
+     * \note This should be a const method; however, the underlying
+     * implementation (STL) would only provide a const_iterator.  This would be
+     * just fine for its use; however, std::vector::erase requires a non-const
+     * iterator, which means this must be non-const.  I could const cast around
+     * this, but I'll go simpler.
+     */
     StackIterator end();
 
     /** Pop all items after iter on the Stack */
@@ -221,28 +241,20 @@ namespace Calculator {
      *
      * \note Unset variables are returned invalid
      */
-    StackItem::Ptr dereference(StackItem::Ptr in) const;
+    StackItemPtr dereference(StackItemPtr in) const;
 
     /** Push item onto the stack
      *
      * @param item to push
      */
-    void push(StackItem::Ptr item);
+    void push(StackItemPtr item);
 
     /** Create string representation of the current contents of the Stack */
     std::string toString() const;
 
   private:
-    /** Implementation of the Stack */
-    SubStack impl;
-
-    /** Variables used in the Stack
-     *
-     * This could be isolated into a derived class to provide both types; however,
-     * this would require a cast for the Variable suppor classes to get/set the
-     * variables...  We will just add it to the only Stack class for now.
-     */
-    VariableSet variables;
+    /** The Private Implementation */
+    PimplPtr pimpl;
   };
   
 } // namespace Calculator

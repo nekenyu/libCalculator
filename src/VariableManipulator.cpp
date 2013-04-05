@@ -19,6 +19,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "Error.h"
 #include "VariableManipulator.h"
 #include "Variable.h"
+#include "VariableSet.h"
 #include "Number.h"
 #include "Stack.h"
 

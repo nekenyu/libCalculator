@@ -20,6 +20,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include "Stack.h"
 #include "Variable.h"
+#include "VariableSet.h"
 #include "Error.h"
 
 namespace {
@@ -74,7 +75,7 @@ namespace Calculator {
     }
   };
 
-  StackIterator::StackIterator(const VariableSet& theVariables, const StackIteratorPimpl::Iterator& theIter)
+  StackIterator::StackIterator(const VariableSet& theVariables, const std::vector<StackItemPtr>::iterator& theIter)
     : pimpl(PimplPtr(new StackIteratorPimpl(theVariables, theIter)))
   {
   }
@@ -146,51 +147,70 @@ namespace Calculator {
    * Stack
    */
 
+  class StackPimpl {
+  public:
+    typedef std::vector<StackItem::Ptr> StackType;
+    typedef StackType::iterator Iter;
+    typedef StackType::const_iterator CIter;
+
+    /** Implementation of the Stack */
+    StackType stack;
+
+    /** Variables used in the Stack
+     *
+     * This could be isolated into a derived class to provide both types; however,
+     * this would require a cast for the Variable suppor classes to get/set the
+     * variables...  We will just add it to the only Stack class for now.
+     */
+    VariableSet variables;
+  };
+
   Stack::Stack()
+    : pimpl(PimplPtr(new StackPimpl()))
   {  
   }
   
   Stack::Count Stack::getDepth() const {
-    return impl.size();
+    return pimpl->stack.size();
   }
 
   VariableSet& Stack::getVariables() {
-    return variables;
+    return pimpl->variables;
   }
 
   StackIterator Stack::begin() {
-    SubStackIter iter = impl.end();
+    StackPimpl::Iter iter = pimpl->stack.end();
     --iter;
-    return StackIterator(variables, iter);
+    return StackIterator(pimpl->variables, iter);
   }
 
   StackIterator Stack::end() {
-    SubStackIter myRbegin = impl.begin();
+    StackPimpl::Iter myRbegin = pimpl->stack.begin();
     --myRbegin;
-    return StackIterator(variables, myRbegin);
+    return StackIterator(pimpl->variables, myRbegin);
   }
 
   void Stack::popAfter(StackIterator& iter) {
     // Get the iterator and move one step closer to top to erase from it to the
     // end since we are popping after the given
-    SubStackIter from = iter.getPimpl()->iter;
+    StackPimpl::Iter from = iter.getPimpl()->iter;
     ++from;
-    impl.erase(from, impl.end());
+    pimpl->stack.erase(from, pimpl->stack.end());
   }
   
   StackItem::Ptr Stack::dereference(StackItem::Ptr in) const {
-    return dereferenceVariable(variables, in);
+    return dereferenceVariable(pimpl->variables, in);
   }
 
   void Stack::push(StackItem::Ptr item) {
-    impl.push_back(item);
+    pimpl->stack.push_back(item);
   }
 
   std::string Stack::toString() const {
     std::ostringstream os;
 
     os << "[";
-    for(SubStackCIter iter = impl.begin(); impl.end() != iter; ++iter) {
+    for(StackPimpl::CIter iter = pimpl->stack.begin(); pimpl->stack.end() != iter; ++iter) {
       os << " " << (*iter)->toString();
     }
     os << " ]";

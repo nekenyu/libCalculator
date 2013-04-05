@@ -20,6 +20,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "Stack.h"
 #include "Number.h"
 #include "Variable.h"
+#include "VariableSet.h"
 #include "Error.h"
 
 using namespace Calculator;
