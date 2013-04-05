@@ -14,48 +14,56 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef STACK_OPERATOR_FACTORY_H
 #define STACK_OPERATOR_FACTORY_H
 
-#ifndef STACK_OPERATOR_H
-#include "StackOperator.h"
-#endif // STACK_OPERATOR_H
-
 namespace Calculator {
+  
+  class StackOperator;
+  class StackOperatorCreator;
+  class StackOperatorFactoryPimpl;
+  
+  /** Factory to create StackOperators and help from StackOperatorCreators.
+   *
+   * This class is simple for a reason: if you want to change available commands,
+   * create a factory for each situation and provide it when relevant.
+   *
+   * \note When creating StackOperators, the first added creator that can make a
+   * StackOperator wins and terminates.  There is no ambiguity or resolution done.
+   *
+   * \todo Create default factories.
+   * To avoid requiring including everything, provide a default numeric factory
+   * (no variables or stack ops) and a default full factory.
+   */
+  class StackOperatorFactory {
+  public:
 
-/** Factory to create StackOperators and help from StackOperatorCreators.
- *
- * This class is simple for a reason: if you want to change available commands,
- * create a factory for each situation and provide it when relevant.
- *
- * \note When creating StackOperators, the first added creator that can make a
- * StackOperator wins and terminates.  There is no ambiguity or resolution done.
- *
- * \todo Create default factories.
- * To avoid requiring including everything, provide a default numeric factory
- * (no variables or stack ops) and a default full factory.
- */
-class StackOperatorFactory {
-public:
+    /** Create */
+    StackOperatorFactory();
 
-/** Add creator as available after all previous creators.
- *
- * @param creator to add
- */
-void addCreator(StackOperatorCreator::Ptr creator);
+    StackOperatorFactory(const StackOperatorFactory& rhs);
+    StackOperatorFactory(StackOperatorFactory&& rhs);
+    StackOperatorFactory& operator=(const StackOperatorFactory& rhs);
+    StackOperatorFactory& operator=(StackOperatorFactory&& rhs);
 
-/** @return help string for all available creators */
-std::string getHelp() const;
-
-/** Try to create a StackOperator for the given str.
- *
- * @param str to use in attempting to create a StackOperator
- *
- * @return StackOperator created, or none if there is no match to str
- */
-StackOperator::Ptr create(const std::string& str) const;
-
-private:
-/** The creators available in this factory.*/
-std::vector<StackOperatorCreator::Ptr> creators;
-};
+    /** Add creator as available after all previous creators.
+     *
+     * @param creator to add
+     */
+    void addCreator(std::shared_ptr<StackOperatorCreator> creator);
+    
+    /** @return help string for all available creators */
+    std::string getHelp() const;
+    
+    /** Try to create a StackOperator for the given str.
+     *
+     * @param str to use in attempting to create a StackOperator
+     *
+     * @return StackOperator created, or none if there is no match to str
+     */
+    std::shared_ptr<StackOperator> create(const std::string& str) const;
+    
+  private:
+    /** Private implementation */
+    std::shared_ptr<StackOperatorFactoryPimpl> pimpl;
+  };
 
 } // namespace Calculator
 

@@ -11,30 +11,32 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <memory>
-#include <vector>
-#include <iostream>
-#include <string>
+#ifndef STACK_OPERATOR_FACTORIES_H
+#define STACK_OPERATOR_FACTORIES_H
 
-#include "Stack.h"
+// We don't want to reconfigure a factory to be as desired as that adds
+// requirements.  We don't want to return a shared_ptr as that looks like over
+// pointer happy.   So we will return the object by copy...  This requires an
+// include.
+
+#ifndef STACK_OPERATOR_FACTORY_H
 #include "StackOperatorFactory.h"
-#include "StackOperatorFactories.h"
-#include "Executive.h"
+#endif // STACK_OPERATOR_FACTORY_H
 
-using namespace Calculator;
+namespace Calculator {
+  
+  namespace Factories {
 
-int main(int argc, char** argv) {
- 
-  // Create operation factory
-  StackOperatorFactory factory = Factories::getFullFactory();
+    /** @return a factory for numbers and number math only.
+     *
+     * Contains Number and BinaryMathOperator
+     */
+    StackOperatorFactory getNumbersFactory();
 
-  // Create Stack
-  Stack stack;
+    /** @return a factory with all pre-defined capabilites */
+    StackOperatorFactory getFullFactory();
+  }
 
-  // Run from cin/cout
-  FixedOperatorExecutive exec(factory, stack);
-  exec.doHelp(std::cout);
-  exec.process(std::cin, std::cout);
+} // namespace Calculator
 
-  return 0;
-}
+#endif // STACK_OPERATOR_FACTORIES_H

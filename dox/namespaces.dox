@@ -6,3 +6,7 @@
 \namespace Calculator::Error
 \brief Error / Return values of Stack Operations to ensure consistency.
 */
+/**
+\namespace Factories
+\brief Factories for common Stack Operator sets.
+*/

@@ -17,17 +17,53 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <string>
 
 #include "StackOperatorFactory.h"
+#include "StackOperator.h"
 
 namespace Calculator {
 
-  void StackOperatorFactory::addCreator(StackOperatorCreator::Ptr creator) {
-    creators.push_back(creator);
+  class StackOperatorFactoryPimpl {
+  public:
+    typedef std::shared_ptr<StackOperatorFactoryPimpl> Ptr;
+
+    /** The creators available in this factory.*/
+    std::vector<StackOperatorCreator::Ptr> creators;
+  };
+  
+  StackOperatorFactory::StackOperatorFactory()
+    : pimpl(StackOperatorFactoryPimpl::Ptr(new StackOperatorFactoryPimpl()))
+  {
+  }
+
+  StackOperatorFactory::StackOperatorFactory(const StackOperatorFactory& rhs)
+    : pimpl(StackOperatorFactoryPimpl::Ptr(new StackOperatorFactoryPimpl(*(rhs.pimpl))))
+  {
+  }
+
+  StackOperatorFactory::StackOperatorFactory(StackOperatorFactory&& rhs)
+    : pimpl(rhs.pimpl)
+  {
+    rhs.pimpl.reset();
+  }
+
+  StackOperatorFactory& StackOperatorFactory::operator=(const StackOperatorFactory& rhs) {
+    pimpl.reset(new StackOperatorFactoryPimpl(*(rhs.pimpl)));
+    return *this;
+  }
+
+  StackOperatorFactory& StackOperatorFactory::operator=(StackOperatorFactory&& rhs) {
+    pimpl = rhs.pimpl;
+    rhs.pimpl.reset();
+    return *this;
+  }
+
+  void StackOperatorFactory::addCreator(std::shared_ptr<StackOperatorCreator> creator) {
+    pimpl->creators.push_back(creator);
   }
 
   std::string StackOperatorFactory::getHelp() const {
     std::ostringstream os;
     
-    for(auto iter = creators.begin(); creators.end() != iter; ++iter) {
+    for(auto iter = pimpl->creators.begin(); pimpl->creators.end() != iter; ++iter) {
       os << (*iter)->getHelp() << std::endl;
     } 
 
@@ -35,7 +71,7 @@ namespace Calculator {
   }
 
   StackOperator::Ptr StackOperatorFactory::create(const std::string& str) const {
-    for(auto iter = creators.begin(); creators.end() != iter; ++iter) {
+    for(auto iter = pimpl->creators.begin(); pimpl->creators.end() != iter; ++iter) {
       StackOperator::Ptr created = (*iter)->create(str);
       if(created) {
 	return created;
