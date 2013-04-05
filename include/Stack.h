@@ -173,10 +173,6 @@ namespace Calculator {
    *
    * Contains StackItem::Ptr objects.
    *
-   * \todo General: Decrease coupling in headers.
-   * The main issue is the Type::Ptr references requiring including other
-   * headers.
-   *
    * \todo Provide load / save operations.
    * Provide the ability to write and read Calculator.txt files which will
    * restore the existing state.  This adds the complexity of resetting an

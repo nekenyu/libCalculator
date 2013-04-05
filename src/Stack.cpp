@@ -13,10 +13,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include <memory>
 #include <vector>
-#include <map>
+#include <set>
 #include <string>
 #include <sstream>
-#include <set>
 
 #include "Stack.h"
 #include "Variable.h"
