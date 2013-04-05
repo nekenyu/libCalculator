@@ -7,6 +7,8 @@ var searchData=
   ['stackmanipulator_2ecpp',['StackManipulator.cpp',['../_stack_manipulator_8cpp.html',1,'']]],
   ['stackmanipulator_2eh',['StackManipulator.h',['../_stack_manipulator_8h.html',1,'']]],
   ['stackoperator_2eh',['StackOperator.h',['../_stack_operator_8h.html',1,'']]],
+  ['stackoperatorfactories_2ecpp',['StackOperatorFactories.cpp',['../_stack_operator_factories_8cpp.html',1,'']]],
+  ['stackoperatorfactories_2eh',['StackOperatorFactories.h',['../_stack_operator_factories_8h.html',1,'']]],
   ['stackoperatorfactory_2ecpp',['StackOperatorFactory.cpp',['../_stack_operator_factory_8cpp.html',1,'']]],
   ['stackoperatorfactory_2eh',['StackOperatorFactory.h',['../_stack_operator_factory_8h.html',1,'']]]
 ];

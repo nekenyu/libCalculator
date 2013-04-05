@@ -5,6 +5,7 @@
 <area shape="rect" id="node5" href="$_stack_8cpp.html" title="src/Stack.cpp" alt="" coords="495,80,593,107"/>
 <area shape="rect" id="node6" href="$_stack_item_8cpp.html" title="src/StackItem.cpp" alt="" coords="617,80,740,107"/>
 <area shape="rect" id="node7" href="$_stack_manipulator_8cpp.html" title="src/StackManipulator.cpp" alt="" coords="764,80,929,107"/>
-<area shape="rect" id="node8" href="$_variable_8cpp.html" title="src/Variable.cpp" alt="" coords="953,80,1068,107"/>
-<area shape="rect" id="node9" href="$_variable_manipulator_8cpp.html" title="src/VariableManipulator.cpp" alt="" coords="1093,80,1272,107"/>
+<area shape="rect" id="node8" href="$_stack_operator_factories_8cpp.html" title="src/StackOperatorFactories.cpp" alt="" coords="954,80,1152,107"/>
+<area shape="rect" id="node9" href="$_variable_8cpp.html" title="src/Variable.cpp" alt="" coords="1177,80,1292,107"/>
+<area shape="rect" id="node10" href="$_variable_manipulator_8cpp.html" title="src/VariableManipulator.cpp" alt="" coords="1317,80,1496,107"/>
 </map>

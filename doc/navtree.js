@@ -36,7 +36,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_binary_math_operator_8cpp.html",
-"index.html#intro_sec"
+"class_calculator_1_1_variable_set_pimpl.html#a6a6c2181ced919765f55ea123c5c2de9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

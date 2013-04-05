@@ -1,7 +1,9 @@
 var namespace_calculator =
 [
     [ "Error", "namespace_calculator_1_1_error.html", null ],
+    [ "Factories", "namespace_calculator_1_1_factories.html", null ],
     [ "StackPimpl", "class_calculator_1_1_stack_pimpl.html", "class_calculator_1_1_stack_pimpl" ],
+    [ "StackOperatorFactoryPimpl", "class_calculator_1_1_stack_operator_factory_pimpl.html", "class_calculator_1_1_stack_operator_factory_pimpl" ],
     [ "VariableSetPimpl", "class_calculator_1_1_variable_set_pimpl.html", "class_calculator_1_1_variable_set_pimpl" ],
     [ "BinaryMathOperator", "class_calculator_1_1_binary_math_operator.html", "class_calculator_1_1_binary_math_operator" ],
     [ "BinaryMathCreator", "class_calculator_1_1_binary_math_creator.html", "class_calculator_1_1_binary_math_creator" ],

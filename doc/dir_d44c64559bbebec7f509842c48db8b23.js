@@ -25,6 +25,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
       [ "StackOperator", "class_calculator_1_1_stack_operator.html", "class_calculator_1_1_stack_operator" ],
       [ "StackOperatorCreator", "class_calculator_1_1_stack_operator_creator.html", "class_calculator_1_1_stack_operator_creator" ]
     ] ],
+    [ "StackOperatorFactories.h", "_stack_operator_factories_8h.html", "_stack_operator_factories_8h" ],
     [ "StackOperatorFactory.h", "_stack_operator_factory_8h.html", [
       [ "StackOperatorFactory", "class_calculator_1_1_stack_operator_factory.html", "class_calculator_1_1_stack_operator_factory" ]
     ] ],
