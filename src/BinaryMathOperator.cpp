@@ -12,10 +12,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 #include <memory>
-#include <vector>
 #include <string>
 #include <map>
-#include <initializer_list>
 
 #include "math.h"
 

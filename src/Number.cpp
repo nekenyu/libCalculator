@@ -12,11 +12,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 #include <memory>
-#include <vector>
-#include <map>
 #include <string>
 #include <sstream>
-#include <initializer_list>
 
 #include "Stack.h"
 #include "Number.h"

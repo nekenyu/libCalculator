@@ -13,7 +13,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include <cppunit/extensions/HelperMacros.h>
 
-#include <vector>
 #include <memory>
 #include <limits>
 

@@ -63,6 +63,7 @@ namespace Calculator {
 
   class StackIteratorPimpl {
   public:
+    typedef std::shared_ptr<StackIteratorPimpl> Ptr;
     typedef std::vector<StackItem::Ptr>::iterator Iterator;
 
     StackIterator::Hint hint = StackIterator::Hint::DEREFERENCE_NEXT;
@@ -75,8 +76,8 @@ namespace Calculator {
     }
   };
 
-  StackIterator::StackIterator(const VariableSet& theVariables, const std::vector<StackItemPtr>::iterator& theIter)
-    : pimpl(PimplPtr(new StackIteratorPimpl(theVariables, theIter)))
+  StackIterator::StackIterator(std::shared_ptr<StackIteratorPimpl> thePimpl)
+    : pimpl(thePimpl)
   {
   }
 
@@ -181,13 +182,13 @@ namespace Calculator {
   StackIterator Stack::begin() {
     StackPimpl::Iter iter = pimpl->stack.end();
     --iter;
-    return StackIterator(pimpl->variables, iter);
+    return StackIterator(StackIteratorPimpl::Ptr(new StackIteratorPimpl(pimpl->variables, iter)));
   }
 
   StackIterator Stack::end() {
     StackPimpl::Iter myRbegin = pimpl->stack.begin();
     --myRbegin;
-    return StackIterator(pimpl->variables, myRbegin);
+    return StackIterator(StackIteratorPimpl::Ptr(new StackIteratorPimpl(pimpl->variables, myRbegin)));
   }
 
   void Stack::popAfter(StackIterator& iter) {

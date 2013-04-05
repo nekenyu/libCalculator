@@ -48,16 +48,9 @@ namespace Calculator {
     
     /** Create with reference to the variables and the implementint iterator.
      *
-     * @param theVariables the constant VariableSet to use for dereferencing
-     * variables
-     * @param theIter Stack::Ptr the low-level implementation of this class
-     *
-     * \note Usage of Calculator::VariableSet is to eliminate a bug in Doxygen
-     * name resolution with namespaces...
-     *
-     * \note theIter is a stack::Ptr
+     * @param thePimpl initial data for the StackIterator
      */
-    StackIterator(const Calculator::VariableSet& theVariables, const std::vector<StackItemPtr>::iterator& theIter);
+    StackIterator(std::shared_ptr<StackIteratorPimpl> thePimpl);
     
     StackIterator() = delete;
     StackIterator(const StackIterator&);
