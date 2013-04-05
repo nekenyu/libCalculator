@@ -27,10 +27,6 @@ namespace Calculator {
    *
    * \note When creating StackOperators, the first added creator that can make a
    * StackOperator wins and terminates.  There is no ambiguity or resolution done.
-   *
-   * \todo Create default factories.
-   * To avoid requiring including everything, provide a default numeric factory
-   * (no variables or stack ops) and a default full factory.
    */
   class StackOperatorFactory {
   public:
