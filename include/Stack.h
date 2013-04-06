@@ -181,8 +181,7 @@ namespace Calculator {
    *
    * \todo Provide load / save operations.
    * Provide the ability to write and read Calculator.txt files which will
-   * restore the existing state.  This adds the complexity of resetting an
-   * existing stack and variable set.
+   * restore the existing state.
    */
   class Stack {
   private:
@@ -204,6 +203,12 @@ namespace Calculator {
 
     /** @return the VariableSet */
     VariableSet& getVariables();
+
+    /** Reset the stack including pop all variables and reset the variables */
+    void reset();
+
+    /** Pop all items from the stack */
+    void popAll();
 
     /** @return StackIterator at the top of the Stack
      *

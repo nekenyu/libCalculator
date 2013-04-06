@@ -200,6 +200,15 @@ namespace Calculator {
     return pimpl->variables;
   }
 
+  void Stack::reset() {
+    popAll();
+    pimpl->variables.clear();
+  }
+
+  void Stack::popAll() {
+    pimpl->stack.clear();
+  }
+
   StackIterator Stack::begin() {
     StackPimpl::Iter iter = pimpl->stack.end();
     --iter;

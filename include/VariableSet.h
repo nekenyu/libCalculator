@@ -35,6 +35,9 @@ namespace Calculator {
     VariableSet& operator=(const VariableSet&) = delete;
     VariableSet& operator=(VariableSet&&) = delete;
     
+    /** Clear all set variables */
+    void clear();
+
     /** Get the value of name, if any.
      *
      * @param name of the variable go get

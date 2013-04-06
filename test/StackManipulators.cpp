@@ -19,14 +19,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "Error.h"
 #include "Stack.h"
 #include "Number.h"
+#include "Variable.h"
+#include "VariableSet.h"
 #include "StackManipulator.h"
 
 using namespace Calculator;
 #include "Helpers.h"
 
-class MathOperatorsTest : public CppUnit::TestFixture {
+class StackManipulatorsTest : public CppUnit::TestFixture {
 private:
-  CPPUNIT_TEST_SUITE(MathOperatorsTest);
+  CPPUNIT_TEST_SUITE(StackManipulatorsTest);
 
   CPPUNIT_TEST(testPopOfZero); 
   CPPUNIT_TEST(testPopOfOne); 
@@ -39,7 +41,10 @@ private:
   CPPUNIT_TEST(testSwapOfZero); 
   CPPUNIT_TEST(testSwapOfOne); 
   CPPUNIT_TEST(testSwapOfTwo); 
-  CPPUNIT_TEST(testSwapOfThree); 
+  CPPUNIT_TEST(testSwapOfThree);
+
+  CPPUNIT_TEST(testReset);
+  CPPUNIT_TEST(testPopAll);
 
   CPPUNIT_TEST_SUITE_END();
 
@@ -64,21 +69,6 @@ private:
     }
   }
 
-  template<unsigned int inputLength>
-  void test(const float (&input)[inputLength], StackManipulator::Operation oper) {
-    Stack stack;
-    push(stack, input);
-
-    const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
-
-    StackOperator::Ptr op = StackManipulator::create(oper);
-    const std::string result = (*op)(stack, op);
-
-    CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
-    CPPUNIT_ASSERT(inputLength == stack.getDepth());
-    verify(stack, input);
-  }
-
   void test(StackManipulator::Operation oper) {
     Stack stack;
 
@@ -98,7 +88,15 @@ public:
 
   void testPopOfOne() {
     float input[] = { 1.0 };
-    test(input, StackManipulator::Operation::POP);
+    
+    Stack stack;
+    push(stack, input);
+
+    StackOperator::Ptr op = StackManipulator::create(StackManipulator::Operation::POP);
+    const std::string result = (*op)(stack, op);
+
+    CPPUNIT_ASSERT(0 == Error::Ok.compare(result));
+    verify(stack);
   }
 
   void testPopOfTwo() {
@@ -114,7 +112,7 @@ public:
   void testDupOfOne() {
     float input[] = { 1.0 };
     float expected[] = { 1.0, 1.0 };
-    test(input, StackManipulator::Operation::DUP);
+    test(input, StackManipulator::Operation::DUP, expected);
   }
 
   void testDupOfTwo() {
@@ -129,20 +127,88 @@ public:
 
   void testSwapOfOne() {
     float input[] = { 1.0 };
-    test(input, StackManipulator::Operation::SWAP);
+
+    Stack stack;
+    push(stack, input);
+
+    StackOperator::Ptr op = StackManipulator::create(StackManipulator::Operation::SWAP);
+    const std::string result = (*op)(stack, op);
+
+    CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
+    verify(stack, input);
   }
 
   void testSwapOfTwo() {
     float input[] = { 1.0, 2.0 };
     float expected[] = { 2.0, 1.0 };
-    test(input, StackManipulator::Operation::DUP, expected);
+    test(input, StackManipulator::Operation::SWAP, expected);
   }
 
   void testSwapOfThree() {
     float input[] = { 1.0, 2.0, 3.0 };
     float expected[] = { 1.0, 3.0, 2.0 };
-    test(input, StackManipulator::Operation::DUP, expected);
+    test(input, StackManipulator::Operation::SWAP, expected);
+  }
+
+  void testReset() {
+    const float num = 3.14;
+    Number::Ptr val = Number::create(num);
+    Variable::Ptr foo = Variable::create("$foo");
+    Variable::Ptr bar = Variable::create("$bar");
+
+    Stack stack;
+    stack.getVariables().set(bar->getName(), foo);
+    stack.getVariables().set(foo->getName(), val);
+
+    (*val)(stack, val);
+    (*val)(stack, val);
+    (*val)(stack, val);
+
+    float expected[] = { num, num, num };
+    verify(stack, expected);
+
+    StackManipulator::Ptr op = StackManipulator::create(StackManipulator::Operation::RESET);
+    (*op)(stack, val);
+
+    verify(stack);
+
+    StackItem::Ptr fooCheck = stack.getVariables().get(foo->getName());
+    StackItem::Ptr barCheck = stack.getVariables().get(bar->getName());
+
+    CPPUNIT_ASSERT(!fooCheck);
+    CPPUNIT_ASSERT(!barCheck);
+  }
+
+  void testPopAll() {
+    const float num = 3.14;
+    Number::Ptr val = Number::create(num);
+    Variable::Ptr foo = Variable::create("$foo");
+    Variable::Ptr bar = Variable::create("$bar");
+
+    Stack stack;
+    stack.getVariables().set(bar->getName(), foo);
+    stack.getVariables().set(foo->getName(), val);
+
+    (*val)(stack, val);
+    (*val)(stack, val);
+    (*val)(stack, val);
+
+    float expected[] = { num, num, num };
+    verify(stack, expected);
+
+    StackManipulator::Ptr op = StackManipulator::create(StackManipulator::Operation::POP_ALL);
+    (*op)(stack, val);
+
+    verify(stack);
+
+    StackItem::Ptr fooCheck = stack.getVariables().get(foo->getName());
+    StackItem::Ptr barCheck = stack.getVariables().get(bar->getName());
+
+    CPPUNIT_ASSERT(fooCheck);
+    CPPUNIT_ASSERT(fooCheck.get() == val.get());
+    CPPUNIT_ASSERT(barCheck);
+    CPPUNIT_ASSERT(barCheck.get() == foo.get());
   }
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION(MathOperatorsTest);
+CPPUNIT_TEST_SUITE_REGISTRATION(StackManipulatorsTest);

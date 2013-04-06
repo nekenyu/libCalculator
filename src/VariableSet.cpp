@@ -19,31 +19,35 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 namespace Calculator {
 
-class VariableSetPimpl {
-public:
-typedef std::shared_ptr<VariableSetPimpl> Ptr;
-typedef std::map<std::string, std::shared_ptr<StackItem> > MapType;
-
-/** Map of name to value */
-MapType map;
-};
-
-VariableSet::VariableSet()
-  : pimpl(VariableSetPimpl::Ptr(new VariableSetPimpl()))
-{
-}
-
-std::shared_ptr<StackItem> VariableSet::get(const std::string& name) const {
-VariableSetPimpl::MapType::const_iterator found = pimpl->map.find(name);
-if(pimpl->map.end() == found) {
-return std::shared_ptr<StackItem>();
-} else {
-return found->second;
-}
-}
-
-void VariableSet::set(const std::string& name, std::shared_ptr<StackItem> value) {
-pimpl->map[name] = value;
-}
-
+  class VariableSetPimpl {
+  public:
+    typedef std::shared_ptr<VariableSetPimpl> Ptr;
+    typedef std::map<std::string, std::shared_ptr<StackItem> > MapType;
+    
+    /** Map of name to value */
+    MapType map;
+  };
+  
+  VariableSet::VariableSet()
+    : pimpl(VariableSetPimpl::Ptr(new VariableSetPimpl()))
+  {
+  }
+  
+  void VariableSet::clear() {
+    pimpl->map.clear();
+  }
+  
+  std::shared_ptr<StackItem> VariableSet::get(const std::string& name) const {
+    VariableSetPimpl::MapType::const_iterator found = pimpl->map.find(name);
+    if(pimpl->map.end() == found) {
+      return std::shared_ptr<StackItem>();
+    } else {
+      return found->second;
+    }
+  }
+  
+  void VariableSet::set(const std::string& name, std::shared_ptr<StackItem> value) {
+    pimpl->map[name] = value;
+  }
+  
 } // namespace Calculator

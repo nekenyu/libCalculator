@@ -87,10 +87,10 @@ namespace Calculator {
 
       (*result)(stack, result);
       return Error::Ok;
-    } else {
-      // Internal error....  Not sure what to do.
-      return "Internal Error: Missing VariableManipulator.";
     }
+
+    // Internal error....  Not sure what to do.
+    return "Internal Error: Missing VariableManipulator.";
   }
 
   VariableManipulatorCreator::~VariableManipulatorCreator() {

@@ -37,7 +37,13 @@ namespace Calculator {
 	DUP,
 	
 	/** Swap the top two elements */
-	SWAP
+	SWAP,
+
+	/** Clear the entire stack and set of variables */
+	RESET,
+
+	/** Clear the entire stack */
+	POP_ALL
 	};
     
     /** Create to perform operation.

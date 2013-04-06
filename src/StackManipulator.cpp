@@ -72,10 +72,16 @@ namespace Calculator {
       (*second)(stack, second);
 
       return Error::Ok;
-    } else {
-      // Internal error....  Not sure what to do.
-      return "Internal Error: Missing StackManipulator.";
+    } else if(Operation::POP_ALL == op) {
+      stack.popAll();
+      return Error::Ok;
+    } else if(Operation::RESET == op) {
+      stack.reset();
+      return Error::Ok;
     }
+
+    // Internal error....  Not sure what to do.
+    return "Internal Error: Missing StackManipulator.";
   }
 
   StackManipulatorCreator::~StackManipulatorCreator() {
@@ -85,7 +91,9 @@ namespace Calculator {
     return std::string() + 
       "pop -- remove the top element\n" +
       "dup -- add a copy of the top element\n" +
-      "swap -- exchange the top two values on the stack";
+      "swap -- exchange the top two values on the stack\n" +
+      "reset -- reset the stack including removing all elements of the and clearing all variables\n" +
+      "pop-all -- remove all elements of the stack";
   }
 
   StackOperator::Ptr StackManipulatorCreator::create(const std::string& str) {
@@ -96,6 +104,10 @@ namespace Calculator {
       op = StackManipulator::Operation::DUP;
     } else if(0 == str.compare("swap")) {
       op = StackManipulator::Operation::SWAP;
+    } else if(0 == str.compare("reset")) {
+      op = StackManipulator::Operation::RESET;
+    } else if(0 == str.compare("pop-all")) {
+      op = StackManipulator::Operation::POP_ALL;
     } else {
       return StackOperator::Ptr();
     }
