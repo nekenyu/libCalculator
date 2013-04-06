@@ -22,6 +22,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "Executive.h"
 #include "Number.h"
 #include "Variable.h"
+#include "VariableSet.h"
 #include "BinaryMathOperator.h"
 #include "StackManipulator.h"
 #include "VariableManipulator.h"
@@ -46,38 +47,55 @@ ExecutiveTest() {
   defaultFactory.addCreator(StackOperatorCreator::Ptr(new VariableManipulatorCreator()));
   defaultFactory.addCreator(StackOperatorCreator::Ptr(new VariableCreator()));
 }
-
+  
 public:
+  
+  void helpAllAVariables(Stack& stack) {
+      StackItem::Ptr foo = stack.getVariables().get("$foo");
+      StackItem::Ptr bar = stack.getVariables().get("$bar");
+      CPPUNIT_ASSERT(foo);
+      CPPUNIT_ASSERT(bar);
 
-void testAllA() {
-Stack stack;
-FixedOperatorExecutive f(defaultFactory, stack);
+      Number::Ptr fooAsNum = std::dynamic_pointer_cast<Number, StackItem>(foo);
+      Variable::Ptr barAsVar = std::dynamic_pointer_cast<Variable, StackItem>(bar);
+      CPPUNIT_ASSERT(fooAsNum);
+      CPPUNIT_ASSERT(barAsVar);
 
-{
-const std::string input = "5.0 -10.0 2.5 $foo dup $bar ! ! $bar * / ";
-std::istringstream is(input);
-std::ostringstream os;
-f.process(is, os);
+      const float fooAsFloat = fooAsNum->getValue();
+      CPPUNIT_ASSERT(abs(fooAsFloat - 2.5) < (2 * std::numeric_limits<float>::epsilon()));
 
-const float expected[] = { -5.0 };
-verify(stack, expected);
-/** \todo Consider verifying variables */
-}
+      CPPUNIT_ASSERT(0 == barAsVar->getName().compare("$foo"));
+  }
 
-{
-const std::string input = "-0.1 - .1 + 2 swap ^ $bar @ pop invalid-token $bar @";
-std::istringstream is(input);
-std::ostringstream os;
-
-f.process(is, os);
-const float expected[] = { 25.0, 2.5 };
-verify(stack, expected);
-/** \todo Consider verifying variables */
-}
-}
-
+  void testAllA() {
+    Stack stack;
+    FixedOperatorExecutive f(defaultFactory, stack);
+    
+    {
+      const std::string input = "5.0 -10.0 2.5 $foo dup $bar ! ! $bar * / ";
+      std::istringstream is(input);
+      std::ostringstream os;
+      f.process(is, os);
+      
+      const float expected[] = { -5.0 };
+      verify(stack, expected);
+      helpAllAVariables(stack);
+    }
+    
+    {
+      const std::string input = "-0.1 - .1 + 2 swap ^ $bar @ pop invalid-token $bar @";
+      std::istringstream is(input);
+      std::ostringstream os;
+      
+      f.process(is, os);
+      const float expected[] = { 25.0, 2.5 };
+      verify(stack, expected);
+      helpAllAVariables(stack);
+    }
+  }
+  
 private:
-StackOperatorFactory defaultFactory;
+  StackOperatorFactory defaultFactory;
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION(ExecutiveTest);
