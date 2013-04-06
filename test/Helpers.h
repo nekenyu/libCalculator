@@ -14,6 +14,29 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef HELPERS_H
 #define HELPERS_H
 
+/** Verify every message and positionMessage in expected is in found; however,
+ * it is not required that every in found be in expected.
+ *
+ * @param expected Result data to look for
+ * @param found Result info actually received
+ */
+inline void verifyMessagesFound(const Result& expected, const Result& found) {
+  for(auto message : expected.getMessages()) {
+    const bool hasMessage = found.hasMessage(message);
+    CPPUNIT_ASSERT_MESSAGE(message, hasMessage);
+  }
+
+  for(auto positionMessage : expected.getPositionMessages()) {
+    const bool hasPositionMessage = found.hasPositionMessage(positionMessage.first, positionMessage.second);
+    if(!hasPositionMessage) {
+      std::string str = std::to_string(positionMessage.first);
+      str += ": ";
+      str += positionMessage.second;
+      CPPUNIT_FAIL(str);
+    }
+  }
+}
+
 /** Push value as a Number onto stack
  * 
  * @param stack to push onto

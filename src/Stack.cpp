@@ -27,29 +27,29 @@ namespace Calculator {
   /*
    * StackIterator
    */
-
+  
   class StackIteratorPimpl {
   public:
     typedef std::shared_ptr<StackIteratorPimpl> Ptr;
     typedef std::vector<StackItem::Ptr>::iterator Iterator;
-
+    
     StackIterator::Hint hint = StackIterator::Hint::DEREFERENCE_NEXT;
-    const VariableSet& variables;
+    Stack& stack;
     Iterator iter;
     unsigned int position = 0;
-    std::vector<std::string> errors;
-
-    StackIteratorPimpl(const VariableSet& theVariables, const Iterator& theIter)
-    : variables(theVariables), iter(theIter)
+    Result result;
+    
+    StackIteratorPimpl(Stack& theStack, const Iterator& theIter)
+      : stack(theStack), iter(theIter)
     {
     }
-
-    void addError(const std::string& error);
+    
+    void addError(unsigned int position, const std::string& error);
     StackItem::Ptr dereference(StackItem::Ptr in);
   };
-
-  void StackIteratorPimpl::addError(const std::string& error) {
-    errors.push_back(Error::atPosition(position, error));
+  
+  void StackIteratorPimpl::addError(unsigned int position, const std::string& error) {
+    result.addPositionMessage(position, error);
   }
 
   StackItem::Ptr StackIteratorPimpl::dereference(StackItem::Ptr in) {
@@ -71,15 +71,15 @@ namespace Calculator {
       // present.  If already present, we have a circle and cannot dereference
       auto result = varNames.insert(itemAsVar->getName());
       if(!result.second) {
-	addError(Error::VariableReferencesSelf);
+	addError(position, Error::VariableReferencesSelf);
 	return StackItem::Ptr();
       }
 
       // Dereference curr. An unset reference will be caught by the while loop
-      item = variables.get(itemAsVar->getName());
+      item = stack.getVariables().get(itemAsVar->getName());
     }
 
-    addError(Error::VariableNotSet);
+    addError(position, Error::VariableNotSet);
     return StackItem::Ptr();
   }
 
@@ -89,26 +89,27 @@ namespace Calculator {
   }
 
   StackIterator::StackIterator(const StackIterator& rhs)
-    : pimpl(PimplPtr(new StackIteratorPimpl(rhs.pimpl->variables, rhs.pimpl->iter)))
+    : pimpl(PimplPtr(new StackIteratorPimpl(rhs.pimpl->stack, rhs.pimpl->iter)))
   {
     pimpl->hint = rhs.pimpl->hint;
   }
 
   StackIterator& StackIterator::operator=(const StackIterator& rhs) {
-    pimpl.reset(new StackIteratorPimpl(rhs.pimpl->variables, rhs.pimpl->iter));
+    pimpl.reset(new StackIteratorPimpl(rhs.pimpl->stack, rhs.pimpl->iter));
     pimpl->hint = rhs.pimpl->hint;
   }
 
   StackIterator& StackIterator::operator++() {
-    --pimpl->iter;
+    if(pimpl->stack.end() != *this) {
+      --pimpl->iter;
+    }
     ++pimpl->position;
     return *this;
   }
 
   StackIterator StackIterator::operator++(int) {
     StackIterator copy = *this;
-    --pimpl->iter;
-    ++pimpl->position;
+    ++*this;
     return copy;
   }
 
@@ -121,11 +122,14 @@ namespace Calculator {
   }
 
   StackIterator::operator bool() const {
-    return 0 == pimpl->errors.size();
+    return 0 == pimpl->result.getPositionMessages().size();
   }
 
   StackItem::Ptr StackIterator::operator*() {
-    if(Hint::DEREFERENCE_NEXT == pimpl->hint) {
+    if(pimpl->stack.end() == *this) {
+      addError(Calculator::Error::StackUnderflow);
+      return StackItem::Ptr();
+    } else if(Hint::DEREFERENCE_NEXT == pimpl->hint) {
       return pimpl->dereference(*pimpl->iter);
     } else {
       pimpl->hint = Hint::DEREFERENCE_NEXT;
@@ -142,12 +146,16 @@ namespace Calculator {
     return *this;
   }
 
-  std::string StackIterator::getErrors() const {
-    std::ostringstream os;
-    for(auto line : pimpl->errors) {
-      os << Error::asIndent(line);
-    }
-    return os.str();
+  const Result& StackIterator::getResult() const {
+    return pimpl->result;
+  }
+
+  void StackIterator::addError(unsigned int position, const std::string& message) {
+    pimpl->addError(position, message);
+  }
+
+  void StackIterator::addError(const std::string& message) {
+    addError(pimpl->position, message);
   }
 
   StackIterator::PimplPtr StackIterator::getPimpl() {
@@ -212,13 +220,13 @@ namespace Calculator {
   StackIterator Stack::begin() {
     StackPimpl::Iter iter = pimpl->stack.end();
     --iter;
-    return StackIterator(StackIteratorPimpl::Ptr(new StackIteratorPimpl(pimpl->variables, iter)));
+    return StackIterator(StackIteratorPimpl::Ptr(new StackIteratorPimpl(*this, iter)));
   }
 
   StackIterator Stack::end() {
     StackPimpl::Iter myRbegin = pimpl->stack.begin();
     --myRbegin;
-    return StackIterator(StackIteratorPimpl::Ptr(new StackIteratorPimpl(pimpl->variables, myRbegin)));
+    return StackIterator(StackIteratorPimpl::Ptr(new StackIteratorPimpl(*this, myRbegin)));
   }
 
   void Stack::popAfter(StackIterator& iter) {

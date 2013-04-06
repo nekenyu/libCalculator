@@ -68,7 +68,8 @@ namespace Calculator {
     StackManipulator& operator=(const StackManipulator&) = delete;
     StackManipulator& operator=(StackManipulator&&) = delete;
 
-    virtual std::string operator()(Stack& stack, StackOperator::Ptr ofThis);
+  public:
+   virtual Result operator()(Stack& stack, StackOperator::Ptr ofThis);
     
   private:
     const Operation op;

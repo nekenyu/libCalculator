@@ -13,14 +13,15 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include <memory>
 #include <string>
+#include <vector>
 #include <map>
 
 #include "math.h"
 
-#include "Error.h"
 #include "BinaryMathOperator.h"
 #include "Number.h"
 #include "Stack.h"
+#include "Error.h"
 
 namespace {
   using namespace Calculator;
@@ -120,27 +121,22 @@ namespace Calculator {
   {
   }
 
-  std::string BinaryMathOperator::operator()(Stack& stack, StackOperator::Ptr ofThis) {
-    if(stack.getDepth() < 2) {
-      return Error::StackUnderflow;
-    }
-
+  Result BinaryMathOperator::operator()(Stack& stack, StackOperator::Ptr ofThis) {
     Number::Ptr first;
     Number::Ptr second;
     StackIterator iter = stack.begin();
     iter >> first >> second;
     // Defer stack.popAfter() until after evaluation
 
-    std::string errors;
     if(!first) {
-      errors += Error::asIndent(Error::atPosition(0, Error::NotANumber));
+      iter.addError(0, Error::NotANumber);
     }
     if(!second) {
-      errors += Error::asIndent(Error::atPosition(1, Error::NotANumber));
+      iter.addError(1, Error::NotANumber);
     }
 
-    if(!errors.empty() || !iter) {
-      return iter.getErrors() + errors;
+    if(!iter) {
+      return iter.getResult();
     }
 
     // Do the math
@@ -148,14 +144,14 @@ namespace Calculator {
     const OpInfo* info = opInfoMap[op];
     if(nullptr == info) {
       // Internal error....  Not sure what to do.
-      return "Internal Error: Missing BinaryMathOperator.";
+      return Result({"Internal Error: Missing BinaryMathOperator."});
     }
 
     stack.popAfter(iter);
     Number::Ptr item = Number::create(info->getFunction()(first->getValue(), second->getValue()));
     (*item)(stack, item);
 
-    return Error::Ok;
+    return Result({Error::Ok});
   }
 
   BinaryMathCreator::~BinaryMathCreator() {

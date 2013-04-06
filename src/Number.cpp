@@ -14,6 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <memory>
 #include <string>
 #include <sstream>
+#include <vector>
 
 #include "Stack.h"
 #include "Number.h"

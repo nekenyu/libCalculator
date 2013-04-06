@@ -14,6 +14,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef STACK_OPERATOR_H
 #define STACK_OPERATOR_H
 
+#ifndef RESULT_H
+#include "Result.h"
+#endif // STACK_ERRROR_H
+
 namespace Calculator {
 
   class Stack;
@@ -43,10 +47,9 @@ namespace Calculator {
      * @param ofThis is this in a copied StackOperator::Ptr to maintain
      * integrity of the shared_ptrs.
      *
-     * @return string result of execution.  Can be any string.  Common strings
-     * are listed in Calculator::Errorh
+     * @return Result of execution
      */
-    virtual std::string operator()(Stack& stack, StackOperator::Ptr ofThis) = 0;
+    virtual Result operator()(Stack& stack, StackOperator::Ptr ofThis) = 0;
   };
 
   /** \brief Factory creators of StackOperator::Ptrs

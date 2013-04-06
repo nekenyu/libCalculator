@@ -14,13 +14,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef  STACK_H
 #define  STACK_H
 
+#ifndef RESULT_H
+#include "Result.h"
+#endif // RESULT_H
+
 namespace Calculator {
   
   class StackItem;
   class StackIteratorPimpl;
   class StackPimpl;
   class VariableSet;
-  
+
   /*
    * StackIterator
    */
@@ -125,8 +129,21 @@ namespace Calculator {
     }
     
     /** @return Errors, such as conversion and variable, thus far, if any */
-    std::string getErrors() const;
+    const Result& getResult() const;
 
+    /** Add error message at position
+     *
+     * @param position in the stack the error occurred
+     * @param message describing the error
+     */
+    void addError(unsigned int position, const std::string& message);
+
+    /** Add error message at current position
+     *
+     * @param message describing the error
+     */
+    void addError(const std::string& message);
+    
     /** @return the private implementation */
     PimplPtr getPimpl();
 

@@ -23,17 +23,6 @@ namespace Calculator {
     /** Operation required more items than the Stack had available */
     const std::string StackUnderflow = "Insufficient Stack Arguments";
 
-    /** Qualify an error with a stack position.
-     *
-     * @param position from the top, with 0 being the top
-     * @param error message at position
-     *
-     * @return error message
-     */
-    inline std::string atPosition(unsigned int position, const std::string& error) {
-      return std::string("At position ") + (0 == position ? std::string("top") : std::to_string(position)) + ": " + error;
-    }
-
     /** Wrap message with indent and linefeed.
      *
      * @param message to wrap with indent and linefeed

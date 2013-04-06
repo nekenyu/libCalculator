@@ -72,7 +72,7 @@ namespace Calculator {
     BinaryMathOperator& operator=(BinaryMathOperator&&) = delete;
 
   public:
-    virtual std::string operator()(Stack& stack, StackOperator::Ptr ofThis);
+    virtual Result operator()(Stack& stack, StackOperator::Ptr ofThis);
     
   private:
     const Operation op;

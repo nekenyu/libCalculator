@@ -13,6 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "Error.h"
 #include "VariableManipulator.h"
@@ -35,12 +36,8 @@ namespace Calculator {
   {
   }
   
-  std::string VariableManipulator::operator()(Stack& stack, StackOperator::Ptr ofThis) {
+  Result VariableManipulator::operator()(Stack& stack, StackOperator::Ptr ofThis) {
     if(Operation::WRITE == op) {
-      if(stack.getDepth() < 2) {
-	return Error::StackUnderflow;
-      }
-      
       Variable::Ptr variable;
       StackItem::Ptr value;
       StackIterator iter = stack.begin();
@@ -48,24 +45,19 @@ namespace Calculator {
 	   >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> value;
       // stack.popAfter() deferred until after variable evaluation
 
-      std::string errors;
       if(!variable) {
-	errors += Error::asIndent(Error::atPosition(0, Error::NotAVariable));
+	iter.addError(0, Error::NotAVariable);
       }
-      if(!errors.empty() || !iter) {
-	return iter.getErrors() + errors;
+      if(!iter) {
+	return iter.getResult();
       }
 
       stack.popAfter(iter);
 
       stack.getVariables().set(variable->getName(), value);
 
-      return Error::Ok;
+      return Result({Error::Ok});
     } else if(Operation::READ == op) {
-      if(stack.getDepth() < 1) {
-	return Error::StackUnderflow;
-      }
-      
       Variable::Ptr variable;
       StackIterator iter = stack.begin();
       iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> variable;
@@ -73,24 +65,24 @@ namespace Calculator {
 
       std::string errors;
       if(!variable) {
-	errors += Error::asIndent(Error::atPosition(0, Error::NotAVariable));
+	iter.addError(0, Error::NotAVariable);
       }
       StackItem::Ptr result = stack.getVariables().get(variable->getName());
       if(!result) {
-	errors += Error::asIndent(Error::atPosition(0, Error::VariableNotSet));
+	iter.addError(0, Error::VariableNotSet);
       }
-      if(!errors.empty() || !iter) {
-	return iter.getErrors() + errors;
+      if(!iter) {
+	return iter.getResult();
       }
 
       stack.popAfter(iter);
 
       (*result)(stack, result);
-      return Error::Ok;
+      return Result({Error::Ok});
     }
 
     // Internal error....  Not sure what to do.
-    return "Internal Error: Missing VariableManipulator.";
+    return Result({"Internal Error: Missing VariableManipulator."});
   }
 
   VariableManipulatorCreator::~VariableManipulatorCreator() {

@@ -61,7 +61,7 @@ namespace Calculator {
     VariableManipulator& operator=(const VariableManipulator&) = delete;
     VariableManipulator& operator=(VariableManipulator&&) = delete;
 
-    virtual std::string operator()(Stack& stack, StackOperator::Ptr ofThis);
+    virtual Result operator()(Stack& stack, StackOperator::Ptr ofThis);
     
   private:
     const Operation op;

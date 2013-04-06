@@ -14,12 +14,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <memory>
 #include <sstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 #include "Executive.h"
 #include "Stack.h"
 #include "StackOperatorFactory.h"
+#include "Error.h"
 
 namespace Calculator {
 
@@ -37,13 +39,13 @@ void Executive::process(StackOperatorFactory& factory, std::istream& input, std:
       break;
     }
 
-    const std::string result = process(factory, command);
-    if(result.empty()) {
+    Result result = process(factory, command);
+    if(result.hasMessage("quit")) {
       output << "User requested quit..." << endl;
       return;
     }
-
-    output << ">> " << operationCount << ": " << result << endl;
+    
+    output << result.toString(std::string(">> ") + std::to_string(operationCount));
     output << toString() << endl;
   }
 }
@@ -52,36 +54,36 @@ std::string Executive::toString() const {
   return std::string("Stack: ") + stack.toString();
 }
 
-std::string Executive::process(StackOperatorFactory& factory, const std::string& input) {
+Result Executive::process(StackOperatorFactory& factory, const std::string& input) {
   if(0 == input.compare("quit")) {
-    return "";
+    return Result({Error::Ok, "quit"});
   }
 
  if(0 == input.compare("help")) {
     std::ostringstream os;
-    os << "Help" << endl;
     doHelp(factory, os);
-    return os.str();
+
+    return Result({Error::Ok, os.str()});
   }
   
   StackOperator::Ptr op = factory.create(input);
   if(!op) {
-    return std::string("Ignoring invalid input: \"") + input + "\"";
+    return Result({std::string("Ignoring invalid input: \"") + input + "\""});
   }
   
   return process(op);
 }
 
-std::string Executive::process(StackOperator::Ptr oper) {
+Result Executive::process(StackOperator::Ptr oper) {
   if(!oper) {
-    return "Internal Error: Invalid Operator";
+    return Result({"Internal Error: Invalid Operator"});
   }
 
-  const std::string result = (*oper)(stack, oper);
+  Result results = (*oper)(stack, oper);
 
   ++operationCount;
 
-  return result;
+  return results;
 }
 
 unsigned int Executive::getOperationCount() const {
@@ -111,7 +113,7 @@ void FixedOperatorExecutive::process(std::istream& input, std::ostream& output) 
   executive.process(factory, input, output);
 }
 
-std::string FixedOperatorExecutive::process(const std::string& input) {
+Result FixedOperatorExecutive::process(const std::string& input) {
   return executive.process(factory, input);
 }
 

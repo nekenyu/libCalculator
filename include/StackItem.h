@@ -45,8 +45,10 @@ namespace Calculator {
      * @param stack to process on
      * @param ofThis the StackOperator::Ptr for this object so that its info
      * can be passed around.
+     *
+     * @return Result from execution
      */
-    virtual std::string operator()(Stack& stack, StackOperator::Ptr ofThis);
+    virtual Result operator()(Stack& stack, StackOperator::Ptr ofThis);
 
     /** @return string representation of this */
     virtual std::string toString() const = 0;

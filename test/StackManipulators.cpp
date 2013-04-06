@@ -57,13 +57,13 @@ private:
     const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
 
     StackOperator::Ptr op = StackManipulator::create(oper);
-    const std::string result = (*op)(stack, op);
+    const Result result =(*op)(stack, op);
     if(inputLength < required) {
-      CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
+      verifyMessagesFound(Result({0, Error::StackUnderflow}), result);
       CPPUNIT_ASSERT(inputLength == stack.getDepth());
       verify(stack, input);
     } else {
-      CPPUNIT_ASSERT(0 == Error::Ok.compare(result));
+      verifyMessagesFound(Result({Error::Ok}), result);
       CPPUNIT_ASSERT(expectedLength == stack.getDepth());
       verify(stack, expected);
     }
@@ -75,9 +75,9 @@ private:
     const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
 
     StackOperator::Ptr op = StackManipulator::create(oper);
-    const std::string result = (*op)(stack, op);
+    const Result result =(*op)(stack, op);
 
-    CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
+    verifyMessagesFound(Result({{0, Error::StackUnderflow}}), result);
     CPPUNIT_ASSERT(stack.getDepth() == 0);
   }
 
@@ -93,9 +93,9 @@ public:
     push(stack, input);
 
     StackOperator::Ptr op = StackManipulator::create(StackManipulator::Operation::POP);
-    const std::string result = (*op)(stack, op);
-
-    CPPUNIT_ASSERT(0 == Error::Ok.compare(result));
+    const Result result =(*op)(stack, op);
+    
+    verifyMessagesFound(Result({Error::Ok}), result);
     verify(stack);
   }
 
@@ -132,9 +132,9 @@ public:
     push(stack, input);
 
     StackOperator::Ptr op = StackManipulator::create(StackManipulator::Operation::SWAP);
-    const std::string result = (*op)(stack, op);
+    const Result result =(*op)(stack, op);
 
-    CPPUNIT_ASSERT(0 == Error::StackUnderflow.compare(result));
+    verifyMessagesFound(Result({{1, Error::StackUnderflow}}), result);
     verify(stack, input);
   }
 

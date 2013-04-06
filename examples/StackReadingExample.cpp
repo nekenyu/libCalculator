@@ -12,7 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 #include <memory>
+#include <iostream>
 #include <string>
+#include <vector>
 
 #include "Stack.h"
 #include "Number.h"
@@ -22,22 +24,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 using namespace Calculator;
 
-int main(int argc, char** argv) {
-  // The items we will be using
-  Variable::Ptr variable = Variable::create("$test");
-  Number::Ptr number = Number::create(1.2345);
-  
-  // Setup the stack and variables initial values
-  Stack stack;
-  stack.push(variable);
-  stack.push(variable);
-  stack.push(variable);
-  stack.push(variable);
-  stack.push(variable);
-
-  // Note that the variable is set after being used.
-  stack.getVariables().set(variable->getName(), number);
-
+Result doSomething(Stack& stack) {
   // Create the values we will be reading.  I used item1..item5 for simplicity,
   // but useful names like top, firstNumber, variableToUpdate, maxValue, and
   // actualValue are obviously preferred.
@@ -45,7 +32,7 @@ int main(int argc, char** argv) {
   Number::Ptr item2;
   Variable::Ptr item3;
   Number::Ptr item4;
-  Number::Ptr item5;
+  Variable::Ptr item5;
   
   // Get the iterator and >> it to all the values.  Note the NO_DEREFERENCE_NEXT
   // type hints.  DEREFERENCE_NEXT is default and set after each read.
@@ -58,16 +45,54 @@ int main(int argc, char** argv) {
 
   // Ensure item2 is a number
   if(!item2) {
-    // TODO: handle error
+    iter.addError(1, Error::NotANumber);
   }
 
   // Ensure item3 was not dereferenced
   if(!item3) {
-    // TODO: handle error
+    iter.addError(2, Error::NotAVariable);
+  }
+
+  // Ensure item4 is a number
+  if(!item4) {
+    iter.addError(3, Error::NotANumber);
+  }
+
+  // Ensure item5 is a Variable
+  // Note: For the purpose of example, this will fail as we inserted the number
+  if(!item5) {
+    iter.addError(4, Error::NotAVariable);
+  }
+
+  if(!iter) {
+    return iter.getResult();
   }
 
   // Finally, all is well and we are ready to proceed:
   stack.popAfter(iter);
+
+  // ...
+}
+
+int main(int argc, char** argv) {
+  // The items we will be using
+  Variable::Ptr variable = Variable::create("$test");
+  Number::Ptr number = Number::create(1.2345);
+  
+  // Setup the stack and variables initial values
+  Stack stack;
+  stack.push(variable);
+  stack.push(variable);
+  stack.push(variable);
+  stack.push(variable);
+  stack.push(number);
+
+  // Note that the variable is set after being used
+  stack.getVariables().set(variable->getName(), number);
+
+  // Do something with the result
+  const Result result = doSomething(stack);
+  std::cout << result.toString() << std::endl;
 
   return 0;
 }

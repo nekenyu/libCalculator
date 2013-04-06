@@ -13,6 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "StackItem.h"
 #include "Stack.h"
@@ -23,9 +24,9 @@ namespace Calculator {
   StackItem::~StackItem() {
   }
   
-  std::string StackItem::operator()(Stack& stack, StackOperator::Ptr ofThis) {
+  Result StackItem::operator()(Stack& stack, StackOperator::Ptr ofThis) {
     stack.push(std::dynamic_pointer_cast<StackItem, StackOperator>(ofThis));
-    return Error::Ok;
+    return Result({Error::Ok});
   }
 
 } // namespace Calculator

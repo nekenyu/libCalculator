@@ -56,19 +56,17 @@ namespace Calculator {
      * @param factory to parse input and generate Operators from
      * @param input to create one operator and execute from
      *
-     * @return string output of processing the command for input.  An empty
-     * return indicates that quit was requested.
+     * @return Result of processing
      */
-    std::string process(StackOperatorFactory& factory, const std::string& input);
+    Result process(StackOperatorFactory& factory, const std::string& input);
 
     /** Process oper upon the Stack.
      *
      * @param oper to process on the Stack
      *
-     * @return string output of processing the command for input.  An empty
-     * return indicates that quit was requested.
+     * @return Result of processing
      */
-    std::string process(StackOperator::Ptr oper);
+    Result process(StackOperator::Ptr oper);
     
     /** @return the count of processed operations */
     unsigned int getOperationCount() const;
@@ -110,10 +108,9 @@ namespace Calculator {
      *
      * @param input to create one operator and execute from
      *
-     * @return string output of processing the command for input.  An empty
-     * return indicates that quit was requested.
+     * @return Result of Processing
      */
-    std::string process(const std::string& input);
+    Result process(const std::string& input);
 
   private:
     Executive executive;

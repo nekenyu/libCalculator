@@ -13,6 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "Error.h"
 #include "StackManipulator.h"
@@ -33,55 +34,60 @@ namespace Calculator {
   {
   }
   
-  std::string StackManipulator::operator()(Stack& stack, StackOperator::Ptr ofThis) {
+  Result StackManipulator::operator()(Stack& stack, StackOperator::Ptr ofThis) {
     if(Operation::POP == op) {
-      if(stack.getDepth() < 1) {
-	return Error::StackUnderflow;
+      StackIterator iter = stack.begin();
+      *iter; // Dereference even though we don't care to ensure that stack depth is auto checked
+      ++iter;
+
+      if(!iter) {
+	return iter.getResult();
       }
 
-      StackIterator iter = stack.begin();
-      ++iter;
       stack.popAfter(iter);
 
-      return Error::Ok;
+      return Result({Error::Ok});
     } else if(Operation::DUP == op) {
-      if(stack.getDepth() < 1) {
-	return Error::StackUnderflow;
-      }
-
       StackItem::Ptr item;
       StackIterator iter = stack.begin();
       iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> item;
+
+      if(!iter) {
+	return iter.getResult();
+      }
+
       // Do NOT stack.popAfter(iter) -- we are keeping it and duplicating it
       (*item)(stack, item);
 
-      return Error::Ok;
+      return Result({Error::Ok});
     } else if(Operation::SWAP == op) {
-      if(stack.getDepth() < 2) {
-	return Error::StackUnderflow;
-      }
-      
       StackItem::Ptr first;
       StackItem::Ptr second;
       StackIterator iter = stack.begin();
       iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> first
 	   >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> second;
+      // stack.popAfter() deferred until after evaluation
+
+      if(!iter) {
+	return iter.getResult();
+      }
+
       stack.popAfter(iter);
       
       (*first)(stack, first);
       (*second)(stack, second);
 
-      return Error::Ok;
+      return Result({Error::Ok});
     } else if(Operation::POP_ALL == op) {
       stack.popAll();
-      return Error::Ok;
+      return Result({Error::Ok});
     } else if(Operation::RESET == op) {
       stack.reset();
-      return Error::Ok;
+      return Result({Error::Ok});
     }
 
     // Internal error....  Not sure what to do.
-    return "Internal Error: Missing StackManipulator.";
+    return Result({"Internal Error: Missing StackManipulator."});
   }
 
   StackManipulatorCreator::~StackManipulatorCreator() {
