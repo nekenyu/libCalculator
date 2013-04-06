@@ -1,3 +1,4 @@
 <map id="Calculator::StackIteratorPimpl" name="Calculator::StackIteratorPimpl">
-<area shape="rect" id="node2" href="$class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack." alt="" coords="6,5,156,32"/>
+<area shape="rect" id="node2" href="$class_calculator_1_1_stack.html" title="Stack of values to process from." alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node3" href="$class_calculator_1_1_result.html" title="Collection of Result information for an operation." alt="" coords="145,5,265,32"/>
 </map>

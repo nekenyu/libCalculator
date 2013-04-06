@@ -137,9 +137,14 @@ Collaboration diagram for Calculator::StackManipulator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a910c8f0186f51f18622254299a7a5efa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa">Operation</a> { <a class="el" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaaefdb39a4c7286afcecf0e8a7435fce6a">POP</a>, 
+<tr class="memitem:a910c8f0186f51f18622254299a7a5efa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa">Operation</a> { <br/>
+&#160;&#160;<a class="el" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaaefdb39a4c7286afcecf0e8a7435fce6a">POP</a>, 
 <a class="el" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaa89aa2bca1f427b3bba6335129f479f77">DUP</a>, 
-<a class="el" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaa46fc23bc4e4d57e5469a39658a6dd3e8">SWAP</a>
+<a class="el" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaa46fc23bc4e4d57e5469a39658a6dd3e8">SWAP</a>, 
+<a class="el" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaab5859d8721cfdc0312b2838b9c985bc1">RESET</a>, 
+<br/>
+&#160;&#160;<a class="el" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaa47249a8b6c9d7df0852f9917af2bbb51">POP_ALL</a>
+<br/>
  }</td></tr>
 <tr class="memdesc:a910c8f0186f51f18622254299a7a5efa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operations supported.  <a href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa">More...</a><br/></td></tr>
 <tr class="separator:a910c8f0186f51f18622254299a7a5efa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,6 +157,9 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af46a098abc9c441ed9c7d36315cf75c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_manipulator.html#af46a098abc9c441ed9c7d36315cf75c0">~StackManipulator</a> ()</td></tr>
 <tr class="separator:af46a098abc9c441ed9c7d36315cf75c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aaf9e2e58f65a59a3242f4204e0f9b2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_calculator_1_1_result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_manipulator.html#a8aaf9e2e58f65a59a3242f4204e0f9b2">operator()</a> (<a class="el" href="class_calculator_1_1_stack.html">Stack</a> &amp;stack, <a class="el" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> ofThis)</td></tr>
+<tr class="memdesc:a8aaf9e2e58f65a59a3242f4204e0f9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute this operator on stack.  <a href="#a8aaf9e2e58f65a59a3242f4204e0f9b2">More...</a><br/></td></tr>
+<tr class="separator:a8aaf9e2e58f65a59a3242f4204e0f9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_calculator_1_1_stack_operator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_calculator_1_1_stack_operator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_calculator_1_1_stack_operator.html">Calculator::StackOperator</a></td></tr>
 <tr class="memitem:a0e6f6f0f047a117267de0922669046f5 inherit pub_methods_class_calculator_1_1_stack_operator"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_operator.html#a0e6f6f0f047a117267de0922669046f5">~StackOperator</a> ()</td></tr>
 <tr class="separator:a0e6f6f0f047a117267de0922669046f5 inherit pub_methods_class_calculator_1_1_stack_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,6 +212,12 @@ Additional Inherited Members</h2></td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="a910c8f0186f51f18622254299a7a5efaa46fc23bc4e4d57e5469a39658a6dd3e8"></a>SWAP</em>&nbsp;</td><td class="fielddoc">
 <p>Swap the top two elements. </p>
 </td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a910c8f0186f51f18622254299a7a5efaab5859d8721cfdc0312b2838b9c985bc1"></a>RESET</em>&nbsp;</td><td class="fielddoc">
+<p>Clear the entire stack and set of variables. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a910c8f0186f51f18622254299a7a5efaa47249a8b6c9d7df0852f9917af2bbb51"></a>POP_ALL</em>&nbsp;</td><td class="fielddoc">
+<p>Clear the entire stack. </p>
+</td></tr>
 </table>
 
 <p>Definition at line <a class="el" href="_stack_manipulator_8h_source.html#l00032">32</a> of file <a class="el" href="_stack_manipulator_8h_source.html">StackManipulator.h</a>.</p>
@@ -224,7 +238,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stack_manipulator_8cpp_source.html#l00028">28</a> of file <a class="el" href="_stack_manipulator_8cpp_source.html">StackManipulator.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_manipulator_8cpp_source.html#l00029">29</a> of file <a class="el" href="_stack_manipulator_8cpp_source.html">StackManipulator.cpp</a>.</p>
 
 </div>
 </div>
@@ -260,7 +274,55 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a> created </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_manipulator_8cpp_source.html#l00024">24</a> of file <a class="el" href="_stack_manipulator_8cpp_source.html">StackManipulator.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_manipulator_8cpp_source.html#l00025">25</a> of file <a class="el" href="_stack_manipulator_8cpp_source.html">StackManipulator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8aaf9e2e58f65a59a3242f4204e0f9b2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_calculator_1_1_result.html">Result</a> Calculator::StackManipulator::operator() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_calculator_1_1_stack.html">Stack</a> &amp;&#160;</td>
+          <td class="paramname"><em>stack</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a>&#160;</td>
+          <td class="paramname"><em>ofThis</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Execute this operator on stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stack</td><td>to operate on </td></tr>
+    <tr><td class="paramname">ofThis</td><td>is this in a copied <a class="el" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> to maintain integrity of the shared_ptrs.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_calculator_1_1_result.html" title="Collection of Result information for an operation.">Result</a> of execution </dd></dl>
+
+<p>Implements <a class="el" href="class_calculator_1_1_stack_operator.html#acfa81215fe263345240505ed7dd12428">Calculator::StackOperator</a>.</p>
+
+<p>Definition at line <a class="el" href="_stack_manipulator_8cpp_source.html#l00037">37</a> of file <a class="el" href="_stack_manipulator_8cpp_source.html">StackManipulator.cpp</a>.</p>
 
 </div>
 </div>
@@ -274,7 +336,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_calculator.html">Calculator</a></li><li class="navelem"><a class="el" href="class_calculator_1_1_stack_manipulator.html">StackManipulator</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:42 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:59 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

@@ -120,7 +120,7 @@ Collaboration diagram for Calculator::StackIteratorPimpl:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_calculator_1_1_stack_iterator_pimpl__coll__graph.png" border="0" usemap="#_calculator_1_1_stack_iterator_pimpl_coll__map" alt="Collaboration graph"/></div>
 <map name="_calculator_1_1_stack_iterator_pimpl_coll__map" id="_calculator_1_1_stack_iterator_pimpl_coll__map">
-<area shape="rect" id="node2" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack." alt="" coords="6,5,156,32"/></map>
+<area shape="rect" id="node2" href="class_calculator_1_1_stack.html" title="Stack of values to process from." alt="" coords="5,5,120,32"/><area shape="rect" id="node3" href="class_calculator_1_1_result.html" title="Collection of Result information for an operation." alt="" coords="145,5,265,32"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
@@ -134,10 +134,10 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aca330d94e87de1f7580cda5c55149b81"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#aca330d94e87de1f7580cda5c55149b81">StackIteratorPimpl</a> (const <a class="el" href="class_calculator_1_1_variable_set.html">VariableSet</a> &amp;theVariables, const <a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a973d7e2d11de8778aba43bccd7b1035f">Iterator</a> &amp;theIter)</td></tr>
-<tr class="separator:aca330d94e87de1f7580cda5c55149b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a640378b5e52fd411cca532b8a786d2b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a640378b5e52fd411cca532b8a786d2b3">addError</a> (const std::string &amp;error)</td></tr>
-<tr class="separator:a640378b5e52fd411cca532b8a786d2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73566f6104ff6abd5df473e469aa8b2f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a73566f6104ff6abd5df473e469aa8b2f">StackIteratorPimpl</a> (<a class="el" href="class_calculator_1_1_stack.html">Stack</a> &amp;theStack, const <a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a973d7e2d11de8778aba43bccd7b1035f">Iterator</a> &amp;theIter)</td></tr>
+<tr class="separator:a73566f6104ff6abd5df473e469aa8b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44cce405fec34537957287fc4131c0a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a44cce405fec34537957287fc4131c0a7">addError</a> (unsigned int <a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#aacb7ed3bef49e9db4efd7100a5fee6cc">position</a>, const std::string &amp;error)</td></tr>
+<tr class="separator:a44cce405fec34537957287fc4131c0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6d5abb899aa873bf1b3255b99f39b54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#af6d5abb899aa873bf1b3255b99f39b54">dereference</a> (<a class="el" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a> in)</td></tr>
 <tr class="separator:af6d5abb899aa873bf1b3255b99f39b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -145,14 +145,14 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a936d5d7833d5b0dc96c0c9b4d0b21b86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1">StackIterator::Hint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a936d5d7833d5b0dc96c0c9b4d0b21b86">hint</a> = StackIterator::Hint::DEREFERENCE_NEXT</td></tr>
 <tr class="separator:a936d5d7833d5b0dc96c0c9b4d0b21b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af661e86dc651115b4a14be41824702df"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_calculator_1_1_variable_set.html">VariableSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#af661e86dc651115b4a14be41824702df">variables</a></td></tr>
-<tr class="separator:af661e86dc651115b4a14be41824702df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1838a5bd7bfb92323c70bf9d77affee1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_calculator_1_1_stack.html">Stack</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a1838a5bd7bfb92323c70bf9d77affee1">stack</a></td></tr>
+<tr class="separator:a1838a5bd7bfb92323c70bf9d77affee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9af3e0eb8f76221229f942d1785f8b18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a973d7e2d11de8778aba43bccd7b1035f">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a9af3e0eb8f76221229f942d1785f8b18">iter</a></td></tr>
 <tr class="separator:a9af3e0eb8f76221229f942d1785f8b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacb7ed3bef49e9db4efd7100a5fee6cc"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#aacb7ed3bef49e9db4efd7100a5fee6cc">position</a> = 0</td></tr>
 <tr class="separator:aacb7ed3bef49e9db4efd7100a5fee6cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f46e5436fbd2baa4813c76b9eb1e2b5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a6f46e5436fbd2baa4813c76b9eb1e2b5">errors</a></td></tr>
-<tr class="separator:a6f46e5436fbd2baa4813c76b9eb1e2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a781afbbb8641a797715de0b7a1452d8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_calculator_1_1_result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html#a781afbbb8641a797715de0b7a1452d8a">result</a></td></tr>
+<tr class="separator:a781afbbb8641a797715de0b7a1452d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -187,7 +187,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aca330d94e87de1f7580cda5c55149b81"></a>
+<a class="anchor" id="a73566f6104ff6abd5df473e469aa8b2f"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -197,8 +197,8 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">Calculator::StackIteratorPimpl::StackIteratorPimpl </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_calculator_1_1_variable_set.html">VariableSet</a> &amp;&#160;</td>
-          <td class="paramname"><em>theVariables</em>, </td>
+          <td class="paramtype"><a class="el" href="class_calculator_1_1_stack.html">Stack</a> &amp;&#160;</td>
+          <td class="paramname"><em>theStack</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -224,16 +224,26 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a640378b5e52fd411cca532b8a786d2b3"></a>
+<a class="anchor" id="a44cce405fec34537957287fc4131c0a7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void Calculator::StackIteratorPimpl::addError </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>error</em></td><td>)</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>error</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -261,20 +271,6 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a6f46e5436fbd2baa4813c76b9eb1e2b5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;std::string&gt; Calculator::StackIteratorPimpl::errors</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00040">40</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a936d5d7833d5b0dc96c0c9b4d0b21b86"></a>
 <div class="memitem">
 <div class="memproto">
@@ -317,12 +313,26 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af661e86dc651115b4a14be41824702df"></a>
+<a class="anchor" id="a781afbbb8641a797715de0b7a1452d8a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_calculator_1_1_variable_set.html">VariableSet</a>&amp; Calculator::StackIteratorPimpl::variables</td>
+          <td class="memname"><a class="el" href="class_calculator_1_1_result.html">Result</a> Calculator::StackIteratorPimpl::result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00040">40</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1838a5bd7bfb92323c70bf9d77affee1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_calculator_1_1_stack.html">Stack</a>&amp; Calculator::StackIteratorPimpl::stack</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -340,7 +350,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_calculator.html">Calculator</a></li><li class="navelem"><a class="el" href="class_calculator_1_1_stack_iterator_pimpl.html">StackIteratorPimpl</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:42 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:58 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

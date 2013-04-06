@@ -142,6 +142,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a98d898b1d3f064c4bcd76a358e9632e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4761e9061d6931a1b08bf0d3d27e5b8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_calculator_1_1_variable_set.html">VariableSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a> ()</td></tr>
 <tr class="separator:a4761e9061d6931a1b08bf0d3d27e5b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe015a39fbbc56043e84e36c9ec890d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack.html#abfe015a39fbbc56043e84e36c9ec890d">reset</a> ()</td></tr>
+<tr class="memdesc:abfe015a39fbbc56043e84e36c9ec890d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the stack including pop all variables and reset the variables.  <a href="#abfe015a39fbbc56043e84e36c9ec890d">More...</a><br/></td></tr>
+<tr class="separator:abfe015a39fbbc56043e84e36c9ec890d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f98ea8fb6cbde8b2e72a77459da20f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack.html#aa8f98ea8fb6cbde8b2e72a77459da20f">popAll</a> ()</td></tr>
+<tr class="memdesc:aa8f98ea8fb6cbde8b2e72a77459da20f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop all items from the stack.  <a href="#aa8f98ea8fb6cbde8b2e72a77459da20f">More...</a><br/></td></tr>
+<tr class="separator:aa8f98ea8fb6cbde8b2e72a77459da20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3998db32e0c0d5a5e4b6804979e9bc10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_calculator_1_1_stack_iterator.html">StackIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack.html#a3998db32e0c0d5a5e4b6804979e9bc10">begin</a> ()</td></tr>
 <tr class="separator:a3998db32e0c0d5a5e4b6804979e9bc10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d41626ba378cd2c712745a75fa48bea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_calculator_1_1_stack_iterator.html">StackIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack.html#a7d41626ba378cd2c712745a75fa48bea">end</a> ()</td></tr>
@@ -159,10 +165,10 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a> of values to process from. </p>
 <p>Contains <a class="el" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a> objects.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Provide load / save operations. Provide the ability to write and read Calculator.txt files which will restore the existing state. This adds the complexity of resetting an existing stack and variable set. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_calculator_8cpp-example.html#_a3">Calculator.cpp</a>, and <a class="el" href="_stack_reading_example_8cpp-example.html#_a2">StackReadingExample.cpp</a>.</dd>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Provide load / save operations. Provide the ability to write and read Calculator.txt files which will restore the existing state. </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_calculator_8cpp-example.html#_a3">Calculator.cpp</a>, and <a class="el" href="_stack_reading_example_8cpp-example.html#_a1">StackReadingExample.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_stack_8h_source.html#l00187">187</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8h_source.html#l00203">203</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="aff9ff7144370e01f4f3106e1a8674bc6"></a>
 <div class="memitem">
@@ -176,7 +182,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Count of StackItems. </p>
 
-<p>Definition at line <a class="el" href="_stack_8h_source.html#l00194">194</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8h_source.html#l00210">210</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
 
 </div>
 </div>
@@ -194,7 +200,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00190">190</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00198">198</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -261,9 +267,9 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> at the top of the <a class="el" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This should be a const method; however, the underlying implementation (STL) would only provide a const_iterator. This would be just fine for its use; however, std::vector::erase requires a non-const iterator, which means this must be non-const. I could const cast around this, but I'll go simpler. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a7">StackReadingExample.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a3">StackReadingExample.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00203">203</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00220">220</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -282,7 +288,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> after the bottom of the <a class="el" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This should be a const method; however, the underlying implementation (STL) would only provide a const_iterator. This would be just fine for its use; however, std::vector::erase requires a non-const iterator, which means this must be non-const. I could const cast around this, but I'll go simpler. </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00209">209</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00226">226</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -300,7 +306,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of StackItems on the <a class="el" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00195">195</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00203">203</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -317,9 +323,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a> </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a4">StackReadingExample.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a12">StackReadingExample.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00199">199</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00207">207</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -388,7 +394,26 @@ Public Member Functions</h2></td></tr>
 <p>Pop all items after iter on the <a class="el" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a8">StackReadingExample.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00215">215</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00232">232</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa8f98ea8fb6cbde8b2e72a77459da20f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Calculator::Stack::popAll </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pop all items from the stack. </p>
+
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00216">216</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -413,9 +438,28 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a3">StackReadingExample.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a11">StackReadingExample.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00223">223</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00240">240</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abfe015a39fbbc56043e84e36c9ec890d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Calculator::Stack::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset the stack including pop all variables and reset the variables. </p>
+
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00211">211</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -434,7 +478,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Create string representation of the current contents of the <a class="el" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>. </p>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00227">227</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00244">244</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -448,7 +492,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_calculator.html">Calculator</a></li><li class="navelem"><a class="el" href="class_calculator_1_1_stack.html">Stack</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:42 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:59 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

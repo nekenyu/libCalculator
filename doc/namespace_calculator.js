@@ -12,6 +12,7 @@ var namespace_calculator =
     [ "FixedOperatorExecutive", "class_calculator_1_1_fixed_operator_executive.html", "class_calculator_1_1_fixed_operator_executive" ],
     [ "Number", "class_calculator_1_1_number.html", "class_calculator_1_1_number" ],
     [ "NumberCreator", "class_calculator_1_1_number_creator.html", "class_calculator_1_1_number_creator" ],
+    [ "Result", "class_calculator_1_1_result.html", "class_calculator_1_1_result" ],
     [ "StackIterator", "class_calculator_1_1_stack_iterator.html", "class_calculator_1_1_stack_iterator" ],
     [ "Stack", "class_calculator_1_1_stack.html", "class_calculator_1_1_stack" ],
     [ "StackItem", "class_calculator_1_1_stack_item.html", "class_calculator_1_1_stack_item" ],

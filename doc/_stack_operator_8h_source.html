@@ -123,69 +123,72 @@ $(document).ready(function(){initNavTree('_stack_operator_8h_source.html','');})
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef STACK_OPERATOR_H</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define STACK_OPERATOR_H</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>Calculator {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">class </span>Stack;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">  /** \brief Base class for all operators.</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">   * StackOperatorCreators and the StackFactory will return StackOperator::Ptr.</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator.html">   25</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">   27</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackOperator&gt; <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">Ptr</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator.html#a0e6f6f0f047a117267de0922669046f5">   29</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a0e6f6f0f047a117267de0922669046f5">~StackOperator</a>() { }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html#a583ea5ad82bd940c85c9fd6132b9a1a7">StackOperator</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html#a583ea5ad82bd940c85c9fd6132b9a1a7">StackOperator</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html#a583ea5ad82bd940c85c9fd6132b9a1a7">StackOperator</a>(<a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp; <a class="code" href="class_calculator_1_1_stack_operator.html#a2b89c1f90463500aac03c30954def692">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp; <a class="code" href="class_calculator_1_1_stack_operator.html#a2b89c1f90463500aac03c30954def692">operator=</a>(<a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">    /** Execute this operator on stack</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     * @param stack to operate on</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">     * @param ofThis is this in a copied StackOperator::Ptr to maintain</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">     * integrity of the shared_ptrs.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef RESULT_H</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="_result_8h.html">Result.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif // STACK_ERRROR_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>Calculator {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">class </span>Stack;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">  /** \brief Base class for all operators.</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">   * StackOperatorCreators and the StackFactory will return StackOperator::Ptr.</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator.html">   29</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">   31</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackOperator&gt; <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">Ptr</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator.html#a0e6f6f0f047a117267de0922669046f5">   33</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a0e6f6f0f047a117267de0922669046f5">~StackOperator</a>() { }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html#a583ea5ad82bd940c85c9fd6132b9a1a7">StackOperator</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html#a583ea5ad82bd940c85c9fd6132b9a1a7">StackOperator</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html#a583ea5ad82bd940c85c9fd6132b9a1a7">StackOperator</a>(<a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp; <a class="code" href="class_calculator_1_1_stack_operator.html#a2b89c1f90463500aac03c30954def692">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp; <a class="code" href="class_calculator_1_1_stack_operator.html#a2b89c1f90463500aac03c30954def692">operator=</a>(<a class="code" href="class_calculator_1_1_stack_operator.html" title="Base class for all operators.">StackOperator</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">    /** Execute this operator on stack</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">     * @return string result of execution.  Can be any string.  Common strings</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     * are listed in Calculator::Errorh</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_calculator_1_1_stack_operator.html#a9dbca8fde0f793fa356d11a318f4d311" title="Execute this operator on stack.">operator()</a>(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; stack, <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> ofThis) = 0;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  };</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">  /** \brief Factory creators of StackOperator::Ptrs</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator_creator.html">   54</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs.">StackOperatorCreator</a> {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator_creator.html#a38152b3cbe1a69ab7b46428bc7e4c47f">   56</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackOperatorCreator&gt; <a class="code" href="class_calculator_1_1_stack_operator_creator.html#a38152b3cbe1a69ab7b46428bc7e4c47f">Ptr</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator_creator.html#a3d570befaa2e3e093c6d407a08ea285d">   58</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator_creator.html#a3d570befaa2e3e093c6d407a08ea285d">~StackOperatorCreator</a>() { }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">    /** @return Help text for StackOperator::Ptrs this creates */</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_calculator_1_1_stack_operator_creator.html#a22546cab66a60b0aab6385895f7b0ecf">getHelp</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">     * @param stack to operate on</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     * @param ofThis is this in a copied StackOperator::Ptr to maintain</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     * integrity of the shared_ptrs.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     * @return Result of execution</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_result.html" title="Collection of Result information for an operation.">Result</a> <a class="code" href="class_calculator_1_1_stack_operator.html#acfa81215fe263345240505ed7dd12428" title="Execute this operator on stack.">operator()</a>(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; stack, <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> ofThis) = 0;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">  /** \brief Factory creators of StackOperator::Ptrs</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator_creator.html">   57</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs.">StackOperatorCreator</a> {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator_creator.html#a38152b3cbe1a69ab7b46428bc7e4c47f">   59</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackOperatorCreator&gt; <a class="code" href="class_calculator_1_1_stack_operator_creator.html#a38152b3cbe1a69ab7b46428bc7e4c47f">Ptr</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_operator_creator.html#a3d570befaa2e3e093c6d407a08ea285d">   61</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator_creator.html#a3d570befaa2e3e093c6d407a08ea285d">~StackOperatorCreator</a>() { }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">    /** @return StackOperator::Ptr of the StackOperator created from str, or</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     * it will be empty to indicate str cannot be used to create an item of</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">     * this type.</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> <a class="code" href="class_calculator_1_1_stack_operator_creator.html#a5149f0ec97b258f80c312d66d5ff4f1f">create</a>(<span class="keyword">const</span> std::string&amp; str) = 0;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  };</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;} <span class="comment">// namespace Calculator </span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif // STACK_OPERATOR_H</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">    /** @return Help text for StackOperator::Ptrs this creates */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_calculator_1_1_stack_operator_creator.html#a22546cab66a60b0aab6385895f7b0ecf">getHelp</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">    /** @return StackOperator::Ptr of the StackOperator created from str, or</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     * it will be empty to indicate str cannot be used to create an item of</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">     * this type.</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> <a class="code" href="class_calculator_1_1_stack_operator_creator.html#a5149f0ec97b258f80c312d66d5ff4f1f">create</a>(<span class="keyword">const</span> std::string&amp; str) = 0;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  };</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} <span class="comment">// namespace Calculator </span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif // STACK_OPERATOR_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_stack_operator_8h.html">StackOperator.h</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:39 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:57 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

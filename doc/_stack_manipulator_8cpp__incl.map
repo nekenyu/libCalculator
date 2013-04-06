@@ -1,8 +1,9 @@
 <map id="src/StackManipulator.cpp" name="src/StackManipulator.cpp">
-<area shape="rect" id="node4" href="$_error_8h.html" title="Error.h" alt="" coords="171,80,228,107"/>
-<area shape="rect" id="node5" href="$_stack_manipulator_8h.html" title="StackManipulator.h" alt="" coords="172,155,303,181"/>
-<area shape="rect" id="node7" href="$_number_8h.html" title="Number.h" alt="" coords="305,80,380,107"/>
-<area shape="rect" id="node9" href="$_stack_8h.html" title="Stack.h" alt="" coords="405,80,469,107"/>
-<area shape="rect" id="node6" href="$_stack_operator_8h.html" title="StackOperator.h" alt="" coords="247,229,361,256"/>
-<area shape="rect" id="node8" href="$_stack_item_8h.html" title="StackItem.h" alt="" coords="327,155,413,181"/>
+<area shape="rect" id="node5" href="$_error_8h.html" title="Error.h" alt="" coords="250,80,307,107"/>
+<area shape="rect" id="node6" href="$_stack_manipulator_8h.html" title="StackManipulator.h" alt="" coords="223,155,353,181"/>
+<area shape="rect" id="node9" href="$_number_8h.html" title="Number.h" alt="" coords="383,80,459,107"/>
+<area shape="rect" id="node11" href="$_stack_8h.html" title="Stack.h" alt="" coords="471,229,535,256"/>
+<area shape="rect" id="node7" href="$_stack_operator_8h.html" title="StackOperator.h" alt="" coords="332,229,447,256"/>
+<area shape="rect" id="node8" href="$_result_8h.html" title="Result.h" alt="" coords="411,304,479,331"/>
+<area shape="rect" id="node10" href="$_stack_item_8h.html" title="StackItem.h" alt="" coords="378,155,464,181"/>
 </map>

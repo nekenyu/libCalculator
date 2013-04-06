@@ -5,7 +5,7 @@ var class_calculator_1_1_stack_operator =
     [ "StackOperator", "class_calculator_1_1_stack_operator.html#a583ea5ad82bd940c85c9fd6132b9a1a7", null ],
     [ "StackOperator", "class_calculator_1_1_stack_operator.html#a14d435337b38cc1ce269fffcb355ab87", null ],
     [ "StackOperator", "class_calculator_1_1_stack_operator.html#ae1959f1720e62675fface4b004f5c180", null ],
-    [ "operator()", "class_calculator_1_1_stack_operator.html#a9dbca8fde0f793fa356d11a318f4d311", null ],
+    [ "operator()", "class_calculator_1_1_stack_operator.html#acfa81215fe263345240505ed7dd12428", null ],
     [ "operator=", "class_calculator_1_1_stack_operator.html#a2b89c1f90463500aac03c30954def692", null ],
     [ "operator=", "class_calculator_1_1_stack_operator.html#a8388321acf564df6f55b84c183619e46", null ]
 ];

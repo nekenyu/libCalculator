@@ -117,7 +117,9 @@ $(document).ready(function(){initNavTree('_stack_reading_example_8cpp-example.ht
 <div class="line"><span class="comment">*/</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_stack_8h.html">Stack.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_number_8h.html">Number.h</a>&quot;</span></div>
@@ -127,22 +129,7 @@ $(document).ready(function(){initNavTree('_stack_reading_example_8cpp-example.ht
 <div class="line"></div>
 <div class="line"><span class="keyword">using namespace </span>Calculator;</div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
-<div class="line">  <span class="comment">// The items we will be using</span></div>
-<div class="line">  <a class="code" href="class_calculator_1_1_variable.html#a9a6ed33ac62e594789ca59606106052e">Variable::Ptr</a> variable = <a name="a0"></a><a class="code" href="class_calculator_1_1_variable.html#a15fea434e752cc3621925a9c2357b878" title="Create with theName to represent.">Variable::create</a>(<span class="stringliteral">&quot;$test&quot;</span>);</div>
-<div class="line">  <a class="code" href="class_calculator_1_1_number.html#a3749b8c4c9edb131ac16529c0c8fdff0">Number::Ptr</a> number = <a name="a1"></a><a class="code" href="class_calculator_1_1_number.html#acb72db32fe559b21c551c29608667502" title="Create with theValue to represent.">Number::create</a>(1.2345);</div>
-<div class="line">  </div>
-<div class="line">  <span class="comment">// Setup the stack and variables initial values</span></div>
-<div class="line">  <a name="_a2"></a><a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a> stack;</div>
-<div class="line">  stack.<a name="a3"></a><a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
-<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
-<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
-<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
-<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
-<div class="line"></div>
-<div class="line">  <span class="comment">// Note that the variable is set after being used.</span></div>
-<div class="line">  stack.<a name="a4"></a><a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>().<a name="a5"></a><a class="code" href="class_calculator_1_1_variable_set.html#aa3947d5890656993e6d6c8d205c22ca4" title="Set the value of name, overriding existing values.">set</a>(variable-&gt;getName(), number);</div>
-<div class="line"></div>
+<div class="line"><a name="_a0"></a><a class="code" href="class_calculator_1_1_result.html" title="Collection of Result information for an operation.">Result</a> doSomething(<a name="_a1"></a><a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; stack) {</div>
 <div class="line">  <span class="comment">// Create the values we will be reading.  I used item1..item5 for simplicity,</span></div>
 <div class="line">  <span class="comment">// but useful names like top, firstNumber, variableToUpdate, maxValue, and</span></div>
 <div class="line">  <span class="comment">// actualValue are obviously preferred.</span></div>
@@ -150,11 +137,11 @@ $(document).ready(function(){initNavTree('_stack_reading_example_8cpp-example.ht
 <div class="line">  <a class="code" href="class_calculator_1_1_number.html#a3749b8c4c9edb131ac16529c0c8fdff0">Number::Ptr</a> item2;</div>
 <div class="line">  <a class="code" href="class_calculator_1_1_variable.html#a9a6ed33ac62e594789ca59606106052e">Variable::Ptr</a> item3;</div>
 <div class="line">  <a class="code" href="class_calculator_1_1_number.html#a3749b8c4c9edb131ac16529c0c8fdff0">Number::Ptr</a> item4;</div>
-<div class="line">  <a class="code" href="class_calculator_1_1_number.html#a3749b8c4c9edb131ac16529c0c8fdff0">Number::Ptr</a> item5;</div>
+<div class="line">  <a class="code" href="class_calculator_1_1_variable.html#a9a6ed33ac62e594789ca59606106052e">Variable::Ptr</a> item5;</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">// Get the iterator and &gt;&gt; it to all the values.  Note the NO_DEREFERENCE_NEXT</span></div>
 <div class="line">  <span class="comment">// type hints.  DEREFERENCE_NEXT is default and set after each read.</span></div>
-<div class="line">  <a name="_a6"></a><a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> iter = stack.<a name="a7"></a><a class="code" href="class_calculator_1_1_stack.html#a3998db32e0c0d5a5e4b6804979e9bc10">begin</a>();</div>
+<div class="line">  <a name="_a2"></a><a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> iter = stack.<a name="a3"></a><a class="code" href="class_calculator_1_1_stack.html#a3998db32e0c0d5a5e4b6804979e9bc10">begin</a>();</div>
 <div class="line">  iter &gt;&gt; item1</div>
 <div class="line">       &gt;&gt; item2</div>
 <div class="line">       &gt;&gt; StackIterator::Hint::NO_DEREFERENCE_NEXT &gt;&gt; item3</div>
@@ -163,16 +150,54 @@ $(document).ready(function(){initNavTree('_stack_reading_example_8cpp-example.ht
 <div class="line"></div>
 <div class="line">  <span class="comment">// Ensure item2 is a number</span></div>
 <div class="line">  <span class="keywordflow">if</span>(!item2) {</div>
-<div class="line">    <span class="comment">// TODO: handle error</span></div>
+<div class="line">    iter.<a name="a4"></a><a class="code" href="class_calculator_1_1_stack_iterator.html#ace86c1a59829bdec4b5a4f97ee9a270c" title="Add error message at position.">addError</a>(1, <a name="a5"></a><a class="code" href="namespace_calculator_1_1_error.html#aa8feb7414240965aba0eb44fa8038904" title="Operation required a Number.">Error::NotANumber</a>);</div>
 <div class="line">  }</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Ensure item3 was not dereferenced</span></div>
 <div class="line">  <span class="keywordflow">if</span>(!item3) {</div>
-<div class="line">    <span class="comment">// TODO: handle error</span></div>
+<div class="line">    iter.<a class="code" href="class_calculator_1_1_stack_iterator.html#ace86c1a59829bdec4b5a4f97ee9a270c" title="Add error message at position.">addError</a>(2, <a name="a6"></a><a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd" title="Operation required a variable.">Error::NotAVariable</a>);</div>
+<div class="line">  }</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">// Ensure item4 is a number</span></div>
+<div class="line">  <span class="keywordflow">if</span>(!item4) {</div>
+<div class="line">    iter.<a class="code" href="class_calculator_1_1_stack_iterator.html#ace86c1a59829bdec4b5a4f97ee9a270c" title="Add error message at position.">addError</a>(3, <a class="code" href="namespace_calculator_1_1_error.html#aa8feb7414240965aba0eb44fa8038904" title="Operation required a Number.">Error::NotANumber</a>);</div>
+<div class="line">  }</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">// Ensure item5 is a Variable</span></div>
+<div class="line">  <span class="comment">// Note: For the purpose of example, this will fail as we inserted the number</span></div>
+<div class="line">  <span class="keywordflow">if</span>(!item5) {</div>
+<div class="line">    iter.<a class="code" href="class_calculator_1_1_stack_iterator.html#ace86c1a59829bdec4b5a4f97ee9a270c" title="Add error message at position.">addError</a>(4, <a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd" title="Operation required a variable.">Error::NotAVariable</a>);</div>
+<div class="line">  }</div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">if</span>(!iter) {</div>
+<div class="line">    <span class="keywordflow">return</span> iter.<a name="a7"></a><a class="code" href="class_calculator_1_1_stack_iterator.html#a7f43c0120f19a7ce1ec5b407f3cb246a">getResult</a>();</div>
 <div class="line">  }</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// Finally, all is well and we are ready to proceed:</span></div>
 <div class="line">  stack.<a name="a8"></a><a class="code" href="class_calculator_1_1_stack.html#a996b3ab3326865460805e2c92fa11c7c" title="Pop all items after iter on the Stack.">popAfter</a>(iter);</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">// ...</span></div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
+<div class="line">  <span class="comment">// The items we will be using</span></div>
+<div class="line">  <a class="code" href="class_calculator_1_1_variable.html#a9a6ed33ac62e594789ca59606106052e">Variable::Ptr</a> variable = <a name="a9"></a><a class="code" href="class_calculator_1_1_variable.html#a15fea434e752cc3621925a9c2357b878" title="Create with theName to represent.">Variable::create</a>(<span class="stringliteral">&quot;$test&quot;</span>);</div>
+<div class="line">  <a class="code" href="class_calculator_1_1_number.html#a3749b8c4c9edb131ac16529c0c8fdff0">Number::Ptr</a> number = <a name="a10"></a><a class="code" href="class_calculator_1_1_number.html#acb72db32fe559b21c551c29608667502" title="Create with theValue to represent.">Number::create</a>(1.2345);</div>
+<div class="line">  </div>
+<div class="line">  <span class="comment">// Setup the stack and variables initial values</span></div>
+<div class="line">  <a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a> stack;</div>
+<div class="line">  stack.<a name="a11"></a><a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
+<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
+<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
+<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(variable);</div>
+<div class="line">  stack.<a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(number);</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">// Note that the variable is set after being used</span></div>
+<div class="line">  stack.<a name="a12"></a><a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>().<a name="a13"></a><a class="code" href="class_calculator_1_1_variable_set.html#aa3947d5890656993e6d6c8d205c22ca4" title="Set the value of name, overriding existing values.">set</a>(variable-&gt;getName(), number);</div>
+<div class="line"></div>
+<div class="line">  <span class="comment">// Do something with the result</span></div>
+<div class="line">  <span class="keyword">const</span> <a class="code" href="class_calculator_1_1_result.html" title="Collection of Result information for an operation.">Result</a> result = doSomething(stack);</div>
+<div class="line">  std::cout &lt;&lt; result.<a name="a14"></a><a class="code" href="class_calculator_1_1_result.html#a2a386dfbe8f5637713150a3cf32c91f8">toString</a>() &lt;&lt; std::endl;</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
@@ -181,7 +206,7 @@ $(document).ready(function(){initNavTree('_stack_reading_example_8cpp-example.ht
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:39 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:57 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

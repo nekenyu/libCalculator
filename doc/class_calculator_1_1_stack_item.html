@@ -149,9 +149,9 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac46e5ae5dd4c03e7bac15aea4a74f50a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_item.html#ac46e5ae5dd4c03e7bac15aea4a74f50a">~StackItem</a> ()</td></tr>
 <tr class="separator:ac46e5ae5dd4c03e7bac15aea4a74f50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa968ad76f88efa9f515b07cad9161af"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_item.html#afa968ad76f88efa9f515b07cad9161af">operator()</a> (<a class="el" href="class_calculator_1_1_stack.html">Stack</a> &amp;stack, <a class="el" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> ofThis)</td></tr>
-<tr class="memdesc:afa968ad76f88efa9f515b07cad9161af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute this item modifying stack.  <a href="#afa968ad76f88efa9f515b07cad9161af">More...</a><br/></td></tr>
-<tr class="separator:afa968ad76f88efa9f515b07cad9161af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac898140be46493f4f7de851f916fd1d0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_calculator_1_1_result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_item.html#ac898140be46493f4f7de851f916fd1d0">operator()</a> (<a class="el" href="class_calculator_1_1_stack.html">Stack</a> &amp;stack, <a class="el" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> ofThis)</td></tr>
+<tr class="memdesc:ac898140be46493f4f7de851f916fd1d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute this item modifying stack.  <a href="#ac898140be46493f4f7de851f916fd1d0">More...</a><br/></td></tr>
+<tr class="separator:ac898140be46493f4f7de851f916fd1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20a3f26baea9dfd4b2b31eddd1d9fac5"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_item.html#a20a3f26baea9dfd4b2b31eddd1d9fac5">toString</a> () const =0</td></tr>
 <tr class="separator:a20a3f26baea9dfd4b2b31eddd1d9fac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_calculator_1_1_stack_operator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_calculator_1_1_stack_operator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_calculator_1_1_stack_operator.html">Calculator::StackOperator</a></td></tr>
@@ -223,7 +223,7 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_stack_item_8cpp_source.html#l00023">23</a> of file <a class="el" href="_stack_item_8cpp_source.html">StackItem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_item_8cpp_source.html#l00024">24</a> of file <a class="el" href="_stack_item_8cpp_source.html">StackItem.cpp</a>.</p>
 
 </div>
 </div>
@@ -299,7 +299,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="afa968ad76f88efa9f515b07cad9161af"></a>
+<a class="anchor" id="ac898140be46493f4f7de851f916fd1d0"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -307,7 +307,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string Calculator::StackItem::operator() </td>
+          <td class="memname"><a class="el" href="class_calculator_1_1_result.html">Result</a> Calculator::StackItem::operator() </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_calculator_1_1_stack.html">Stack</a> &amp;&#160;</td>
           <td class="paramname"><em>stack</em>, </td>
@@ -335,14 +335,15 @@ Protected Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">stack</td><td>to process on </td></tr>
-    <tr><td class="paramname">ofThis</td><td>the <a class="el" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> for this object so that its info can be passed around. </td></tr>
+    <tr><td class="paramname">ofThis</td><td>the <a class="el" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> for this object so that its info can be passed around.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_calculator_1_1_result.html" title="Collection of Result information for an operation.">Result</a> from execution </dd></dl>
 
-<p>Implements <a class="el" href="class_calculator_1_1_stack_operator.html#a9dbca8fde0f793fa356d11a318f4d311">Calculator::StackOperator</a>.</p>
+<p>Implements <a class="el" href="class_calculator_1_1_stack_operator.html#acfa81215fe263345240505ed7dd12428">Calculator::StackOperator</a>.</p>
 
-<p>Definition at line <a class="el" href="_stack_item_8cpp_source.html#l00026">26</a> of file <a class="el" href="_stack_item_8cpp_source.html">StackItem.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_item_8cpp_source.html#l00027">27</a> of file <a class="el" href="_stack_item_8cpp_source.html">StackItem.cpp</a>.</p>
 
 </div>
 </div>
@@ -430,7 +431,7 @@ Protected Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_calculator.html">Calculator</a></li><li class="navelem"><a class="el" href="class_calculator_1_1_stack_item.html">StackItem</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:42 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:59 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

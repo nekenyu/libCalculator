@@ -123,244 +123,266 @@ $(document).ready(function(){initNavTree('_stack_8h_source.html','');});
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef  STACK_H</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define  STACK_H</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>Calculator {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">class </span>StackItem;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keyword">class </span>StackIteratorPimpl;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keyword">class </span>StackPimpl;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keyword">class </span>VariableSet;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">   * StackIterator</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">  /** \class StackIterator </span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">   * \brief Iterator over a Stack from top to bottom</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifndef RESULT_H</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="_result_8h.html">Result.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif // RESULT_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>Calculator {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">class </span>StackItem;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">class </span>StackIteratorPimpl;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">class </span>StackPimpl;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">class </span>VariableSet;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">   * StackIterator</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_iterator.html">   31</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackIteratorPimpl&gt; PimplPtr;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">    /** Equivalent of StackItem::Ptr; */</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_iterator.html#ad4f1fc4d8f617f1f2b332fa75e45feed">   37</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackItem&gt; <a class="code" href="class_calculator_1_1_stack_iterator.html#ad4f1fc4d8f617f1f2b332fa75e45feed" title="Equivalent of StackItem::Ptr;.">StackItemPtr</a>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">    /** Hint for accessing the value at an iterator */</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1">   40</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1" title="Hint for accessing the value at an iterator.">Hint</a> {<span class="comment"></span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">      /** Dereference the next read */</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1a605664c0b18f92fdc9a172c75d2ddbc6" title="Dereference the next read.">DEREFERENCE_NEXT</a>,<span class="comment"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">    /** Do not dereference the next read */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1a2abb4f901838f1cdf82a65ced7c0b504" title="Do not dereference the next read.">NO_DEREFERENCE_NEXT</a></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    };</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#a1da201a0de6cc21b8347495e975122be">~StackIterator</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">    /** Create with reference to the variables and the implementint iterator.</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     * @param thePimpl initial data for the StackIterator</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#abae192a07f7b99af8b81df7e5ca5bde3">StackIterator</a>(std::shared_ptr&lt;StackIteratorPimpl&gt; thePimpl);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#abae192a07f7b99af8b81df7e5ca5bde3">StackIterator</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#abae192a07f7b99af8b81df7e5ca5bde3">StackIterator</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp;);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#abae192a07f7b99af8b81df7e5ca5bde3">StackIterator</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="class_calculator_1_1_stack_iterator.html#a4171d742a722218fd77c1241063608c8">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp;);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="class_calculator_1_1_stack_iterator.html#a4171d742a722218fd77c1241063608c8">operator=</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">    /** Pre-increment: Move to the next position away from the top.</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     * @return this iterator</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="class_calculator_1_1_stack_iterator.html#a5cdc00eba7d99021d9493b7854b30449" title="Pre-increment: Move to the next position away from the top.">operator++</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">    /** Post-increment: Move to the next position away from the top, but return the</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">     * a copy of this iterator without the modification.</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">     * @return a copy of this iterator before the increment.</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> <a class="code" href="class_calculator_1_1_stack_iterator.html#a5cdc00eba7d99021d9493b7854b30449" title="Pre-increment: Move to the next position away from the top.">operator++</a>(<span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">    /** Return true if this iterator is the same position as rhs.</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">     * </span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">     * @param rhs to compare this iterator to</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">     * @return true if this iterator and rhs refer to the same position, otherwise</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     * false</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#a0c6f227cb7d1a62fd846339397156d80" title="Return true if this iterator is the same position as rhs.">operator==</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; rhs) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">    /** Return true if this iterator is not the same position as rhs.</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     * </span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     * @param rhs to compare this iterator to</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">     * @return false if this iterator and rhs refer to the same position, otherwise</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">     * true</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#ad0d0c31479a1490b472a0ae8e64e3d00" title="Return true if this iterator is not the same position as rhs.">operator!=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; rhs) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">    /** @return false if any errors have been reported, otherwise true */</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">operator</span> bool() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">    /** @return the object at the current position as per the current hint and reset</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">     * the hint for the next read to Hint::DEREFERENCE_NEXT</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#ad4f1fc4d8f617f1f2b332fa75e45feed" title="Equivalent of StackItem::Ptr;.">StackItemPtr</a> <a class="code" href="class_calculator_1_1_stack_iterator.html#a8fc5656525d365249bc8bbf22b1a8ee1">operator*</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">    /** @return the current item without dereferencing, ignoring the hint entirely</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">  /** \class StackIterator </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">   * \brief Iterator over a Stack from top to bottom</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_iterator.html">   35</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackIteratorPimpl&gt; PimplPtr;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">    /** Equivalent of StackItem::Ptr; */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_iterator.html#ad4f1fc4d8f617f1f2b332fa75e45feed">   41</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackItem&gt; <a class="code" href="class_calculator_1_1_stack_iterator.html#ad4f1fc4d8f617f1f2b332fa75e45feed" title="Equivalent of StackItem::Ptr;.">StackItemPtr</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">    /** Hint for accessing the value at an iterator */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1">   44</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1" title="Hint for accessing the value at an iterator.">Hint</a> {<span class="comment"></span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">      /** Dereference the next read */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1a605664c0b18f92fdc9a172c75d2ddbc6" title="Dereference the next read.">DEREFERENCE_NEXT</a>,<span class="comment"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">    /** Do not dereference the next read */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1a2abb4f901838f1cdf82a65ced7c0b504" title="Do not dereference the next read.">NO_DEREFERENCE_NEXT</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#a1da201a0de6cc21b8347495e975122be">~StackIterator</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">    /** Create with reference to the variables and the implementint iterator.</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">     * @param thePimpl initial data for the StackIterator</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#abae192a07f7b99af8b81df7e5ca5bde3">StackIterator</a>(std::shared_ptr&lt;StackIteratorPimpl&gt; thePimpl);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#abae192a07f7b99af8b81df7e5ca5bde3">StackIterator</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#abae192a07f7b99af8b81df7e5ca5bde3">StackIterator</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp;);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#abae192a07f7b99af8b81df7e5ca5bde3">StackIterator</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="class_calculator_1_1_stack_iterator.html#a4171d742a722218fd77c1241063608c8">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp;);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="class_calculator_1_1_stack_iterator.html#a4171d742a722218fd77c1241063608c8">operator=</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">    /** Pre-increment: Move to the next position away from the top.</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">     * @return this iterator</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="class_calculator_1_1_stack_iterator.html#a5cdc00eba7d99021d9493b7854b30449" title="Pre-increment: Move to the next position away from the top.">operator++</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">    /** Post-increment: Move to the next position away from the top, but return the</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">     * a copy of this iterator without the modification.</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">     * @return a copy of this iterator before the increment.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> <a class="code" href="class_calculator_1_1_stack_iterator.html#a5cdc00eba7d99021d9493b7854b30449" title="Pre-increment: Move to the next position away from the top.">operator++</a>(<span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">    /** Return true if this iterator is the same position as rhs.</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">     * @param rhs to compare this iterator to</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">     * @return true if this iterator and rhs refer to the same position, otherwise</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">     * false</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#a0c6f227cb7d1a62fd846339397156d80" title="Return true if this iterator is the same position as rhs.">operator==</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; rhs) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">    /** Return true if this iterator is not the same position as rhs.</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">     * </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">     * @param rhs to compare this iterator to</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">     * @return false if this iterator and rhs refer to the same position, otherwise</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">     * true</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#ad0d0c31479a1490b472a0ae8e64e3d00" title="Return true if this iterator is not the same position as rhs.">operator!=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; rhs) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">    /** @return false if any errors have been reported, otherwise true */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">operator</span> bool() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">    /** @return the object at the current position as per the current hint and reset</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">     * the hint for the next read to Hint::DEREFERENCE_NEXT</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#ad4f1fc4d8f617f1f2b332fa75e45feed" title="Equivalent of StackItem::Ptr;.">StackItemPtr</a> <a class="code" href="class_calculator_1_1_stack_iterator.html#a6f8636f80b892e43b3a5465e0269b115">noDereference</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#ad4f1fc4d8f617f1f2b332fa75e45feed" title="Equivalent of StackItem::Ptr;.">StackItemPtr</a> <a class="code" href="class_calculator_1_1_stack_iterator.html#a8fc5656525d365249bc8bbf22b1a8ee1">operator*</a>();</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">    /** Set the current hint for reading the value to theHint.</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">     * @param theHint to set the hint for the next read to</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">     * @return this iterator</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="class_calculator_1_1_stack_iterator.html#aac76a25c5e2471b5ba62f6860f35500d" title="Set the current hint for reading the value to theHint.">setHint</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1" title="Hint for accessing the value at an iterator.">Hint</a> theHint);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">    /** Convenience method to read the current value by operator-&gt;* (respecting the</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">     * current hint) and return it to a T::Ptr by std::dynamic_pointer_cast.  If</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">     * the cast fails, the returned value is empty</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">     * @tparam T desired type to cast the value to</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">     * @return the current value from operator* as a T::Ptr, which may be empty if</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">     * the cast failed</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_iterator.html#a248fedd484f1b536a9022467dffa961c">  122</a></span>&#160;      <span class="keyword">auto</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#a248fedd484f1b536a9022467dffa961c" title="Convenience method to read the current value by operator-&gt;* (respecting the current hint) and return ...">as</a>() -&gt; <span class="keyword">typename</span> T::Ptr {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="keyword">typename</span> T::Ptr asT = std::dynamic_pointer_cast&lt;T, <a class="code" href="class_calculator_1_1_stack_item.html" title="Base class of all items that can be on the stack.">StackItem</a>&gt;(this-&gt;<a class="code" href="class_calculator_1_1_stack_iterator.html#a8fc5656525d365249bc8bbf22b1a8ee1">operator*</a>());</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="keywordflow">return</span> asT;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">    /** @return Errors, such as conversion and variable, thus far, if any */</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    std::string <a class="code" href="class_calculator_1_1_stack_iterator.html#adb6bb952174b2e76cc24682f14ea58cb">getErrors</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">    /** @return the private implementation */</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    PimplPtr <a class="code" href="class_calculator_1_1_stack_iterator.html#ab37d4b853b684c05a41fe90fc1cffbc5">getPimpl</a>();</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">    /** The private implementation */</span></div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    PimplPtr pimpl;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  };</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">  /** Set the iter&#39;s hint and return the iter.</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">   * @param iter to set hint on</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">   * @param hint to set</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">   * @return iter</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  StackIterator&amp; <a class="code" href="namespace_calculator.html#a0e3e07b58ce9f2fab1dcdc785b2c108c" title="Set the iter&#39;s hint and return the iter.">operator&gt;&gt;</a>(StackIterator&amp; iter, <a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1" title="Hint for accessing the value at an iterator.">StackIterator::Hint</a> hint);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">  /** Set t to *iter and return iter.</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">   * @param iter to read from</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">   * @param t to set *iter into</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">   * @return iter</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  StackIterator&amp; <a class="code" href="namespace_calculator.html#a0e3e07b58ce9f2fab1dcdc785b2c108c" title="Set the iter&#39;s hint and return the iter.">operator&gt;&gt;</a>(StackIterator&amp; iter, std::shared_ptr&lt;StackItem&gt;&amp; t);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="comment"></span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">  /** Convenience function to read the current value of iter by the template as()</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">   * (respecting the current hint) and set to t. If the cast fails in t, the set</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">   *  value is empty</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">    /** @return the current item without dereferencing, ignoring the hint entirely</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html#ad4f1fc4d8f617f1f2b332fa75e45feed" title="Equivalent of StackItem::Ptr;.">StackItemPtr</a> <a class="code" href="class_calculator_1_1_stack_iterator.html#a6f8636f80b892e43b3a5465e0269b115">noDereference</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">    /** Set the current hint for reading the value to theHint.</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">     * @param theHint to set the hint for the next read to</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">     * @return this iterator</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="class_calculator_1_1_stack_iterator.html#aac76a25c5e2471b5ba62f6860f35500d" title="Set the current hint for reading the value to theHint.">setHint</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1" title="Hint for accessing the value at an iterator.">Hint</a> theHint);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">    /** Convenience method to read the current value by operator-&gt;* (respecting the</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">     * current hint) and return it to a T::Ptr by std::dynamic_pointer_cast.  If</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">     * the cast fails, the returned value is empty</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">     * @tparam T desired type to cast the value to</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">     * @return the current value from operator* as a T::Ptr, which may be empty if</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">     * the cast failed</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_iterator.html#a248fedd484f1b536a9022467dffa961c">  126</a></span>&#160;      <span class="keyword">auto</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#a248fedd484f1b536a9022467dffa961c" title="Convenience method to read the current value by operator-&gt;* (respecting the current hint) and return ...">as</a>() -&gt; <span class="keyword">typename</span> T::Ptr {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keyword">typename</span> T::Ptr asT = std::dynamic_pointer_cast&lt;T, <a class="code" href="class_calculator_1_1_stack_item.html" title="Base class of all items that can be on the stack.">StackItem</a>&gt;(this-&gt;<a class="code" href="class_calculator_1_1_stack_iterator.html#a8fc5656525d365249bc8bbf22b1a8ee1">operator*</a>());</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="keywordflow">return</span> asT;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">    /** @return Errors, such as conversion and variable, thus far, if any */</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_calculator_1_1_result.html" title="Collection of Result information for an operation.">Result</a>&amp; <a class="code" href="class_calculator_1_1_stack_iterator.html#a7f43c0120f19a7ce1ec5b407f3cb246a">getResult</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">    /** Add error message at position</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">     * @param position in the stack the error occurred</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">     * @param message describing the error</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#ace86c1a59829bdec4b5a4f97ee9a270c" title="Add error message at position.">addError</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> position, <span class="keyword">const</span> std::string&amp; message);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">    /** Add error message at current position</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">     * @param message describing the error</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_calculator_1_1_stack_iterator.html#ace86c1a59829bdec4b5a4f97ee9a270c" title="Add error message at position.">addError</a>(<span class="keyword">const</span> std::string&amp; message);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">    /** @return the private implementation */</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    PimplPtr <a class="code" href="class_calculator_1_1_stack_iterator.html#ab37d4b853b684c05a41fe90fc1cffbc5">getPimpl</a>();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">    /** The private implementation */</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    PimplPtr pimpl;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  };</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">  /** Set the iter&#39;s hint and return the iter.</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">   * @param iter to set hint on</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">   * @param hint to set</span></div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">   * @tparam T desired type to cast the value to</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">   * @param iter to read from</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">   * @param t to set iter.as&lt;T&gt;() into</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">   * @return iter</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="code" href="namespace_calculator.html#aeff6b7a528df077890055b81c8510f93">  168</a></span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="namespace_calculator.html#a0e3e07b58ce9f2fab1dcdc785b2c108c" title="Set the iter&#39;s hint and return the iter.">operator&gt;&gt;</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; iter, T&amp; t) {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    t = iter.template as&lt;typename T::element_type&gt;();</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    ++iter;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">return</span> iter;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="comment">/* </span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">   * Stack</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">  /** Stack of values to process from.</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">   * Contains StackItem::Ptr objects.</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">   * @return iter</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  StackIterator&amp; <a class="code" href="namespace_calculator.html#a0e3e07b58ce9f2fab1dcdc785b2c108c" title="Set the iter&#39;s hint and return the iter.">operator&gt;&gt;</a>(StackIterator&amp; iter, <a class="code" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1" title="Hint for accessing the value at an iterator.">StackIterator::Hint</a> hint);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">  /** Set t to *iter and return iter.</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">   * @param iter to read from</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">   * @param t to set *iter into</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">   * @return iter</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  StackIterator&amp; <a class="code" href="namespace_calculator.html#a0e3e07b58ce9f2fab1dcdc785b2c108c" title="Set the iter&#39;s hint and return the iter.">operator&gt;&gt;</a>(StackIterator&amp; iter, std::shared_ptr&lt;StackItem&gt;&amp; t);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="comment"></span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">  /** Convenience function to read the current value of iter by the template as()</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">   * (respecting the current hint) and set to t. If the cast fails in t, the set</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">   *  value is empty</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">   * @tparam T desired type to cast the value to</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">   * @param iter to read from</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">   * @param t to set iter.as&lt;T&gt;() into</span></div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">   *</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">   * \todo Provide load / save operations.</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">   * Provide the ability to write and read Calculator.txt files which will</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">   * restore the existing state.  This adds the complexity of resetting an</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">   * existing stack and variable set.</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack.html">  187</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a> {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackPimpl&gt; PimplPtr;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackItem&gt; StackItemPtr;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">    /** Count of StackItems */</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack.html#aff9ff7144370e01f4f3106e1a8674bc6">  194</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_calculator_1_1_stack.html#aff9ff7144370e01f4f3106e1a8674bc6" title="Count of StackItems.">Count</a>;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html#ac523516d2b7d26a7f6173facc4ffc28b">Stack</a>();</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html#ac523516d2b7d26a7f6173facc4ffc28b">Stack</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; rhs) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html#ac523516d2b7d26a7f6173facc4ffc28b">Stack</a>(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp;&amp; rhs) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; <a class="code" href="class_calculator_1_1_stack.html#ac002e5b938486246026b846dea801b9e">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; rhs) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; <a class="code" href="class_calculator_1_1_stack.html#ac002e5b938486246026b846dea801b9e">operator=</a>(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp;&amp; rhs) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">    /** @return number of StackItems on the Stack */</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html#aff9ff7144370e01f4f3106e1a8674bc6" title="Count of StackItems.">Count</a> <a class="code" href="class_calculator_1_1_stack.html#a98d898b1d3f064c4bcd76a358e9632e0">getDepth</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">    /** @return the VariableSet */</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp; <a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>();</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">    /** @return StackIterator at the top of the Stack</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">     * \note This should be a const method; however, the underlying</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">     * implementation (STL) would only provide a const_iterator.  This would be</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">     * just fine for its use; however, std::vector::erase requires a non-const</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">     * iterator, which means this must be non-const.  I could const cast around</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">     * this, but I&#39;ll go simpler.</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> <a class="code" href="class_calculator_1_1_stack.html#a3998db32e0c0d5a5e4b6804979e9bc10">begin</a>();</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">    /** @return StackIterator after the bottom of the Stack</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">     * \note This should be a const method; however, the underlying</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">     * implementation (STL) would only provide a const_iterator.  This would be</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">     * just fine for its use; however, std::vector::erase requires a non-const</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">     * iterator, which means this must be non-const.  I could const cast around</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">     * this, but I&#39;ll go simpler.</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> <a class="code" href="class_calculator_1_1_stack.html#a7d41626ba378cd2c712745a75fa48bea">end</a>();</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">    /** Pop all items after iter on the Stack */</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_calculator_1_1_stack.html#a996b3ab3326865460805e2c92fa11c7c" title="Pop all items after iter on the Stack.">popAfter</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; iter);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">    /** Push item onto the stack</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">     * @param item to push</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(StackItemPtr item);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">    /** Create string representation of the current contents of the Stack */</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    std::string <a class="code" href="class_calculator_1_1_stack.html#a843c4f06814d14101fea35fd2380dd54" title="Create string representation of the current contents of the Stack.">toString</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">    /** The Private Implementation */</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    PimplPtr pimpl;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  };</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;} <span class="comment">// namespace Calculator</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#endif //  STACK_H</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">   * @return iter</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="code" href="namespace_calculator.html#aeff6b7a528df077890055b81c8510f93">  185</a></span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; <a class="code" href="namespace_calculator.html#a0e3e07b58ce9f2fab1dcdc785b2c108c" title="Set the iter&#39;s hint and return the iter.">operator&gt;&gt;</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; iter, T&amp; t) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    t = iter.template as&lt;typename T::element_type&gt;();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    ++iter;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">return</span> iter;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="comment">/* </span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">   * Stack</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">  /** Stack of values to process from.</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">   * Contains StackItem::Ptr objects.</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">   *</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">   * \todo Provide load / save operations.</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">   * Provide the ability to write and read Calculator.txt files which will</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">   * restore the existing state.</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack.html">  203</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a> {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackPimpl&gt; PimplPtr;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;StackItem&gt; StackItemPtr;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">    /** Count of StackItems */</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack.html#aff9ff7144370e01f4f3106e1a8674bc6">  210</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_calculator_1_1_stack.html#aff9ff7144370e01f4f3106e1a8674bc6" title="Count of StackItems.">Count</a>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html#ac523516d2b7d26a7f6173facc4ffc28b">Stack</a>();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html#ac523516d2b7d26a7f6173facc4ffc28b">Stack</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; rhs) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html#ac523516d2b7d26a7f6173facc4ffc28b">Stack</a>(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp;&amp; rhs) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; <a class="code" href="class_calculator_1_1_stack.html#ac002e5b938486246026b846dea801b9e">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; rhs) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; <a class="code" href="class_calculator_1_1_stack.html#ac002e5b938486246026b846dea801b9e">operator=</a>(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp;&amp; rhs) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">    /** @return number of StackItems on the Stack */</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <a class="code" href="class_calculator_1_1_stack.html#aff9ff7144370e01f4f3106e1a8674bc6" title="Count of StackItems.">Count</a> <a class="code" href="class_calculator_1_1_stack.html#a98d898b1d3f064c4bcd76a358e9632e0">getDepth</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">    /** @return the VariableSet */</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="class_calculator_1_1_variable_set.html" title="All variables belonging to a Stack.">VariableSet</a>&amp; <a class="code" href="class_calculator_1_1_stack.html#a4761e9061d6931a1b08bf0d3d27e5b8f">getVariables</a>();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">    /** Reset the stack including pop all variables and reset the variables */</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_calculator_1_1_stack.html#abfe015a39fbbc56043e84e36c9ec890d" title="Reset the stack including pop all variables and reset the variables.">reset</a>();</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">    /** Pop all items from the stack */</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_calculator_1_1_stack.html#aa8f98ea8fb6cbde8b2e72a77459da20f" title="Pop all items from the stack.">popAll</a>();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">    /** @return StackIterator at the top of the Stack</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">     * \note This should be a const method; however, the underlying</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">     * implementation (STL) would only provide a const_iterator.  This would be</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">     * just fine for its use; however, std::vector::erase requires a non-const</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">     * iterator, which means this must be non-const.  I could const cast around</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">     * this, but I&#39;ll go simpler.</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> <a class="code" href="class_calculator_1_1_stack.html#a3998db32e0c0d5a5e4b6804979e9bc10">begin</a>();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">    /** @return StackIterator after the bottom of the Stack</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">     * \note This should be a const method; however, the underlying</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">     * implementation (STL) would only provide a const_iterator.  This would be</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment">     * just fine for its use; however, std::vector::erase requires a non-const</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">     * iterator, which means this must be non-const.  I could const cast around</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">     * this, but I&#39;ll go simpler.</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a> <a class="code" href="class_calculator_1_1_stack.html#a7d41626ba378cd2c712745a75fa48bea">end</a>();</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">    /** Pop all items after iter on the Stack */</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_calculator_1_1_stack.html#a996b3ab3326865460805e2c92fa11c7c" title="Pop all items after iter on the Stack.">popAfter</a>(<a class="code" href="class_calculator_1_1_stack_iterator.html" title="Iterator over a Stack from top to bottom.">StackIterator</a>&amp; iter);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">    /** Push item onto the stack</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">     * @param item to push</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b" title="Push item onto the stack.">push</a>(StackItemPtr item);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">    /** Create string representation of the current contents of the Stack */</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    std::string <a class="code" href="class_calculator_1_1_stack.html#a843c4f06814d14101fea35fd2380dd54" title="Create string representation of the current contents of the Stack.">toString</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  <span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">    /** The Private Implementation */</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    PimplPtr pimpl;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  };</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;} <span class="comment">// namespace Calculator</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#endif //  STACK_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_stack_8h.html">Stack.h</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:39 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:57 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

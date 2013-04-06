@@ -117,9 +117,6 @@ $(document).ready(function(){initNavTree('namespace_calculator_1_1_error.html','
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a42aaf44d88b520ca7afad9bdc08861fc"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_calculator_1_1_error.html#a42aaf44d88b520ca7afad9bdc08861fc">atPosition</a> (unsigned int position, const std::string &amp;error)</td></tr>
-<tr class="memdesc:a42aaf44d88b520ca7afad9bdc08861fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Qualify an error with a stack position.  <a href="#a42aaf44d88b520ca7afad9bdc08861fc">More...</a><br/></td></tr>
-<tr class="separator:a42aaf44d88b520ca7afad9bdc08861fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a173bd7713baa01603f6e79799b3c6945"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_calculator_1_1_error.html#a173bd7713baa01603f6e79799b3c6945">asIndent</a> (const std::string &amp;message)</td></tr>
 <tr class="memdesc:a173bd7713baa01603f6e79799b3c6945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap message with indent and linefeed.  <a href="#a173bd7713baa01603f6e79799b3c6945">More...</a><br/></td></tr>
 <tr class="separator:a173bd7713baa01603f6e79799b3c6945"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,53 +176,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>wrapped message </dd></dl>
 
-<p>Definition at line <a class="el" href="_error_8h_source.html#l00043">43</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a42aaf44d88b520ca7afad9bdc08861fc"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string Calculator::Error::atPosition </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>position</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>error</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Qualify an error with a stack position. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">position</td><td>from the top, with 0 being the top </td></tr>
-    <tr><td class="paramname">error</td><td>message at position</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>error message </dd></dl>
-
-<p>Definition at line <a class="el" href="_error_8h_source.html#l00033">33</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p>Definition at line <a class="el" href="_error_8h_source.html#l00032">32</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -242,8 +193,9 @@ Variables</h2></td></tr>
 
 <p>Operation required a <a class="el" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>. </p>
 <p>Item was not available. </p>
-
-<p>Definition at line <a class="el" href="_error_8h_source.html#l00057">57</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a5">StackReadingExample.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="_error_8h_source.html#l00046">46</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -259,8 +211,9 @@ Variables</h2></td></tr>
 
 <p>Operation required a variable. </p>
 <p>Item was not a variable. </p>
-
-<p>Definition at line <a class="el" href="_error_8h_source.html#l00048">48</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a6">StackReadingExample.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="_error_8h_source.html#l00037">37</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -309,7 +262,7 @@ Variables</h2></td></tr>
 <p>Operation required a variable. </p>
 <p><a class="el" href="class_calculator_1_1_variable.html" title="StackItem representing a variable.">Variable</a> has not been set. </p>
 
-<p>Definition at line <a class="el" href="_error_8h_source.html#l00051">51</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p>Definition at line <a class="el" href="_error_8h_source.html#l00040">40</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -325,7 +278,7 @@ Variables</h2></td></tr>
 
 <p><a class="el" href="class_calculator_1_1_variable.html" title="StackItem representing a variable.">Variable</a> dereferences to itself directly or indirectly and cannot be read. </p>
 
-<p>Definition at line <a class="el" href="_error_8h_source.html#l00054">54</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p>Definition at line <a class="el" href="_error_8h_source.html#l00043">43</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -335,7 +288,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_calculator.html">Calculator</a></li><li class="navelem"><a class="el" href="namespace_calculator_1_1_error.html">Error</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:42 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:59 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

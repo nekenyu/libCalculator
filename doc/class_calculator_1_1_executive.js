@@ -8,7 +8,7 @@ var class_calculator_1_1_executive =
     [ "operator=", "class_calculator_1_1_executive.html#a9994dccb12be61dd623facd824c08173", null ],
     [ "operator=", "class_calculator_1_1_executive.html#a75d23a64ea8bd9ec656099e2aa127164", null ],
     [ "process", "class_calculator_1_1_executive.html#af12c0d190d0cbf640cef832bc8ce52b0", null ],
-    [ "process", "class_calculator_1_1_executive.html#aa4bd24028a187fd33467a715214d33d0", null ],
-    [ "process", "class_calculator_1_1_executive.html#a81d9a15e6701ddf60d49571c878b828f", null ],
+    [ "process", "class_calculator_1_1_executive.html#a7babb89c3c5c662c0c334033116e845e", null ],
+    [ "process", "class_calculator_1_1_executive.html#a7f88b423673a5fce90c3f7d8233eb2c7", null ],
     [ "toString", "class_calculator_1_1_executive.html#a88ca97c9ec3547620297879f851cecdb", null ]
 ];

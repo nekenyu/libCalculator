@@ -9,7 +9,7 @@ var class_calculator_1_1_variable_manipulator =
     [ "VariableManipulator", "class_calculator_1_1_variable_manipulator.html#a8f3d42b19a2040ed80e7921ed7edde21", null ],
     [ "VariableManipulator", "class_calculator_1_1_variable_manipulator.html#a4db762e9cba7ee348e2889276940ea4b", null ],
     [ "VariableManipulator", "class_calculator_1_1_variable_manipulator.html#ab6d1f6c11ce321e734553b18a1528367", null ],
-    [ "operator()", "class_calculator_1_1_variable_manipulator.html#a5240e53bb87b6c848e91e23c5a5579c3", null ],
+    [ "operator()", "class_calculator_1_1_variable_manipulator.html#a4b194328ac4afaada894de7510267908", null ],
     [ "operator=", "class_calculator_1_1_variable_manipulator.html#ac3c20339fb638c0c1a192fca40d066b9", null ],
     [ "operator=", "class_calculator_1_1_variable_manipulator.html#a2e9d63a786470f6ee3a5330731b1e189", null ]
 ];

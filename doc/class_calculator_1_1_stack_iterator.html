@@ -174,16 +174,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a248fedd484f1b536a9022467dffa961c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#a248fedd484f1b536a9022467dffa961c">as</a> () -&gt; typename T::Ptr</td></tr>
 <tr class="memdesc:a248fedd484f1b536a9022467dffa961c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method to read the current value by operator-&gt;* (respecting the current hint) and return it to a T::Ptr by std::dynamic_pointer_cast.  <a href="#a248fedd484f1b536a9022467dffa961c">More...</a><br/></td></tr>
 <tr class="separator:a248fedd484f1b536a9022467dffa961c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb6bb952174b2e76cc24682f14ea58cb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#adb6bb952174b2e76cc24682f14ea58cb">getErrors</a> () const </td></tr>
-<tr class="separator:adb6bb952174b2e76cc24682f14ea58cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f43c0120f19a7ce1ec5b407f3cb246a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_calculator_1_1_result.html">Result</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#a7f43c0120f19a7ce1ec5b407f3cb246a">getResult</a> () const </td></tr>
+<tr class="separator:a7f43c0120f19a7ce1ec5b407f3cb246a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace86c1a59829bdec4b5a4f97ee9a270c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#ace86c1a59829bdec4b5a4f97ee9a270c">addError</a> (unsigned int position, const std::string &amp;message)</td></tr>
+<tr class="memdesc:ace86c1a59829bdec4b5a4f97ee9a270c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add error message at position.  <a href="#ace86c1a59829bdec4b5a4f97ee9a270c">More...</a><br/></td></tr>
+<tr class="separator:ace86c1a59829bdec4b5a4f97ee9a270c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e7fbed2f9dadf4cd859a04d1bedd842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#a6e7fbed2f9dadf4cd859a04d1bedd842">addError</a> (const std::string &amp;message)</td></tr>
+<tr class="memdesc:a6e7fbed2f9dadf4cd859a04d1bedd842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add error message at current position.  <a href="#a6e7fbed2f9dadf4cd859a04d1bedd842">More...</a><br/></td></tr>
+<tr class="separator:a6e7fbed2f9dadf4cd859a04d1bedd842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab37d4b853b684c05a41fe90fc1cffbc5"><td class="memItemLeft" align="right" valign="top">PimplPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#ab37d4b853b684c05a41fe90fc1cffbc5">getPimpl</a> ()</td></tr>
 <tr class="separator:ab37d4b853b684c05a41fe90fc1cffbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Iterator over a <a class="el" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a> from top to bottom. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#_a6">StackReadingExample.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#_a2">StackReadingExample.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_stack_8h_source.html#l00031">31</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8h_source.html#l00035">35</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="ad4f1fc4d8f617f1f2b332fa75e45feed"></a>
 <div class="memitem">
@@ -197,7 +203,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Equivalent of <a class="el" href="class_calculator_1_1_stack_item.html#aa15e11c5d3b8f381f4b9b8a8a31cebdb">StackItem::Ptr</a>;. </p>
 
-<p>Definition at line <a class="el" href="_stack_8h_source.html#l00037">37</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8h_source.html#l00041">41</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
 
 </div>
 </div>
@@ -222,7 +228,7 @@ Public Member Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_stack_8h_source.html#l00040">40</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8h_source.html#l00044">44</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
 
 </div>
 </div>
@@ -342,6 +348,70 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ace86c1a59829bdec4b5a4f97ee9a270c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Calculator::StackIterator::addError </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add error message at position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>in the stack the error occurred </td></tr>
+    <tr><td class="paramname">message</td><td>describing the error </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a4">StackReadingExample.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00153">153</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6e7fbed2f9dadf4cd859a04d1bedd842"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Calculator::StackIterator::addError </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add error message at current position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>describing the error </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00157">157</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a248fedd484f1b536a9022467dffa961c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -375,25 +445,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the current value from operator* as a T::Ptr, which may be empty if the cast failed </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8h_source.html#l00122">122</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="adb6bb952174b2e76cc24682f14ea58cb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string Calculator::StackIterator::getErrors </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Errors, such as conversion and variable, thus far, if any </dd></dl>
-
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00145">145</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8h_source.html#l00126">126</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
 
 </div>
 </div>
@@ -411,7 +463,26 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the private implementation </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00153">153</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00161">161</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7f43c0120f19a7ce1ec5b407f3cb246a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_calculator_1_1_result.html">Result</a> &amp; Calculator::StackIterator::getResult </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Errors, such as conversion and variable, thus far, if any </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a7">StackReadingExample.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00149">149</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -429,7 +500,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the current item without dereferencing, ignoring the hint entirely </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00136">136</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00140">140</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -447,7 +518,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>false if any errors have been reported, otherwise true </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00123">123</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00124">124</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -474,7 +545,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>false if this iterator and rhs refer to the same position, otherwise true </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00119">119</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00120">120</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -492,7 +563,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the object at the current position as per the current hint and reset the hint for the next read to Hint::DEREFERENCE_NEXT </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00127">127</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00128">128</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -533,7 +604,7 @@ template&lt;typename T &gt; </div>
 <p>Post-increment: Move to the next position away from the top, but return the a copy of this iterator without the modification. </p>
 <dl class="section return"><dt>Returns</dt><dd>a copy of this iterator before the increment. </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00108">108</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00110">110</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -602,7 +673,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if this iterator and rhs refer to the same position, otherwise false </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00115">115</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00116">116</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -629,7 +700,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00140">140</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00144">144</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
 </div>
@@ -643,7 +714,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_calculator.html">Calculator</a></li><li class="navelem"><a class="el" href="class_calculator_1_1_stack_iterator.html">StackIterator</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:42 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:59 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

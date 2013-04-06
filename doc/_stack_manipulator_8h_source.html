@@ -146,55 +146,62 @@ $(document).ready(function(){initNavTree('_stack_manipulator_8h_source.html','')
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaa89aa2bca1f427b3bba6335129f479f77" title="Duplicate the top value.">DUP</a>,</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment"></span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">    /** Swap the top two elements */</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaa46fc23bc4e4d57e5469a39658a6dd3e8" title="Swap the top two elements.">SWAP</a></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">    /** Create to perform operation.</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">     * @param operation to perform</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     * @return StackManipulator created</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackManipulator::Ptr</a> <a class="code" href="class_calculator_1_1_stack_manipulator.html#a85417b2a38e24ffe28fd3c12ccdffe69" title="Create to perform operation.">create</a>(<a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa" title="Operations supported.">Operation</a> operation);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html#af46a098abc9c441ed9c7d36315cf75c0">~StackManipulator</a>();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">    /** Create to perform operation.</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">     * @param operation to perform</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>(<a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa" title="Operations supported.">Operation</a> operation);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>(<a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp; operator=(<a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">virtual</span> std::string operator()(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; stack, <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> ofThis);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa" title="Operations supported.">Operation</a> op;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  };</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  /** Create StackManipulator from a string */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_manipulator_creator.html">   72</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack_manipulator_creator.html" title="Create StackManipulator from a string.">StackManipulatorCreator</a> : <span class="keyword">public</span> <a class="code" href="class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs.">StackOperatorCreator</a> {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_manipulator_creator.html#a6e1b98ce23ad883733f238a1487de9f1">~StackManipulatorCreator</a>();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_calculator_1_1_stack_manipulator_creator.html#a809046e2b2acea844562bad0415f073d">getHelp</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> <a class="code" href="class_calculator_1_1_stack_manipulator_creator.html#aab8ff4d7b97323bd95fd1fba4517f563">create</a>(<span class="keyword">const</span> std::string&amp; str);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  };</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// namespace Calculator</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif // STACK_MANIPULATOR_H</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaa46fc23bc4e4d57e5469a39658a6dd3e8" title="Swap the top two elements.">SWAP</a>,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">    /** Clear the entire stack and set of variables */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaab5859d8721cfdc0312b2838b9c985bc1" title="Clear the entire stack and set of variables.">RESET</a>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">    /** Clear the entire stack */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efaa47249a8b6c9d7df0852f9917af2bbb51" title="Clear the entire stack.">POP_ALL</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    };</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">    /** Create to perform operation.</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     * @param operation to perform</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">     * @return StackManipulator created</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackManipulator::Ptr</a> <a class="code" href="class_calculator_1_1_stack_manipulator.html#a85417b2a38e24ffe28fd3c12ccdffe69" title="Create to perform operation.">create</a>(<a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa" title="Operations supported.">Operation</a> operation);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html#af46a098abc9c441ed9c7d36315cf75c0">~StackManipulator</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">    /** Create to perform operation.</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     * @param operation to perform</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>(<a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa" title="Operations supported.">Operation</a> operation);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>(<a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp; operator=(<a class="code" href="class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations.">StackManipulator</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_result.html" title="Collection of Result information for an operation.">Result</a> <a class="code" href="class_calculator_1_1_stack_manipulator.html#a8aaf9e2e58f65a59a3242f4204e0f9b2" title="Execute this operator on stack.">operator()</a>(<a class="code" href="class_calculator_1_1_stack.html" title="Stack of values to process from.">Stack</a>&amp; stack, <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> ofThis);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa" title="Operations supported.">Operation</a> op;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  };</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">  /** Create StackManipulator from a string */</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="class_calculator_1_1_stack_manipulator_creator.html">   79</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_stack_manipulator_creator.html" title="Create StackManipulator from a string.">StackManipulatorCreator</a> : <span class="keyword">public</span> <a class="code" href="class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs.">StackOperatorCreator</a> {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_manipulator_creator.html#a6e1b98ce23ad883733f238a1487de9f1">~StackManipulatorCreator</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_calculator_1_1_stack_manipulator_creator.html#a809046e2b2acea844562bad0415f073d">getHelp</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> <a class="code" href="class_calculator_1_1_stack_manipulator_creator.html#aab8ff4d7b97323bd95fd1fba4517f563">create</a>(<span class="keyword">const</span> std::string&amp; str);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  };</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;} <span class="comment">// namespace Calculator</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif // STACK_MANIPULATOR_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_stack_manipulator_8h.html">StackManipulator.h</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 21:49:39 for Calculator by
+    <li class="footer">Generated on Sat Apr 6 2013 16:12:57 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

@@ -13,6 +13,9 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
       [ "Number", "class_calculator_1_1_number.html", "class_calculator_1_1_number" ],
       [ "NumberCreator", "class_calculator_1_1_number_creator.html", "class_calculator_1_1_number_creator" ]
     ] ],
+    [ "Result.h", "_result_8h.html", [
+      [ "Result", "class_calculator_1_1_result.html", "class_calculator_1_1_result" ]
+    ] ],
     [ "Stack.h", "_stack_8h.html", "_stack_8h" ],
     [ "StackItem.h", "_stack_item_8h.html", [
       [ "StackItem", "class_calculator_1_1_stack_item.html", "class_calculator_1_1_stack_item" ]

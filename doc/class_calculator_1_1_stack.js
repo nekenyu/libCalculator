@@ -11,6 +11,8 @@ var class_calculator_1_1_stack =
     [ "operator=", "class_calculator_1_1_stack.html#ac002e5b938486246026b846dea801b9e", null ],
     [ "operator=", "class_calculator_1_1_stack.html#a5dc25c1582a0254d9fa2f2ab4fd8abc0", null ],
     [ "popAfter", "class_calculator_1_1_stack.html#a996b3ab3326865460805e2c92fa11c7c", null ],
+    [ "popAll", "class_calculator_1_1_stack.html#aa8f98ea8fb6cbde8b2e72a77459da20f", null ],
     [ "push", "class_calculator_1_1_stack.html#a57905c95f7353a3b7aaf76e65cefd49b", null ],
+    [ "reset", "class_calculator_1_1_stack.html#abfe015a39fbbc56043e84e36c9ec890d", null ],
     [ "toString", "class_calculator_1_1_stack.html#a843c4f06814d14101fea35fd2380dd54", null ]
 ];
