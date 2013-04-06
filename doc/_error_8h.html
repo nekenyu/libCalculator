@@ -135,6 +135,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a42aaf44d88b520ca7afad9bdc08861fc"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_calculator_1_1_error.html#a42aaf44d88b520ca7afad9bdc08861fc">Calculator::Error::atPosition</a> (unsigned int position, const std::string &amp;error)</td></tr>
 <tr class="memdesc:a42aaf44d88b520ca7afad9bdc08861fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Qualify an error with a stack position.  <a href="#a42aaf44d88b520ca7afad9bdc08861fc">More...</a><br/></td></tr>
 <tr class="separator:a42aaf44d88b520ca7afad9bdc08861fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a173bd7713baa01603f6e79799b3c6945"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_calculator_1_1_error.html#a173bd7713baa01603f6e79799b3c6945">Calculator::Error::asIndent</a> (const std::string &amp;message)</td></tr>
+<tr class="memdesc:a173bd7713baa01603f6e79799b3c6945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap message with indent and linefeed.  <a href="#a173bd7713baa01603f6e79799b3c6945">More...</a><br/></td></tr>
+<tr class="separator:a173bd7713baa01603f6e79799b3c6945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -150,6 +153,9 @@ Variables</h2></td></tr>
 <tr class="memitem:aef3a237d2d65e97572aa10c1926b658c"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_calculator_1_1_error.html#aef3a237d2d65e97572aa10c1926b658c">Calculator::Error::VariableNotSet</a> = &quot;Variable is not set&quot;</td></tr>
 <tr class="memdesc:aef3a237d2d65e97572aa10c1926b658c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operation required a variable.  <a href="#aef3a237d2d65e97572aa10c1926b658c">More...</a><br/></td></tr>
 <tr class="separator:aef3a237d2d65e97572aa10c1926b658c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26dfefc72fd36f229b8d5e1dc8946a01"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_calculator_1_1_error.html#a26dfefc72fd36f229b8d5e1dc8946a01">Calculator::Error::VariableReferencesSelf</a> = &quot;Variable references itself and has no value&quot;</td></tr>
+<tr class="memdesc:a26dfefc72fd36f229b8d5e1dc8946a01"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_calculator_1_1_variable.html" title="StackItem representing a variable.">Variable</a> dereferences to itself directly or indirectly and cannot be read.  <a href="#a26dfefc72fd36f229b8d5e1dc8946a01">More...</a><br/></td></tr>
+<tr class="separator:a26dfefc72fd36f229b8d5e1dc8946a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8feb7414240965aba0eb44fa8038904"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_calculator_1_1_error.html#aa8feb7414240965aba0eb44fa8038904">Calculator::Error::NotANumber</a> = &quot;Value is not a number&quot;</td></tr>
 <tr class="memdesc:aa8feb7414240965aba0eb44fa8038904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operation required a <a class="el" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>.  <a href="#aa8feb7414240965aba0eb44fa8038904">More...</a><br/></td></tr>
 <tr class="separator:aa8feb7414240965aba0eb44fa8038904"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,7 +166,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_error_8h.html">Error.h</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 12:38:41 for Calculator by
+    <li class="footer">Generated on Fri Apr 5 2013 21:49:40 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

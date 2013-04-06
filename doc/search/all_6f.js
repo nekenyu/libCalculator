@@ -2,6 +2,7 @@ var searchData=
 [
   ['ok',['Ok',['../namespace_calculator_1_1_error.html#ab15e782922b81831102ca62da1cb7724',1,'Calculator::Error']]],
   ['operation',['Operation',['../class_calculator_1_1_binary_math_operator.html#a6aa5741c3b7f1a2e7cad95de6528f91e',1,'Calculator::BinaryMathOperator::Operation()'],['../class_calculator_1_1_stack_manipulator.html#a910c8f0186f51f18622254299a7a5efa',1,'Calculator::StackManipulator::Operation()'],['../class_calculator_1_1_variable_manipulator.html#a92f1098de7b6c850c7fa21eaea9d2a3d',1,'Calculator::VariableManipulator::Operation()']]],
+  ['operator_20bool',['operator bool',['../class_calculator_1_1_stack_iterator.html#ac17e4fce86e666b73694e3c9ac70b9a3',1,'Calculator::StackIterator']]],
   ['operator_21_3d',['operator!=',['../class_calculator_1_1_stack_iterator.html#ad0d0c31479a1490b472a0ae8e64e3d00',1,'Calculator::StackIterator']]],
   ['operator_28_29',['operator()',['../class_calculator_1_1_binary_math_operator.html#a41d40a250a1fda382315ec9e96b4743c',1,'Calculator::BinaryMathOperator::operator()()'],['../class_calculator_1_1_stack_item.html#afa968ad76f88efa9f515b07cad9161af',1,'Calculator::StackItem::operator()()'],['../class_calculator_1_1_stack_operator.html#a9dbca8fde0f793fa356d11a318f4d311',1,'Calculator::StackOperator::operator()()'],['../class_calculator_1_1_variable_manipulator.html#a5240e53bb87b6c848e91e23c5a5579c3',1,'Calculator::VariableManipulator::operator()()']]],
   ['operator_2a',['operator*',['../class_calculator_1_1_stack_iterator.html#a8fc5656525d365249bc8bbf22b1a8ee1',1,'Calculator::StackIterator']]],

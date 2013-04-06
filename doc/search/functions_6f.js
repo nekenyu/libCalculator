@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['operator_20bool',['operator bool',['../class_calculator_1_1_stack_iterator.html#ac17e4fce86e666b73694e3c9ac70b9a3',1,'Calculator::StackIterator']]],
   ['operator_21_3d',['operator!=',['../class_calculator_1_1_stack_iterator.html#ad0d0c31479a1490b472a0ae8e64e3d00',1,'Calculator::StackIterator']]],
   ['operator_28_29',['operator()',['../class_calculator_1_1_binary_math_operator.html#a41d40a250a1fda382315ec9e96b4743c',1,'Calculator::BinaryMathOperator::operator()()'],['../class_calculator_1_1_stack_item.html#afa968ad76f88efa9f515b07cad9161af',1,'Calculator::StackItem::operator()()'],['../class_calculator_1_1_stack_operator.html#a9dbca8fde0f793fa356d11a318f4d311',1,'Calculator::StackOperator::operator()()'],['../class_calculator_1_1_variable_manipulator.html#a5240e53bb87b6c848e91e23c5a5579c3',1,'Calculator::VariableManipulator::operator()()']]],
   ['operator_2a',['operator*',['../class_calculator_1_1_stack_iterator.html#a8fc5656525d365249bc8bbf22b1a8ee1',1,'Calculator::StackIterator']]],

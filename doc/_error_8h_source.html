@@ -143,27 +143,40 @@ $(document).ready(function(){initNavTree('_error_8h_source.html','');});
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <span class="keywordflow">return</span> std::string(<span class="stringliteral">&quot;At position &quot;</span>) + (0 == position ? std::string(<span class="stringliteral">&quot;top&quot;</span>) : std::to_string(position)) + <span class="stringliteral">&quot;: &quot;</span> + error;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">    /** Operation required a variable.  Item was not a variable. */</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd">   38</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd" title="Operation required a variable.">NotAVariable</a> = <span class="stringliteral">&quot;Value is not a variable&quot;</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">    /** Operation required a variable.  Variable has not been set. */</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="namespace_calculator_1_1_error.html#aef3a237d2d65e97572aa10c1926b658c">   41</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="namespace_calculator_1_1_error.html#aef3a237d2d65e97572aa10c1926b658c" title="Operation required a variable.">VariableNotSet</a> = <span class="stringliteral">&quot;Variable is not set&quot;</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">    /** Operation required a Number.  Item was not available. */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="namespace_calculator_1_1_error.html#aa8feb7414240965aba0eb44fa8038904">   44</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="namespace_calculator_1_1_error.html#aa8feb7414240965aba0eb44fa8038904" title="Operation required a Number.">NotANumber</a> = <span class="stringliteral">&quot;Value is not a number&quot;</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  };</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <span class="comment">// namespace Calculator</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif // ERROR_H</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span>  </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">    /** Wrap message with indent and linefeed.</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">     * @param message to wrap with indent and linefeed</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">     * @return wrapped message</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="namespace_calculator_1_1_error.html#a173bd7713baa01603f6e79799b3c6945">   43</a></span>&#160;    <span class="keyword">inline</span> std::string <a class="code" href="namespace_calculator_1_1_error.html#a173bd7713baa01603f6e79799b3c6945" title="Wrap message with indent and linefeed.">asIndent</a>(<span class="keyword">const</span> std::string&amp; message) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      <span class="keywordflow">return</span> std::string(<span class="stringliteral">&quot;\t&quot;</span>) + message + <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">    /** Operation required a variable.  Item was not a variable. */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd">   48</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="namespace_calculator_1_1_error.html#aca13850fc66fc982aab990f6e290bbfd" title="Operation required a variable.">NotAVariable</a> = <span class="stringliteral">&quot;Value is not a variable&quot;</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">    /** Operation required a variable.  Variable has not been set. */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="namespace_calculator_1_1_error.html#aef3a237d2d65e97572aa10c1926b658c">   51</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="namespace_calculator_1_1_error.html#aef3a237d2d65e97572aa10c1926b658c" title="Operation required a variable.">VariableNotSet</a> = <span class="stringliteral">&quot;Variable is not set&quot;</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">    /** Variable dereferences to itself directly or indirectly and cannot be read */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="namespace_calculator_1_1_error.html#a26dfefc72fd36f229b8d5e1dc8946a01">   54</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="namespace_calculator_1_1_error.html#a26dfefc72fd36f229b8d5e1dc8946a01" title="Variable dereferences to itself directly or indirectly and cannot be read.">VariableReferencesSelf</a> = <span class="stringliteral">&quot;Variable references itself and has no value&quot;</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">    /** Operation required a Number.  Item was not available. */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="namespace_calculator_1_1_error.html#aa8feb7414240965aba0eb44fa8038904">   57</a></span>&#160;    <span class="keyword">const</span> std::string <a class="code" href="namespace_calculator_1_1_error.html#aa8feb7414240965aba0eb44fa8038904" title="Operation required a Number.">NotANumber</a> = <span class="stringliteral">&quot;Value is not a number&quot;</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  };</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} <span class="comment">// namespace Calculator</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif // ERROR_H</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span>  </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_error_8h.html">Error.h</a></li>
-    <li class="footer">Generated on Fri Apr 5 2013 12:38:40 for Calculator by
+    <li class="footer">Generated on Fri Apr 5 2013 21:49:39 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

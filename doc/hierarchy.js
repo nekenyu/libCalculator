@@ -4,6 +4,7 @@ var hierarchy =
     [ "Calculator::FixedOperatorExecutive", "class_calculator_1_1_fixed_operator_executive.html", null ],
     [ "Calculator::Stack", "class_calculator_1_1_stack.html", null ],
     [ "Calculator::StackIterator", "class_calculator_1_1_stack_iterator.html", null ],
+    [ "Calculator::StackIteratorPimpl", "class_calculator_1_1_stack_iterator_pimpl.html", null ],
     [ "Calculator::StackOperator", "class_calculator_1_1_stack_operator.html", [
       [ "Calculator::BinaryMathOperator", "class_calculator_1_1_binary_math_operator.html", null ],
       [ "Calculator::StackItem", "class_calculator_1_1_stack_item.html", [
