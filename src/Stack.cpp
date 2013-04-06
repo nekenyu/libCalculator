@@ -22,10 +22,37 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "VariableSet.h"
 #include "Error.h"
 
-namespace {
-  using namespace Calculator;
+namespace Calculator {
 
-  StackItem::Ptr dereferenceVariable(const VariableSet& variables, StackItem::Ptr in) {
+  /*
+   * StackIterator
+   */
+
+  class StackIteratorPimpl {
+  public:
+    typedef std::shared_ptr<StackIteratorPimpl> Ptr;
+    typedef std::vector<StackItem::Ptr>::iterator Iterator;
+
+    StackIterator::Hint hint = StackIterator::Hint::DEREFERENCE_NEXT;
+    const VariableSet& variables;
+    Iterator iter;
+    unsigned int position = 0;
+    std::vector<std::string> errors;
+
+    StackIteratorPimpl(const VariableSet& theVariables, const Iterator& theIter)
+    : variables(theVariables), iter(theIter)
+    {
+    }
+
+    void addError(const std::string& error);
+    StackItem::Ptr dereference(StackItem::Ptr in);
+  };
+
+  void StackIteratorPimpl::addError(const std::string& error) {
+    errors.push_back(Error::atPosition(position, error));
+  }
+
+  StackItem::Ptr StackIteratorPimpl::dereference(StackItem::Ptr in) {
     Variable::Ptr asVariable = std::dynamic_pointer_cast<Variable, StackItem>(in);
     if(!asVariable) {
       return in;
@@ -44,36 +71,17 @@ namespace {
       // present.  If already present, we have a circle and cannot dereference
       auto result = varNames.insert(itemAsVar->getName());
       if(!result.second) {
+	addError(Error::VariableReferencesSelf);
 	return StackItem::Ptr();
       }
 
       // Dereference curr. An unset reference will be caught by the while loop
       item = variables.get(itemAsVar->getName());
     }
+
+    addError(Error::VariableNotSet);
     return StackItem::Ptr();
   }
-} // anonymous namespace
-
-namespace Calculator {
-
-  /*
-   * StackIterator
-   */
-
-  class StackIteratorPimpl {
-  public:
-    typedef std::shared_ptr<StackIteratorPimpl> Ptr;
-    typedef std::vector<StackItem::Ptr>::iterator Iterator;
-
-    StackIterator::Hint hint = StackIterator::Hint::DEREFERENCE_NEXT;
-    const VariableSet& variables;
-    Iterator iter;
-
-    StackIteratorPimpl(const VariableSet& theVariables, const Iterator& theIter)
-    : variables(theVariables), iter(theIter)
-    {
-    }
-  };
 
   StackIterator::StackIterator(std::shared_ptr<StackIteratorPimpl> thePimpl)
     : pimpl(thePimpl)
@@ -93,12 +101,14 @@ namespace Calculator {
 
   StackIterator& StackIterator::operator++() {
     --pimpl->iter;
+    ++pimpl->position;
     return *this;
   }
 
   StackIterator StackIterator::operator++(int) {
     StackIterator copy = *this;
     --pimpl->iter;
+    ++pimpl->position;
     return copy;
   }
 
@@ -110,9 +120,13 @@ namespace Calculator {
     return rhs.pimpl->iter != pimpl->iter;
   }
 
+  StackIterator::operator bool() const {
+    return 0 == pimpl->errors.size();
+  }
+
   StackItem::Ptr StackIterator::operator*() {
     if(Hint::DEREFERENCE_NEXT == pimpl->hint) {
-      return dereferenceVariable(pimpl->variables, *pimpl->iter);
+      return pimpl->dereference(*pimpl->iter);
     } else {
       pimpl->hint = Hint::DEREFERENCE_NEXT;
       return *pimpl->iter;
@@ -126,6 +140,14 @@ namespace Calculator {
   StackIterator& StackIterator::setHint(Hint theHint) {
     pimpl->hint = theHint;
     return *this;
+  }
+
+  std::string StackIterator::getErrors() const {
+    std::ostringstream os;
+    for(auto line : pimpl->errors) {
+      os << Error::asIndent(line);
+    }
+    return os.str();
   }
 
   StackIterator::PimplPtr StackIterator::getPimpl() {
@@ -198,10 +220,6 @@ namespace Calculator {
     pimpl->stack.erase(from, pimpl->stack.end());
   }
   
-  StackItem::Ptr Stack::dereference(StackItem::Ptr in) const {
-    return dereferenceVariable(pimpl->variables, in);
-  }
-
   void Stack::push(StackItem::Ptr item) {
     pimpl->stack.push_back(item);
   }

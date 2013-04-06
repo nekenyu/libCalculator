@@ -34,11 +34,24 @@ namespace Calculator {
       return std::string("At position ") + (0 == position ? std::string("top") : std::to_string(position)) + ": " + error;
     }
 
+    /** Wrap message with indent and linefeed.
+     *
+     * @param message to wrap with indent and linefeed
+     *
+     * @return wrapped message
+     */
+    inline std::string asIndent(const std::string& message) {
+      return std::string("\t") + message + "\n";
+    }
+
     /** Operation required a variable.  Item was not a variable. */
     const std::string NotAVariable = "Value is not a variable";
 
     /** Operation required a variable.  Variable has not been set. */
     const std::string VariableNotSet = "Variable is not set";
+
+    /** Variable dereferences to itself directly or indirectly and cannot be read */
+    const std::string VariableReferencesSelf = "Variable references itself and has no value";
 
     /** Operation required a Number.  Item was not available. */
     const std::string NotANumber = "Value is not a number";

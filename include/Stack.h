@@ -88,7 +88,10 @@ namespace Calculator {
      * true
      */
     bool operator!=(const StackIterator& rhs) const;
-    
+
+    /** @return false if any errors have been reported, otherwise true */
+    operator bool() const;
+
     /** @return the object at the current position as per the current hint and reset
      * the hint for the next read to Hint::DEREFERENCE_NEXT
      */
@@ -121,9 +124,12 @@ namespace Calculator {
       return asT;
     }
     
+    /** @return Errors, such as conversion and variable, thus far, if any */
+    std::string getErrors() const;
+
     /** @return the private implementation */
     PimplPtr getPimpl();
-    
+
   private:
     /** The private implementation */
     PimplPtr pimpl;
@@ -221,16 +227,6 @@ namespace Calculator {
 
     /** Pop all items after iter on the Stack */
     void popAfter(StackIterator& iter);
-
-    /** Get the value of in: if a variable, look it up, otherwise itself
-     *
-     * @param in StackItem::Ptr to dereference
-     *
-     * @return StackItem holding the value of the variable in, or in itself
-     *
-     * \note Unset variables are returned invalid
-     */
-    StackItemPtr dereference(StackItemPtr in) const;
 
     /** Push item onto the stack
      *
