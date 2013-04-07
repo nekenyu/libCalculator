@@ -118,13 +118,18 @@ namespace Calculator {
      * the cast fails, the returned value is empty
      *
      * @tparam T desired type to cast the value to
+     * @param required if true, conversion failure is logged as a positional
+     * message in the Result.
      *
      * @return the current value from operator* as a T::Ptr, which may be empty if
      * the cast failed
      */
     template<typename T>
-      auto as() -> typename T::Ptr {
+      auto as(bool required = true) -> typename T::Ptr {
       typename T::Ptr asT = std::dynamic_pointer_cast<T, StackItem>(this->operator*());
+      if(required && !asT) {
+	addError(std::string("Value is not ") + T::indef_type_string());
+      }
       return asT;
     }
     

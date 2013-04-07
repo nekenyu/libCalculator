@@ -43,27 +43,6 @@ Result doSomething(Stack& stack) {
        >> item4
        >> item5;
 
-  // Ensure item2 is a number
-  if(!item2) {
-    iter.addError(1, Error::NotANumber);
-  }
-
-  // Ensure item3 was not dereferenced
-  if(!item3) {
-    iter.addError(2, Error::NotAVariable);
-  }
-
-  // Ensure item4 is a number
-  if(!item4) {
-    iter.addError(3, Error::NotANumber);
-  }
-
-  // Ensure item5 is a Variable
-  // Note: For the purpose of example, this will fail as we inserted the number
-  if(!item5) {
-    iter.addError(4, Error::NotAVariable);
-  }
-
   if(!iter) {
     return iter.getResult();
   }

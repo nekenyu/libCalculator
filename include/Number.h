@@ -30,6 +30,10 @@ namespace Calculator {
   public:
     typedef std::shared_ptr<Number> Ptr;
 
+    static const std::string indef_type_string()  {
+      return "a Number";
+    }
+
     /** Create with theValue to represent.
      *
      * @param theValue to be stored in this

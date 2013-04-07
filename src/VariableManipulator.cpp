@@ -45,9 +45,6 @@ namespace Calculator {
 	   >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> value;
       // stack.popAfter() deferred until after variable evaluation
 
-      if(!variable) {
-	iter.addError(0, Error::NotAVariable);
-      }
       if(!iter) {
 	return iter.getResult();
       }
@@ -63,12 +60,14 @@ namespace Calculator {
       iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> variable;
       // stack.popAfter() deferred until after variable evaluation
 
-      std::string errors;
       if(!variable) {
-	iter.addError(0, Error::NotAVariable);
+	// Already detected non variable, just return errors
+	return iter.getResult();
       }
+
       StackItem::Ptr result = stack.getVariables().get(variable->getName());
       if(!result) {
+	// Error not detected by iter, add it
 	iter.addError(0, Error::VariableNotSet);
       }
       if(!iter) {

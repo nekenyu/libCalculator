@@ -30,6 +30,10 @@ namespace Calculator {
   public:
     typedef std::shared_ptr<Variable> Ptr;
 
+    static const std::string indef_type_string() {
+      return "a Variable";
+    }
+
     /** Create with theName to represent.
      *
      * @param theName to be stored in this

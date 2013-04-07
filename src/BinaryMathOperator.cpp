@@ -128,13 +128,6 @@ namespace Calculator {
     iter >> first >> second;
     // Defer stack.popAfter() until after evaluation
 
-    if(!first) {
-      iter.addError(0, Error::NotANumber);
-    }
-    if(!second) {
-      iter.addError(1, Error::NotANumber);
-    }
-
     if(!iter) {
       return iter.getResult();
     }
