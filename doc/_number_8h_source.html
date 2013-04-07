@@ -138,63 +138,67 @@ $(document).ready(function(){initNavTree('_number_8h_source.html','');});
 <div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="class_calculator_1_1_number.html">   29</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a> : <span class="keyword">public</span> <a class="code" href="class_calculator_1_1_stack_item.html" title="Base class of all items that can be on the stack.">StackItem</a> {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="class_calculator_1_1_number.html#a3749b8c4c9edb131ac16529c0c8fdff0">   31</a></span>&#160;    <span class="keyword">typedef</span> std::shared_ptr&lt;Number&gt; <a class="code" href="class_calculator_1_1_number.html#a3749b8c4c9edb131ac16529c0c8fdff0">Ptr</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">    /** Create with theValue to represent.</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">     * @param theValue to be stored in this</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">     * @return Number created</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_calculator_1_1_number.html#a3749b8c4c9edb131ac16529c0c8fdff0">Number::Ptr</a> <a class="code" href="class_calculator_1_1_number.html#acb72db32fe559b21c551c29608667502" title="Create with theValue to represent.">create</a>(<span class="keywordtype">float</span> theValue);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_number.html#a2772179543c39cbb5c7c38aa571f0675">~Number</a>();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;   <span class="keyword">protected</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">    /** Create with theValue to represent.</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">     * @param theValue to be stored in this</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_calculator_1_1_number.html#a35a6157f68a72567de2d0c6138248888">Number</a>(<span class="keywordtype">float</span> theValue);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="class_calculator_1_1_number.html#a35a6157f68a72567de2d0c6138248888">Number</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="class_calculator_1_1_number.html#a35a6157f68a72567de2d0c6138248888">Number</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_calculator_1_1_number.html#a35a6157f68a72567de2d0c6138248888">Number</a>(<a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp; <a class="code" href="class_calculator_1_1_number.html#a10b410a7456090086c95453f5668414a">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp; <a class="code" href="class_calculator_1_1_number.html#a10b410a7456090086c95453f5668414a">operator=</a>(<a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">    /** @return the value this represents */</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_calculator_1_1_number.html#aca5a42ab25027a1fee8ee55155d20e64">getValue</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_calculator_1_1_number.html#a3d24b8eacdc8f6230b9c3ec82c9e5e40">toString</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">    /** The value this represents */</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> value;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">    /** The value this represents */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">const</span> std::string valueString;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  };</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="class_calculator_1_1_number.html#a771ce659ba1589d40959c50c4c280d86">   33</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> std::string <a class="code" href="class_calculator_1_1_number.html#a771ce659ba1589d40959c50c4c280d86">indef_type_string</a>()  {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <span class="keywordflow">return</span> <span class="stringliteral">&quot;a Number&quot;</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">    /** Create with theValue to represent.</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">     * @param theValue to be stored in this</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">     * @return Number created</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_calculator_1_1_number.html#a3749b8c4c9edb131ac16529c0c8fdff0">Number::Ptr</a> <a class="code" href="class_calculator_1_1_number.html#acb72db32fe559b21c551c29608667502" title="Create with theValue to represent.">create</a>(<span class="keywordtype">float</span> theValue);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_number.html#a2772179543c39cbb5c7c38aa571f0675">~Number</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   <span class="keyword">protected</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">    /** Create with theValue to represent.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">     * @param theValue to be stored in this</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_calculator_1_1_number.html#a35a6157f68a72567de2d0c6138248888">Number</a>(<span class="keywordtype">float</span> theValue);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_calculator_1_1_number.html#a35a6157f68a72567de2d0c6138248888">Number</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_calculator_1_1_number.html#a35a6157f68a72567de2d0c6138248888">Number</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="class_calculator_1_1_number.html#a35a6157f68a72567de2d0c6138248888">Number</a>(<a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp; <a class="code" href="class_calculator_1_1_number.html#a10b410a7456090086c95453f5668414a">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp; <a class="code" href="class_calculator_1_1_number.html#a10b410a7456090086c95453f5668414a">operator=</a>(<a class="code" href="class_calculator_1_1_number.html" title="StackItem representing a number.">Number</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">    /** @return the value this represents */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_calculator_1_1_number.html#aca5a42ab25027a1fee8ee55155d20e64">getValue</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_calculator_1_1_number.html#a3d24b8eacdc8f6230b9c3ec82c9e5e40">toString</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">    /** The value this represents */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> value;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">  /** Creates Numbers from strings that convert to numbers */</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="class_calculator_1_1_number_creator.html">   71</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_number_creator.html" title="Creates Numbers from strings that convert to numbers.">NumberCreator</a> : <span class="keyword">public</span> <a class="code" href="class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs.">StackOperatorCreator</a> {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_number_creator.html#a7485ddd132d78612fde6de80d3762e48">~NumberCreator</a>();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_calculator_1_1_number_creator.html#ac2b5846118896af4438d80334b6b7e85">getHelp</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> <a class="code" href="class_calculator_1_1_number_creator.html#ace8ce21d2b03c07824f1c046df613e76">create</a>(<span class="keyword">const</span> std::string&amp; str);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  };</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// namespace Calculator</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif // NUMBER_H</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">    /** The value this represents */</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">const</span> std::string valueString;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  };</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">  /** Creates Numbers from strings that convert to numbers */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="class_calculator_1_1_number_creator.html">   75</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_calculator_1_1_number_creator.html" title="Creates Numbers from strings that convert to numbers.">NumberCreator</a> : <span class="keyword">public</span> <a class="code" href="class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs.">StackOperatorCreator</a> {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_number_creator.html#a7485ddd132d78612fde6de80d3762e48">~NumberCreator</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="class_calculator_1_1_number_creator.html#ac2b5846118896af4438d80334b6b7e85">getHelp</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_calculator_1_1_stack_operator.html#a410cf7fd30a2b822393a1ce63eff650d">StackOperator::Ptr</a> <a class="code" href="class_calculator_1_1_number_creator.html#ace8ce21d2b03c07824f1c046df613e76">create</a>(<span class="keyword">const</span> std::string&amp; str);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  };</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;} <span class="comment">// namespace Calculator</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif // NUMBER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_number_8h.html">Number.h</a></li>
-    <li class="footer">Generated on Sat Apr 6 2013 16:12:57 for Calculator by
+    <li class="footer">Generated on Sun Apr 7 2013 10:43:05 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>

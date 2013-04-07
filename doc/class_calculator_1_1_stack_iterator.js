@@ -12,7 +12,7 @@ var class_calculator_1_1_stack_iterator =
     [ "StackIterator", "class_calculator_1_1_stack_iterator.html#abff17ea7ce01142ab9c3d9cc8cbf1a7c", null ],
     [ "addError", "class_calculator_1_1_stack_iterator.html#ace86c1a59829bdec4b5a4f97ee9a270c", null ],
     [ "addError", "class_calculator_1_1_stack_iterator.html#a6e7fbed2f9dadf4cd859a04d1bedd842", null ],
-    [ "as", "class_calculator_1_1_stack_iterator.html#a248fedd484f1b536a9022467dffa961c", null ],
+    [ "as", "class_calculator_1_1_stack_iterator.html#a2ea0c3e9dd4e6dff9239c12d32a1fcb5", null ],
     [ "getPimpl", "class_calculator_1_1_stack_iterator.html#ab37d4b853b684c05a41fe90fc1cffbc5", null ],
     [ "getResult", "class_calculator_1_1_stack_iterator.html#a7f43c0120f19a7ce1ec5b407f3cb246a", null ],
     [ "noDereference", "class_calculator_1_1_stack_iterator.html#a6f8636f80b892e43b3a5465e0269b115", null ],

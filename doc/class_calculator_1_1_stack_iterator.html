@@ -170,10 +170,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aac76a25c5e2471b5ba62f6860f35500d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_calculator_1_1_stack_iterator.html">StackIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#aac76a25c5e2471b5ba62f6860f35500d">setHint</a> (<a class="el" href="class_calculator_1_1_stack_iterator.html#a165e9086d063b35b435716a6c946e7a1">Hint</a> theHint)</td></tr>
 <tr class="memdesc:aac76a25c5e2471b5ba62f6860f35500d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current hint for reading the value to theHint.  <a href="#aac76a25c5e2471b5ba62f6860f35500d">More...</a><br/></td></tr>
 <tr class="separator:aac76a25c5e2471b5ba62f6860f35500d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a248fedd484f1b536a9022467dffa961c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a248fedd484f1b536a9022467dffa961c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#a248fedd484f1b536a9022467dffa961c">as</a> () -&gt; typename T::Ptr</td></tr>
-<tr class="memdesc:a248fedd484f1b536a9022467dffa961c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method to read the current value by operator-&gt;* (respecting the current hint) and return it to a T::Ptr by std::dynamic_pointer_cast.  <a href="#a248fedd484f1b536a9022467dffa961c">More...</a><br/></td></tr>
-<tr class="separator:a248fedd484f1b536a9022467dffa961c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ea0c3e9dd4e6dff9239c12d32a1fcb5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a2ea0c3e9dd4e6dff9239c12d32a1fcb5"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#a2ea0c3e9dd4e6dff9239c12d32a1fcb5">as</a> (bool required=true) -&gt; typename T::Ptr</td></tr>
+<tr class="memdesc:a2ea0c3e9dd4e6dff9239c12d32a1fcb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience method to read the current value by operator-&gt;* (respecting the current hint) and return it to a T::Ptr by std::dynamic_pointer_cast.  <a href="#a2ea0c3e9dd4e6dff9239c12d32a1fcb5">More...</a><br/></td></tr>
+<tr class="separator:a2ea0c3e9dd4e6dff9239c12d32a1fcb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f43c0120f19a7ce1ec5b407f3cb246a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_calculator_1_1_result.html">Result</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#a7f43c0120f19a7ce1ec5b407f3cb246a">getResult</a> () const </td></tr>
 <tr class="separator:a7f43c0120f19a7ce1ec5b407f3cb246a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace86c1a59829bdec4b5a4f97ee9a270c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_calculator_1_1_stack_iterator.html#ace86c1a59829bdec4b5a4f97ee9a270c">addError</a> (unsigned int position, const std::string &amp;message)</td></tr>
@@ -380,8 +380,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a4">StackReadingExample.cpp</a>.</dd>
-</dl>
+
 <p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00153">153</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
 </div>
@@ -412,7 +411,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a248fedd484f1b536a9022467dffa961c"></a>
+<a class="anchor" id="a2ea0c3e9dd4e6dff9239c12d32a1fcb5"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -424,7 +423,8 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">auto Calculator::StackIterator::as </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>required</em> = <code>true</code></td><td>)</td>
           <td> -&gt; typename T::Ptr </td>
         </tr>
       </table>
@@ -439,13 +439,19 @@ template&lt;typename T &gt; </div>
 <p>If the cast fails, the returned value is empty</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>desired type to cast the value to</td></tr>
+    <tr><td class="paramname">T</td><td>desired type to cast the value to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">required</td><td>if true, conversion failure is logged as a positional message in the <a class="el" href="class_calculator_1_1_result.html" title="Collection of Result information for an operation.">Result</a>.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the current value from operator* as a T::Ptr, which may be empty if the cast failed </dd></dl>
 
-<p>Definition at line <a class="el" href="_stack_8h_source.html#l00126">126</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
+<p>Definition at line <a class="el" href="_stack_8h_source.html#l00128">128</a> of file <a class="el" href="_stack_8h_source.html">Stack.h</a>.</p>
 
 </div>
 </div>
@@ -480,7 +486,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Errors, such as conversion and variable, thus far, if any </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a7">StackReadingExample.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="_stack_reading_example_8cpp-example.html#a4">StackReadingExample.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="_stack_8cpp_source.html#l00149">149</a> of file <a class="el" href="_stack_8cpp_source.html">Stack.cpp</a>.</p>
 
@@ -714,7 +720,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_calculator.html">Calculator</a></li><li class="navelem"><a class="el" href="class_calculator_1_1_stack_iterator.html">StackIterator</a></li>
-    <li class="footer">Generated on Sat Apr 6 2013 16:12:59 for Calculator by
+    <li class="footer">Generated on Sun Apr 7 2013 10:43:07 for Calculator by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.3.1 </li>
   </ul>
