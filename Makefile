@@ -42,6 +42,6 @@ cleanest:
 	-rm -rf doc_built
 
 runTest: all
-	test/cppunit-test.exe
+	build/test/cppunit-test.exe
 
 build: all doxygen runTest
