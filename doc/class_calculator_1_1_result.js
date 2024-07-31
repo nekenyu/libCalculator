@@ -10,10 +10,10 @@ var class_calculator_1_1_result =
     [ "Result", "class_calculator_1_1_result.html#aaa760fb11aa3cd45ee797d2683b49328", null ],
     [ "addMessage", "class_calculator_1_1_result.html#ab0c527228222ee45940f4f4c37f7d054", null ],
     [ "addPositionMessage", "class_calculator_1_1_result.html#a996bf8d3489abb6211620f01a2819347", null ],
-    [ "getMessages", "class_calculator_1_1_result.html#a033942cdaaa0183ff9a1633b80d522fd", null ],
-    [ "getPositionMessages", "class_calculator_1_1_result.html#a577604425cacb2c63290b94154958f8f", null ],
-    [ "hasMessage", "class_calculator_1_1_result.html#aa854ea10601f6a7c357b6a5377ec79bd", null ],
-    [ "hasPositionMessage", "class_calculator_1_1_result.html#a7d85ce532b9da3293d11a263ecd76492", null ],
-    [ "toString", "class_calculator_1_1_result.html#a2a386dfbe8f5637713150a3cf32c91f8", null ],
-    [ "toString", "class_calculator_1_1_result.html#a2543972d7485b78c2e4e6621c9747436", null ]
+    [ "getMessages", "class_calculator_1_1_result.html#a2d80c8702c05eff37728cc148ae1d172", null ],
+    [ "getPositionMessages", "class_calculator_1_1_result.html#a96cf652d63cd3b2f47d5baa148a6ae10", null ],
+    [ "hasMessage", "class_calculator_1_1_result.html#ac5dfc9dc891faad2b491f2fb93e4d662", null ],
+    [ "hasPositionMessage", "class_calculator_1_1_result.html#a636ce5043a2ec999a80ca5c07adf2fac", null ],
+    [ "toString", "class_calculator_1_1_result.html#ac5d86a5e9d3aaadfe8c7d548cbc2ca0c", null ],
+    [ "toString", "class_calculator_1_1_result.html#a452c71c05b3e63b0112aee40b93bfe5c", null ]
 ];

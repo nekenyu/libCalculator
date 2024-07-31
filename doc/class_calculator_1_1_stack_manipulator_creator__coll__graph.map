@@ -1,3 +1,4 @@
 <map id="Calculator::StackManipulatorCreator" name="Calculator::StackManipulatorCreator">
-<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs." alt="" coords="13,6,179,47"/>
+<area shape="rect" id="node1" title="Create StackManipulator from a string." alt="" coords="5,95,216,136"/>
+<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs." alt="" coords="16,5,205,47"/>
 </map>

@@ -1,3 +1,4 @@
 <map id="Calculator::VariableManipulator" name="Calculator::VariableManipulator">
-<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator.html" title="Base class for all operators." alt="" coords="21,5,187,32"/>
+<area shape="rect" id="node1" title="Variable Modifier for Variable Operations." alt="" coords="5,80,232,107"/>
+<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator.html" title="Base class for all operators." alt="" coords="24,5,213,32"/>
 </map>

@@ -1,9 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_calculator_1_1_stack_operator.html" title="Base class for all operators." alt="" coords="6,81,173,108"/>
-<area shape="rect" id="node2" href="$class_calculator_1_1_binary_math_operator.html" title="Stack Modifier for Binary Math Operations." alt="" coords="222,5,421,32"/>
-<area shape="rect" id="node3" href="$class_calculator_1_1_stack_item.html" title="Base class of all items that can be on the stack." alt="" coords="252,56,391,83"/>
-<area shape="rect" id="node6" href="$class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations." alt="" coords="230,107,413,133"/>
-<area shape="rect" id="node7" href="$class_calculator_1_1_variable_manipulator.html" title="Variable Modifier for Variable Operations." alt="" coords="223,157,420,184"/>
-<area shape="rect" id="node4" href="$class_calculator_1_1_number.html" title="StackItem representing a number." alt="" coords="471,31,599,57"/>
-<area shape="rect" id="node5" href="$class_calculator_1_1_variable.html" title="StackItem representing a variable." alt="" coords="469,81,600,108"/>
+<area shape="rect" id="node1" href="$class_calculator_1_1_stack_operator.html" title="Base class for all operators." alt="" coords="5,81,195,108"/>
+<area shape="rect" id="node2" href="$class_calculator_1_1_binary_math_operator.html" title="Stack Modifier for Binary Math Operations." alt="" coords="243,5,471,32"/>
+<area shape="rect" id="node3" href="$class_calculator_1_1_stack_item.html" title="Base class of all items that can be on the stack." alt="" coords="275,56,438,83"/>
+<area shape="rect" id="node6" href="$class_calculator_1_1_stack_manipulator.html" title="Stack Modifier for Stack Operations." alt="" coords="251,107,462,133"/>
+<area shape="rect" id="node7" href="$class_calculator_1_1_variable_manipulator.html" title="Variable Modifier for Variable Operations." alt="" coords="243,157,470,184"/>
+<area shape="rect" id="node4" href="$class_calculator_1_1_number.html" title="StackItem representing a number." alt="" coords="519,31,667,57"/>
+<area shape="rect" id="node5" href="$class_calculator_1_1_variable.html" title="StackItem representing a variable." alt="" coords="519,81,668,108"/>
 </map>

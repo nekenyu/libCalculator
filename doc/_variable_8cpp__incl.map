@@ -1,7 +1,12 @@
 <map id="src/Variable.cpp" name="src/Variable.cpp">
-<area shape="rect" id="node6" href="$_stack_8h.html" title="Stack.h" alt="" coords="316,155,380,181"/>
-<area shape="rect" id="node8" href="$_variable_8h.html" title="Variable.h" alt="" coords="403,80,481,107"/>
-<area shape="rect" id="node7" href="$_result_8h.html" title="Result.h" alt="" coords="365,304,432,331"/>
-<area shape="rect" id="node9" href="$_stack_item_8h.html" title="StackItem.h" alt="" coords="405,155,491,181"/>
-<area shape="rect" id="node10" href="$_stack_operator_8h.html" title="StackOperator.h" alt="" coords="389,229,504,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="211,5,336,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,83,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="107,80,165,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="189,80,264,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="289,80,351,107"/>
+<area shape="rect" id="node6" href="$_stack_8h.html" title=" " alt="" coords="346,155,417,181"/>
+<area shape="rect" id="node8" href="$_variable_8h.html" title=" " alt="" coords="441,80,527,107"/>
+<area shape="rect" id="node7" href="$_result_8h.html" title=" " alt="" coords="399,304,473,331"/>
+<area shape="rect" id="node9" href="$_stack_item_8h.html" title=" " alt="" coords="441,155,541,181"/>
+<area shape="rect" id="node10" href="$_stack_operator_8h.html" title=" " alt="" coords="425,229,551,256"/>
 </map>

@@ -1,3 +1,4 @@
 <map id="Calculator::VariableCreator" name="Calculator::VariableCreator">
-<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs." alt="" coords="7,6,173,47"/>
+<area shape="rect" id="node1" title="Creates Variables from strings that convert to variables." alt="" coords="5,95,203,121"/>
+<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs." alt="" coords="9,5,199,47"/>
 </map>

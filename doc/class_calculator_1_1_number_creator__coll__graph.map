@@ -1,3 +1,4 @@
 <map id="Calculator::NumberCreator" name="Calculator::NumberCreator">
-<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs." alt="" coords="6,6,172,47"/>
+<area shape="rect" id="node1" title="Creates Numbers from strings that convert to numbers." alt="" coords="5,95,201,121"/>
+<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs." alt="" coords="9,5,198,47"/>
 </map>

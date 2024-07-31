@@ -1,6 +1,7 @@
 <map id="include/Variable.h" name="include/Variable.h">
-<area shape="rect" id="node2" href="$_stack_8cpp.html" title="src/Stack.cpp" alt="" coords="5,80,104,107"/>
-<area shape="rect" id="node3" href="$_stack_operator_factories_8cpp.html" title="src/StackOperatorFactories.cpp" alt="" coords="129,80,327,107"/>
-<area shape="rect" id="node4" href="$_variable_8cpp.html" title="src/Variable.cpp" alt="" coords="352,80,467,107"/>
-<area shape="rect" id="node5" href="$_variable_manipulator_8cpp.html" title="src/VariableManipulator.cpp" alt="" coords="491,80,671,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="278,5,417,32"/>
+<area shape="rect" id="node2" href="$_stack_8cpp.html" title=" " alt="" coords="5,80,113,107"/>
+<area shape="rect" id="node3" href="$_stack_operator_factories_8cpp.html" title=" " alt="" coords="137,80,360,107"/>
+<area shape="rect" id="node4" href="$_variable_8cpp.html" title=" " alt="" coords="385,80,510,107"/>
+<area shape="rect" id="node5" href="$_variable_manipulator_8cpp.html" title=" " alt="" coords="534,80,737,107"/>
 </map>

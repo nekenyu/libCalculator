@@ -6,8 +6,8 @@ var class_calculator_1_1_number =
     [ "Number", "class_calculator_1_1_number.html#a35a6157f68a72567de2d0c6138248888", null ],
     [ "Number", "class_calculator_1_1_number.html#a886fbf4192f4830e7127055319caae3e", null ],
     [ "Number", "class_calculator_1_1_number.html#a63ef8467d08bdcbc815b6ec391a74fb9", null ],
-    [ "getValue", "class_calculator_1_1_number.html#aca5a42ab25027a1fee8ee55155d20e64", null ],
+    [ "getValue", "class_calculator_1_1_number.html#ae5bd8926d3e7d6cd41bd62ff5fd88fd1", null ],
     [ "operator=", "class_calculator_1_1_number.html#a10b410a7456090086c95453f5668414a", null ],
     [ "operator=", "class_calculator_1_1_number.html#afbb837275059d1b3f50d97e8f1e5e050", null ],
-    [ "toString", "class_calculator_1_1_number.html#a3d24b8eacdc8f6230b9c3ec82c9e5e40", null ]
+    [ "toString", "class_calculator_1_1_number.html#a188d118b2147088eea3a980c5a800768", null ]
 ];

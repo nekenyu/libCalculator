@@ -1,3 +1,4 @@
 <map id="Calculator::StackItem" name="Calculator::StackItem">
-<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator.html" title="Base class for all operators." alt="" coords="5,5,171,32"/>
+<area shape="rect" id="node1" title="Base class of all items that can be on the stack." alt="" coords="19,80,181,107"/>
+<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator.html" title="Base class for all operators." alt="" coords="5,5,195,32"/>
 </map>

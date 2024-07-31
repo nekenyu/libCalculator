@@ -1,22 +1,23 @@
 <map id="include/Result.h" name="include/Result.h">
-<area shape="rect" id="node2" href="$_result_8cpp.html" title="src/Result.cpp" alt="" coords="391,80,493,107"/>
-<area shape="rect" id="node3" href="$_stack_operator_8h.html" title="include/StackOperator.h" alt="" coords="761,80,916,107"/>
-<area shape="rect" id="node21" href="$_stack_8h.html" title="include/Stack.h" alt="" coords="461,229,568,256"/>
-<area shape="rect" id="node4" href="$_stack_operator_factory_8cpp.html" title="src/StackOperatorFactory.cpp" alt="" coords="743,155,933,181"/>
-<area shape="rect" id="node5" href="$_binary_math_operator_8h.html" title="include/BinaryMathOperator.h" alt="" coords="1289,229,1479,256"/>
-<area shape="rect" id="node8" href="$_executive_8h.html" title="include/Executive.h" alt="" coords="107,155,236,181"/>
-<area shape="rect" id="node10" href="$_stack_item_8h.html" title="include/StackItem.h" alt="" coords="589,155,717,181"/>
-<area shape="rect" id="node19" href="$_stack_manipulator_8h.html" title="include/StackManipulator.h" alt="" coords="1093,229,1264,256"/>
-<area shape="rect" id="node20" href="$_variable_manipulator_8h.html" title="include/VariableManipulator.h" alt="" coords="881,229,1068,256"/>
-<area shape="rect" id="node6" href="$_binary_math_operator_8cpp.html" title="src/BinaryMathOperator.cpp" alt="" coords="1090,304,1272,331"/>
-<area shape="rect" id="node7" href="$_stack_operator_factories_8cpp.html" title="src/StackOperatorFactories.cpp" alt="" coords="1297,304,1495,331"/>
-<area shape="rect" id="node9" href="$_executive_8cpp.html" title="src/Executive.cpp" alt="" coords="5,304,128,331"/>
-<area shape="rect" id="node11" href="$_stack_item_8cpp.html" title="src/StackItem.cpp" alt="" coords="152,304,275,331"/>
-<area shape="rect" id="node12" href="$_number_8h.html" title="include/Number.h" alt="" coords="738,229,856,256"/>
-<area shape="rect" id="node16" href="$_variable_8h.html" title="include/Variable.h" alt="" coords="593,229,713,256"/>
-<area shape="rect" id="node13" href="$_number_8cpp.html" title="src/Number.cpp" alt="" coords="561,304,671,331"/>
-<area shape="rect" id="node14" href="$_stack_manipulator_8cpp.html" title="src/StackManipulator.cpp" alt="" coords="900,304,1065,331"/>
-<area shape="rect" id="node15" href="$_variable_manipulator_8cpp.html" title="src/VariableManipulator.cpp" alt="" coords="695,304,875,331"/>
-<area shape="rect" id="node17" href="$_stack_8cpp.html" title="src/Stack.cpp" alt="" coords="437,304,536,331"/>
-<area shape="rect" id="node18" href="$_variable_8cpp.html" title="src/Variable.cpp" alt="" coords="299,304,413,331"/>
+<area shape="rect" id="node1" title=" " alt="" coords="499,5,625,32"/>
+<area shape="rect" id="node2" href="$_result_8cpp.html" title=" " alt="" coords="411,80,524,107"/>
+<area shape="rect" id="node3" href="$_stack_8h.html" title=" " alt="" coords="487,229,608,256"/>
+<area shape="rect" id="node13" href="$_stack_operator_8h.html" title=" " alt="" coords="901,80,1079,107"/>
+<area shape="rect" id="node4" href="$_binary_math_operator_8cpp.html" title=" " alt="" coords="1194,304,1397,331"/>
+<area shape="rect" id="node5" href="$_executive_8cpp.html" title=" " alt="" coords="5,304,140,331"/>
+<area shape="rect" id="node6" href="$_number_8cpp.html" title=" " alt="" coords="610,304,733,331"/>
+<area shape="rect" id="node7" href="$_stack_8cpp.html" title=" " alt="" coords="328,304,436,331"/>
+<area shape="rect" id="node8" href="$_stack_item_8cpp.html" title=" " alt="" coords="165,304,303,331"/>
+<area shape="rect" id="node9" href="$_stack_manipulator_8cpp.html" title=" " alt="" coords="984,304,1169,331"/>
+<area shape="rect" id="node10" href="$_stack_operator_factories_8cpp.html" title=" " alt="" coords="1421,304,1644,331"/>
+<area shape="rect" id="node11" href="$_variable_8cpp.html" title=" " alt="" coords="461,304,586,331"/>
+<area shape="rect" id="node12" href="$_variable_manipulator_8cpp.html" title=" " alt="" coords="757,304,959,331"/>
+<area shape="rect" id="node14" href="$_stack_operator_factory_8cpp.html" title=" " alt="" coords="1027,155,1238,181"/>
+<area shape="rect" id="node15" href="$_binary_math_operator_8h.html" title=" " alt="" coords="1418,229,1634,256"/>
+<area shape="rect" id="node16" href="$_executive_8h.html" title=" " alt="" coords="608,155,756,181"/>
+<area shape="rect" id="node17" href="$_stack_item_8h.html" title=" " alt="" coords="784,155,935,181"/>
+<area shape="rect" id="node20" href="$_stack_manipulator_8h.html" title=" " alt="" coords="1195,229,1393,256"/>
+<area shape="rect" id="node21" href="$_variable_manipulator_8h.html" title=" " alt="" coords="956,229,1171,256"/>
+<area shape="rect" id="node18" href="$_number_8h.html" title=" " alt="" coords="795,229,931,256"/>
+<area shape="rect" id="node19" href="$_variable_8h.html" title=" " alt="" coords="633,229,771,256"/>
 </map>

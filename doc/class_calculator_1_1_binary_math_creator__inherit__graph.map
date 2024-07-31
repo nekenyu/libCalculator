@@ -1,3 +1,4 @@
 <map id="Calculator::BinaryMathCreator" name="Calculator::BinaryMathCreator">
-<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs." alt="" coords="17,6,183,47"/>
+<area shape="rect" id="node1" title="Create BinaryMathOperation from a string." alt="" coords="5,95,224,121"/>
+<area shape="rect" id="node2" href="$class_calculator_1_1_stack_operator_creator.html" title="Factory creators of StackOperator::Ptrs." alt="" coords="20,5,209,47"/>
 </map>

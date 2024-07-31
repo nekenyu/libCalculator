@@ -13,6 +13,6 @@ var class_calculator_1_1_binary_math_operator =
     [ "BinaryMathOperator", "class_calculator_1_1_binary_math_operator.html#a3e9f55169baecd644b2a22b788d5cf8c", null ],
     [ "BinaryMathOperator", "class_calculator_1_1_binary_math_operator.html#ac655ff4dff161b8dd83819b3ce275b84", null ],
     [ "operator()", "class_calculator_1_1_binary_math_operator.html#af5e79faecaeb24bf7022b98d2f03916d", null ],
-    [ "operator=", "class_calculator_1_1_binary_math_operator.html#aad6c4e26d095abfa1320bff5e349b156", null ],
-    [ "operator=", "class_calculator_1_1_binary_math_operator.html#a1c53b5f3ceb9ea05626461001af056ed", null ]
+    [ "operator=", "class_calculator_1_1_binary_math_operator.html#a1c53b5f3ceb9ea05626461001af056ed", null ],
+    [ "operator=", "class_calculator_1_1_binary_math_operator.html#aad6c4e26d095abfa1320bff5e349b156", null ]
 ];
