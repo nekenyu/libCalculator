@@ -97,6 +97,7 @@ namespace Calculator {
   StackIterator& StackIterator::operator=(const StackIterator& rhs) {
     pimpl.reset(new StackIteratorPimpl(rhs.pimpl->stack, rhs.pimpl->iter));
     pimpl->hint = rhs.pimpl->hint;
+	return *this;
   }
 
   StackIterator& StackIterator::operator++() {

@@ -51,6 +51,7 @@ Result doSomething(Stack& stack) {
   stack.popAfter(iter);
 
   // ...
+  return Result();
 }
 
 int main(int argc, char** argv) {

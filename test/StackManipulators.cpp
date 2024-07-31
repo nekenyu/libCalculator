@@ -72,7 +72,8 @@ private:
   void test(StackManipulator::Operation oper) {
     Stack stack;
 
-    const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
+    // Disabled as unused; however, this likely needs to be tested as well
+    // const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
 
     StackOperator::Ptr op = StackManipulator::create(oper);
     const Result result =(*op)(stack, op);

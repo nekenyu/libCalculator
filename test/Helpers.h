@@ -54,7 +54,7 @@ inline void push(Stack& stack, float value) {
  */
 template<unsigned int inputLength>
   void push(Stack& stack, const float (&input)[inputLength]) {
-    for(int i = 0; i < inputLength; ++i) {
+    for(unsigned int i = 0; i < inputLength; ++i) {
       push(stack, input[i]);
     }
   }

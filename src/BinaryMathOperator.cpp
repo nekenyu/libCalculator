@@ -12,6 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 #include <memory>
+#include <functional>
 #include <string>
 #include <vector>
 #include <map>
@@ -133,7 +134,6 @@ namespace Calculator {
     }
 
     // Do the math
-    float result = 0.0;
     const OpInfo* info = opInfoMap[op];
     if(nullptr == info) {
       // Internal error....  Not sure what to do.
