@@ -50,10 +50,17 @@ LIBRARY= ${MAKE_LIB}
 TARGETS=${LIBRARY}
 
 # Make the library
+
+# .PRECIOUS prevents the intermediate $(OBJECTS) from being deleted
+.PRECIOUS: $(OBJECTS)
+# These rules override the POSIX behavior to support parallel build by updating all outdated members last
+(%) : % ;
+%.a : ; $(AR) $(ARFLAGS) $@ $?
+
 # TODO: Would be nice if it wouldn't update members from NON-updated objects
-# TODO: Would be nice if this didn't automatically delete the object files
 $(LIBRARY): $(LIBRARY)($(OBJECTS))
-	@echo $(LIBRARY)
+	$(AR) $(ARFLAGS) $@ $?
+	ranlib $@
 
 endif
 

@@ -29,7 +29,7 @@ subdirs: $(SUBDIRS)
 
 $(SUBDIRS):
 	@echo Entering directory \`$@\'
-	make -C $@ $(TARGET)
+	+make -C $@ $(TARGET)
 	@echo Leaving directory \`$@\'
 
 
