@@ -1,7 +1,9 @@
-all:
 #
 # Top Level Makefile
 #
+
+# Default target
+all:
 
 # Subdirectories to be made and dependencies
 #
@@ -34,14 +36,17 @@ $(SUBDIRS):
 # Other tasks
 #
 
-.PHONY: doxygen
-doxygen: all
+.PHONY: docs
+docs: all
 	doxygen Doxyfile
 
+.PHONY: cleanest
 cleanest:
 	-rm -rf doc_built
 
+.PHONY: runTest
 runTest: all
 	build/test/cppunit-test.exe
 
-build: all doxygen runTest
+.PHONY: world
+world: all docs runTest
