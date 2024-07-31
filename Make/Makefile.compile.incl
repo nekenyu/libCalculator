@@ -1,0 +1,128 @@
+
+#
+# Makefile.compile.incl
+#
+
+ifdef MAKE_LIB
+	MAKE_COMPILE= true
+endif
+ifdef MAKE_EXE
+	MAKE_COMPILE= true
+endif
+ifdef MAKE_EXES
+	MAKE_COMPILE= true
+endif
+
+ifdef MAKE_COMPILE
+SRC:= $(wildcard *.cpp)
+DEPENDS=
+OBJECTS=
+TARGETS=
+INFO="(unknown)"
+
+MAKEDEPEND= $(CXX) -MM $(CXXFLAGS) -o $*.d $<
+
+endif
+
+
+
+
+ifdef MAKE_LIB
+DEPENDS= $(patsubst %.cpp,%.d,${SRC})
+-include ${DEPENDS}
+
+OBJECTS= $(patsubst %.cpp,%.o,${SRC})
+%.o: %.cpp
+	$(MAKEDEPEND)
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+LIBRARY= ${MAKE_LIB}
+TARGETS=${LIBRARY}
+all: ${TARGETS}
+
+# TODO: Would be nice if it wouldn't update members from NON-updated objects
+$(LIBRARY): $(LIBRARY)($(OBJECTS))
+
+INFO= Info for library: ${MAKE_LIB}
+		
+endif
+
+
+
+
+
+ifdef MAKE_EXE
+DEPENDS= $(patsubst %.cpp,%.d,${SRC})
+-include ${DEPENDS}
+
+OBJECTS= $(patsubst %.cpp,%.o,${SRC})
+%.o: %.cpp
+	$(MAKEDEPEND)
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+EXECUTABLE= ${MAKE_EXE}
+TARGETS= $(EXECUTABLE)
+all: ${TARGETS}
+
+# TODO: Depend on libraries
+$(EXECUTABLE): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIBS)
+
+INFO= Info for executable: ${MAKE_EXE}
+
+endif
+
+
+
+
+ifdef MAKE_EXES
+
+DEPENDS= $(patsubst %.cpp,%.d,${SRC})
+-include ${DEPENDS}
+
+TARGETS= $(patsubst %.cpp,%.exe,${SRC})
+all: ${TARGETS}
+# TODO: Depend on libraries
+%.exe: %.cpp
+	$(MAKEDEPEND)
+	$(CXX) $(CXXFLAGS) -o $@ $^ ${LIBS}
+
+INFO= Info for executables: $(TARGETS) 
+
+endif
+
+
+
+
+ifdef MAKE_COMPILE
+ifneq "$(OBJECTS)" ""
+.PHONY: clean-compile
+clean-compile:
+	-rm -f $(OBJECTS)
+clean: clean-compile
+endif
+	
+.PHONY: cleaner-compile
+cleaner-compile:
+	-rm -f $(DEPENDS)
+cleaner: cleaner-compile
+
+.PHONY: cleanest-compile
+cleanest-compile:
+	-rm -f $(TARGETS)
+cleanest: cleanest-compile
+
+.PHONY: info-compile
+info-compile:
+	@echo $(INFO)
+	@echo " "
+	@echo CXX=${CXX}
+	@echo CXXFLAGS=${CXXFLAGS}
+	@echo LIBS=${LIBS}
+	@echo " "
+	@echo SRC=$(SRC)
+	@echo DEPENDS=${DEPENDS}
+	@echo OBJECTS=${OBJECTS}
+	@echo TARGETS=${TARGETS}
+info: info-compile
+endif

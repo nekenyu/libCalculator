@@ -1,33 +1,17 @@
-all:
-
 #
 # test Makefile
 #
 
 TOPDIR= ../
--include $(TOPDIR)/Makefile.config.incl
 
-TARGET= cppunit-test.exe
-all: $(TARGET)
+# Libraries
+include $(TOPDIR)/Makefile.lib.incl
+CXXFLAGS+= ${LIB_CALCULATOR_FLAGS}
+LIBS+= ${LIB_CALCULATOR_LIBS}
 
-SRC:= $(wildcard *.cpp)
-OBJS= $(patsubst %.cpp,%.o,$(SRC))
-DEPS= $(patsubst %.cpp,%.d,$(SRC))
+CXXFLAGS+= ${LIB_CPPUNIT_FLAGS}
+LIBS+= ${LIB_CPPUNIT_LIBS}
 
-%.o: %.cpp
-	@$(MAKEDEPEND)
-	$(CXX) $(CXXFLAGS) -c $<
-
--include $(DEPS)
-
-clean:
-	rm -f $(OBJS)
-
-cleaner: clean
-	rm -f $(DEPS)
-
-cleanest: cleaner
-	rm -f $(TARGET)
-
-$(TARGET): $(OBJS) $(LIB_CREATED_FILE)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIB_CREATED_INCL) $(LIB_CPPUNIT_INCL)
+# Targets
+MAKE_EXE=cppunit-test.exe
+include $(TOPDIR)/Make/Makefile.incl

@@ -1,0 +1,19 @@
+
+#
+# Makefile.lib.incl
+#
+# Defines this library for building.
+#
+# Example usage:
+#	include (path-to-this-file)
+#	CXXFLAGS+= ${LIB_CALCULATOR_FLAGS}
+#	LIBS+= ${LIB_CALCULATOR_LIBS}
+
+LIB_CALCULATOR_NAME= Calculator
+# Note: := assigns this when __this__ file is included, using the most recent include -- the lastword
+LIB_CALCULATOR_TOPDIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+LIB_CALCULATOR_FILE= $(LIB_CALCULATOR_TOPDIR)/lib/lib${LIB_CALCULATOR_NAME}.a
+
+LIB_CALCULATOR_FLAGS= -I ${LIB_CALCULATOR_TOPDIR}/include
+LIB_CALCULATOR_LIBS= ${LIB_CALCULATOR_FILE}
+
