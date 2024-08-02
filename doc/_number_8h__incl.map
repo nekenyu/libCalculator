@@ -1,6 +1,8 @@
 <map id="include/Number.h" name="include/Number.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,141,32"/>
-<area shape="rect" id="node2" href="$_stack_item_8h.html" title=" " alt="" coords="23,80,123,107"/>
-<area shape="rect" id="node3" href="$_stack_operator_8h.html" title=" " alt="" coords="10,155,137,181"/>
-<area shape="rect" id="node4" href="$_result_8h.html" title=" " alt="" coords="36,229,111,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="51,5,187,32"/>
+<area shape="rect" id="node2" href="$_stack_item_8h.html" title=" " alt="" coords="19,80,119,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="142,80,201,107"/>
+<area shape="rect" id="node3" href="$_stack_operator_8h.html" title=" " alt="" coords="5,155,132,181"/>
+<area shape="rect" id="node4" href="$_result_8h.html" title=" " alt="" coords="31,229,106,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="37,304,100,331"/>
 </map>
