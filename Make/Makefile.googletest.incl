@@ -1,0 +1,45 @@
+
+#
+# Makefile.googletest.incl
+#
+# Defines googletest library for building:
+# - ../../googletest/ -- expected git repo for googletest
+# - ../../googletest/build -- expected library locations for googletest
+#
+# Example usage:
+#	include (path-to-this-file)
+#
+#   # For googletest
+#	CXXFLAGS+= ${LIB_GOOGLETEST_FLAGS}
+#	LIBS+= ${LIB_GOOGLETEST_MAIN_LIBS}
+#	LIBS+= ${LIB_GOOGLETEST_LIBS}
+#
+#   # For googlemock
+#	CXXFLAGS+= ${LIB_GOOGLEMOCK_FLAGS}
+#	LIBS+= ${LIB_GOOGLEMOCK_MAIN_LIBS}
+#	LIBS+= ${LIB_GOOGLEMOCK_LIBS}
+#
+# Note: The ..._MAIN_... are optional, if you want the automatic main function.
+
+
+# Basic information googletest, google mock
+LIB_GOOGLETEST_NAME= gtest
+LIB_GOOGLEMOCK_NAME= gmock
+# Note: this file resides in our own project's $(TOPDIR)/Make, and must escape to $(TOPDIR)/../googletest
+# Note: := assigns this when __this__ file is included, using the most recent include -- the lastword
+LIB_GOOGLETEST_TOPDIR:=$(shell realpath $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../../googletest)
+LIB_GOOGLEMOCK_TOPDIR:=${LIB_GOOGLETEST_TOPDIR}
+
+# Precise library files
+LIB_GOOGLETEST_MAIN_FILE= $(LIB_GOOGLETEST_TOPDIR)/build/lib/lib${LIB_GOOGLETEST_NAME}_main.a
+LIB_GOOGLETEST_FILE= $(LIB_GOOGLETEST_TOPDIR)/build/lib/lib${LIB_GOOGLETEST_NAME}.a
+LIB_GOOGLEMOCK_MAIN_FILE= $(LIB_GOOGLEMOCK_TOPDIR)/build/lib/lib${LIB_GOOGLEMOCK_NAME}_main.a
+LIB_GOOGLEMOCK_FILE= $(LIB_GOOGLEMOCK_TOPDIR)/build/lib/lib${LIB_GOOGLEMOCK_NAME}.a
+
+# Usable LIB_*_FLAGS and LIB_*_LIBS
+LIB_GOOGLETEST_FLAGS= -I ${LIB_GOOGLETEST_TOPDIR}/googletest/include
+LIB_GOOGLETEST_MAIN_LIBS= ${LIB_GOOGLETEST_MAIN_FILE}
+LIB_GOOGLETEST_LIBS= ${LIB_GOOGLETEST_FILE}
+LIB_GOOGLEMOCK_FLAGS= -I ${LIB_GOOGLEMOCK_TOPDIR}/googlemock/include
+LIB_GOOGLEMOCK_MAIN_LIBS= ${LIB_GOOGLEMOCK_MAIN_FILE}
+LIB_GOOGLEMOCK_LIBS= ${LIB_GOOGLEMOCK_FILE}

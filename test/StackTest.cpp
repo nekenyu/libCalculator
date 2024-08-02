@@ -11,8 +11,6 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <cppunit/extensions/HelperMacros.h>
-
 #include <memory>
 #include <limits>
 
@@ -22,290 +20,268 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "VariableSet.h"
 #include "Error.h"
 
-using namespace Calculator;
-
 #include "Helpers.h"
 
-class StackTest : public CppUnit::TestFixture {
-  CPPUNIT_TEST_SUITE(StackTest);
+#include "gtest/gtest.h"
 
-  CPPUNIT_TEST(testEmpty);
-  CPPUNIT_TEST(testPushOne);
-  CPPUNIT_TEST(testPushFive);
+using namespace Calculator;
 
-  CPPUNIT_TEST(testPopAfterZeroOfZero);
-  CPPUNIT_TEST(testPopAfterZeroOfOne);
-  CPPUNIT_TEST(testPopAfterOneOfOne);
-  CPPUNIT_TEST(testPopAfterOneOfTwo);
-  CPPUNIT_TEST(testPopAfterTwoOfThree);
+TEST(StackTest, Empty) {
+  Stack stack;
+  verify(stack);
+}
 
-  CPPUNIT_TEST(testIterDereference);
-  CPPUNIT_TEST(testIterGets);
-  CPPUNIT_TEST(testIterAs);
-  CPPUNIT_TEST(testIterGetsAs);
+TEST(StackTest, PushOne) {
+  Stack stack;
+  stack.push(Number::create(0.0));
 
-  CPPUNIT_TEST_SUITE_END();
+  float input[] = { 0.0 };
+  verify(stack, input);
+}
 
-public:
-  void testEmpty() {
-    Stack stack;
-    verify(stack);
-  }
+TEST(StackTest, PushFive) {
+  Stack stack;
+  stack.push(Number::create(0.0));
+  stack.push(Number::create(2.0));
+  stack.push(Number::create(3.0));
+  stack.push(Number::create(4.0));
+  stack.push(Number::create(5.0));
 
-  void testPushOne() {
-    Stack stack;
-    stack.push(Number::create(0.0));
+  float input[] = { 0.0, 2.0, 3.0, 4.0, 5.0 };
+  verify(stack, input);
+}
 
-    float input[] = { 0.0 };
-    verify(stack, input);
-  }
+TEST(StackTest, PopAfterEmpty) {
+  Stack stack;
+  verify(stack);
 
-  void testPushFive() {
-    Stack stack;
-    stack.push(Number::create(0.0));
-    stack.push(Number::create(2.0));
-    stack.push(Number::create(3.0));
-    stack.push(Number::create(4.0));
-    stack.push(Number::create(5.0));
+  // Ensure Empty
+  StackIterator iter = stack.begin();
+  EXPECT_EQ(stack.end(),  iter);
 
-    float input[] = { 0.0, 2.0, 3.0, 4.0, 5.0 };
-    verify(stack, input);
-  }
+  stack.popAfter(iter);
+  EXPECT_EQ(stack.end(), iter);
+  verify(stack);
+}
 
-  void testPopAfterZeroOfZero() {
-    Stack stack;
-    verify(stack);
+TEST(StackTest, PopAfterOne) {
+  float input[] = { 1.0 };
+  Stack stack;
+  push(stack, input);
 
+  verify(stack, input);
+
+  StackIterator iter = stack.begin();
+  stack.popAfter(iter);
+  EXPECT_EQ(stack.begin(), iter);
+  verify(stack, input);
+}
+
+TEST(StackTest, PopAfterOneOfOne) {
+  float input[] = { 1.0 };
+  Stack stack;
+  push(stack, input);
+  verify(stack, input);
+
+  StackIterator iter = stack.begin();
+  ++iter;
+  stack.popAfter(iter);
+  EXPECT_EQ(stack.begin(), iter);
+  verify(stack);
+}
+
+TEST(StackTest, PopAfterOneOfTwo) {
+  float input[] = { 1.0, 2.0 };
+  Stack stack;
+  push(stack, input);
+  verify(stack, input);
+
+  StackIterator iter = stack.begin();
+  ++iter;
+  stack.popAfter(iter);
+  EXPECT_EQ(stack.begin(), iter);
+
+  float expected[] = { 1.0 };
+  verify(stack, expected);
+}
+
+TEST(StackTest, PopAfterTwoOfThree) {
+  float input[] = { 1.0, 2.0, 3.0 };
+  Stack stack;
+  push(stack, input);
+  verify(stack, input);
+
+  StackIterator iter = stack.begin();
+  ++iter;
+  stack.popAfter(iter);
+  EXPECT_EQ(stack.begin(), iter);
+
+  float expected[] = { 1.0, 2.0 };
+  verify(stack, expected);
+}
+
+TEST(StackTest, IterDereference) {
+  Variable::Ptr variable = Variable::create("$test");
+  Number::Ptr number = Number::create(1.2345);
+
+  Stack stack;
+  stack.getVariables().set(variable->getName(), number);
+  stack.push(variable);
+
+  float expected[] = { number->getValue() };
+  verify(stack, expected);
+
+  StackIterator iter = stack.begin();
+  EXPECT_EQ(*iter, number);
+
+  iter.setHint(StackIterator::Hint::NO_DEREFERENCE_NEXT);
+  EXPECT_EQ(*iter, variable);
+  EXPECT_EQ(*iter, number);
+
+  iter.setHint(StackIterator::Hint::NO_DEREFERENCE_NEXT);
+  iter.setHint(StackIterator::Hint::DEREFERENCE_NEXT);
+  EXPECT_EQ(*iter, number);
+
+  EXPECT_EQ(iter.noDereference(), variable);
+
+  verify(stack, expected);
+}
+
+TEST(StackTest, IterGets) {
+  Variable::Ptr variable = Variable::create("$test");
+  Number::Ptr number = Number::create(1.2345);
+
+  Stack stack;
+  stack.getVariables().set(variable->getName(), number);
+  stack.push(variable);
+  stack.push(variable);
+
+  float expected[] = { number->getValue(), number->getValue() };
+  verify(stack, expected);
+
+  {
     StackIterator iter = stack.begin();
-    CPPUNIT_ASSERT(stack.end() == iter);
-    
-    stack.popAfter(iter);
-    CPPUNIT_ASSERT(stack.end() == iter);
-    verify(stack);
+    StackItem::Ptr item;
+    iter >> item;
+    EXPECT_EQ(item, number);
   }
 
-  void testPopAfterZeroOfOne() {
-    float input[] = { 1.0 };
-    Stack stack;
-    push(stack, input);
-
-    verify(stack, input);
-
+  {
     StackIterator iter = stack.begin();
-    stack.popAfter(iter);
-    CPPUNIT_ASSERT(stack.begin() == iter);
-    verify(stack, input);
+    StackItem::Ptr item;
+    iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> item;
+    EXPECT_EQ(item, variable);
   }
 
-  void testPopAfterOneOfOne() {
-    float input[] = { 1.0 };
-    Stack stack;
-    push(stack, input);
-    verify(stack, input);
-
+  {
     StackIterator iter = stack.begin();
-    ++iter;
-    stack.popAfter(iter);
-    CPPUNIT_ASSERT(stack.begin() == iter);
-    verify(stack);
+    StackItem::Ptr itemVariable;
+    StackItem::Ptr itemNumber;
+    iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> itemVariable >> itemNumber;
+    EXPECT_EQ(itemVariable, variable);
+    EXPECT_EQ(itemNumber, number);
   }
 
-  void testPopAfterOneOfTwo() {
-    float input[] = { 1.0, 2.0 };
-    Stack stack;
-    push(stack, input);
-    verify(stack, input);
-
+  {
     StackIterator iter = stack.begin();
-    ++iter;
-    stack.popAfter(iter);
-    CPPUNIT_ASSERT(stack.begin() == iter);
-
-    float expected[] = { 1.0 };
-    verify(stack, expected);
+    StackItem::Ptr item;
+    iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> StackIterator::Hint::DEREFERENCE_NEXT >> item;
+    EXPECT_EQ(item, number);
   }
 
-  void testPopAfterTwoOfThree() {
-    float input[] = { 1.0, 2.0, 3.0 };
-    Stack stack;
-    push(stack, input);
-    verify(stack, input);
+  verify(stack, expected);
+}
 
-    StackIterator iter = stack.begin();
-    ++iter;
-    stack.popAfter(iter);
-    CPPUNIT_ASSERT(stack.begin() == iter);
+TEST(StackTest, IterAs) {
+  Variable::Ptr variable = Variable::create("$test");
+  Number::Ptr number = Number::create(1.2345);
 
-    float expected[] = { 1.0, 2.0 };
-    verify(stack, expected);
-  }
+  Stack stack;
+  stack.getVariables().set(variable->getName(), number);
+  stack.push(variable);
+  stack.push(variable);
+  stack.push(variable);
+  stack.push(variable);
+  stack.push(variable);
 
-  void testIterDereference() {
-    Variable::Ptr variable = Variable::create("$test");
-    Number::Ptr number = Number::create(1.2345);
+  float expected[] = { number->getValue(), number->getValue(), number->getValue(), number->getValue(), number->getValue() };
+  verify(stack, expected);
 
-    Stack stack;
-    stack.getVariables().set(variable->getName(), number);
-    stack.push(variable);
+  StackIterator iter = stack.begin();
+  EXPECT_NE(stack.end(), iter);
 
-    float expected[] = { number->getValue() };
-    verify(stack, expected);
+  StackItem::Ptr item1 = *(iter++);
+  EXPECT_NE(item1, nullptr);
+  EXPECT_EQ(item1, number);
+  EXPECT_NE(stack.end(), iter);
 
-    StackIterator iter = stack.begin();
-    CPPUNIT_ASSERT(*iter == number);
+  Number::Ptr item2 = iter++.as<Number>();
+  EXPECT_NE(item2, nullptr);
+  EXPECT_EQ(item2, number);
+  EXPECT_NE(stack.end(), iter);
 
-    iter.setHint(StackIterator::Hint::NO_DEREFERENCE_NEXT);
-    CPPUNIT_ASSERT(*iter == variable);
-    CPPUNIT_ASSERT(*iter == number);
+  Variable::Ptr item3 = iter++.setHint(StackIterator::Hint::NO_DEREFERENCE_NEXT).as<Variable>();
+  EXPECT_NE(item3, nullptr);
+  EXPECT_EQ(item3, variable);
+  EXPECT_NE(stack.end(), iter);
 
-    iter.setHint(StackIterator::Hint::NO_DEREFERENCE_NEXT);
-    iter.setHint(StackIterator::Hint::DEREFERENCE_NEXT);
-    CPPUNIT_ASSERT(*iter == number);
+  Number::Ptr item4 = iter++.as<Number>();
+  EXPECT_NE(stack.end(), iter);
+  EXPECT_NE(item4, nullptr);
+  EXPECT_EQ(item4, number);
 
-    CPPUNIT_ASSERT(iter.noDereference() == variable);
+  Number::Ptr item5 = iter++.as<Number>();
+  EXPECT_EQ(stack.end(), iter);
+  EXPECT_NE(item5, nullptr);
+  EXPECT_EQ(item5, number);
 
-    verify(stack, expected);
-  }
+  verify(stack, expected);
+}
 
-  void testIterGets() {
-    Variable::Ptr variable = Variable::create("$test");
-    Number::Ptr number = Number::create(1.2345);
+TEST(StackTest, IterGetsAs) {
+  Variable::Ptr variable = Variable::create("$test");
+  Number::Ptr number = Number::create(1.2345);
 
-    Stack stack;
-    stack.getVariables().set(variable->getName(), number);
-    stack.push(variable);
-    stack.push(variable);
+  Stack stack;
+  stack.push(variable);
+  stack.push(variable);
+  stack.push(variable);
+  stack.push(variable);
+  stack.push(variable);
+  stack.getVariables().set(variable->getName(), number);
 
-    float expected[] = { number->getValue(), number->getValue() };
-    verify(stack, expected);
+  float expected[] = { number->getValue(), number->getValue(), number->getValue(), number->getValue(), number->getValue() };
+  verify(stack, expected);
 
-    {
-      StackIterator iter = stack.begin();
-      StackItem::Ptr item;
-      iter >> item;
-      CPPUNIT_ASSERT(item == number);
-    }
+  StackItem::Ptr item1;
+  Number::Ptr item2;
+  Variable::Ptr item3;
+  Number::Ptr item4;
+  Number::Ptr item5;
 
-    {
-      StackIterator iter = stack.begin();
-      StackItem::Ptr item;
-      iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> item;
-      CPPUNIT_ASSERT(item == variable);
-    }
+  StackIterator iter = stack.begin();
+  EXPECT_NE(stack.end(), iter);
+  iter >> item1
+  >> item2
+  >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> item3
+  >> item4
+  >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> StackIterator::Hint::DEREFERENCE_NEXT >> item5;
+  EXPECT_EQ(stack.end(), iter);
 
-    {
-      StackIterator iter = stack.begin();
-      StackItem::Ptr itemVariable;
-      StackItem::Ptr itemNumber;
-      iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> itemVariable >> itemNumber;
-      CPPUNIT_ASSERT(itemVariable == variable);
-      CPPUNIT_ASSERT(itemNumber == number);
-    }
+  EXPECT_NE(item1, nullptr);
+  EXPECT_EQ(item1, number);
 
-    {
-      StackIterator iter = stack.begin();
-      StackItem::Ptr item;
-      iter >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> StackIterator::Hint::DEREFERENCE_NEXT >> item;
-      CPPUNIT_ASSERT(item == number);
-    }
+  EXPECT_NE(item2, nullptr);
+  EXPECT_EQ(item2, number);
 
-    verify(stack, expected);
-  }
+  EXPECT_NE(item3, nullptr);
+  EXPECT_EQ(item3, variable);
 
-  void testIterAs() {
-    Variable::Ptr variable = Variable::create("$test");
-    Number::Ptr number = Number::create(1.2345);
+  EXPECT_NE(item4, nullptr);
+  EXPECT_EQ(item4, number);
 
-    Stack stack;
-    stack.getVariables().set(variable->getName(), number);
-    stack.push(variable);
-    stack.push(variable);
-    stack.push(variable);
-    stack.push(variable);
-    stack.push(variable);
+  EXPECT_NE(item5, nullptr);
+  EXPECT_EQ(item5, number);
 
-    float expected[] = { number->getValue(), number->getValue(), number->getValue(), number->getValue(), number->getValue() };
-    verify(stack, expected);
-
-    StackIterator iter = stack.begin();
-    CPPUNIT_ASSERT(stack.end() != iter);
-
-    StackItem::Ptr item1 = *(iter++);
-    CPPUNIT_ASSERT(item1);
-    CPPUNIT_ASSERT(item1 == number);
-    CPPUNIT_ASSERT(stack.end() != iter);
-
-    Number::Ptr item2 = iter++.as<Number>();
-    CPPUNIT_ASSERT(item2);
-    CPPUNIT_ASSERT(item2 == number);
-    CPPUNIT_ASSERT(stack.end() != iter);
-
-    Variable::Ptr item3 = iter++.setHint(StackIterator::Hint::NO_DEREFERENCE_NEXT).as<Variable>();
-    CPPUNIT_ASSERT(item3);
-    CPPUNIT_ASSERT(item3 == variable);
-    CPPUNIT_ASSERT(stack.end() != iter);
-
-    Number::Ptr item4 = iter++.as<Number>();
-    CPPUNIT_ASSERT(stack.end() != iter);
-    CPPUNIT_ASSERT(item4);
-    CPPUNIT_ASSERT(item4 == number);
-
-    Number::Ptr item5 = iter++.as<Number>();
-    CPPUNIT_ASSERT(stack.end() == iter);
-    CPPUNIT_ASSERT(item5);
-    CPPUNIT_ASSERT(item5 == number);
-
-    verify(stack, expected);
-  }
-
-  void testIterGetsAs() {
-    Variable::Ptr variable = Variable::create("$test");
-    Number::Ptr number = Number::create(1.2345);
-
-    Stack stack;
-    stack.push(variable);
-    stack.push(variable);
-    stack.push(variable);
-    stack.push(variable);
-    stack.push(variable);
-    stack.getVariables().set(variable->getName(), number);
-
-    float expected[] = { number->getValue(), number->getValue(), number->getValue(), number->getValue(), number->getValue() };
-    verify(stack, expected);
-
-    StackItem::Ptr item1;
-    Number::Ptr item2;
-    Variable::Ptr item3;
-    Number::Ptr item4;
-    Number::Ptr item5;
-
-    StackIterator iter = stack.begin();
-    CPPUNIT_ASSERT(stack.end() != iter);
-    iter >> item1
-	 >> item2
-	 >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> item3
-	 >> item4
-	 >> StackIterator::Hint::NO_DEREFERENCE_NEXT >> StackIterator::Hint::DEREFERENCE_NEXT >> item5;
-    CPPUNIT_ASSERT(stack.end() == iter);
-
-    CPPUNIT_ASSERT(item1);
-    CPPUNIT_ASSERT(item1 == number);
-
-    CPPUNIT_ASSERT(item2);
-    CPPUNIT_ASSERT(item2 == number);
-
-    CPPUNIT_ASSERT(item3);
-    CPPUNIT_ASSERT(item3 == variable);
-
-    CPPUNIT_ASSERT(item4);
-    CPPUNIT_ASSERT(item4 == number);
-
-    CPPUNIT_ASSERT(item5);
-    CPPUNIT_ASSERT(item5 == number);
-
-    verify(stack, expected);
-  }
-
-};
-
-CPPUNIT_TEST_SUITE_REGISTRATION(StackTest);
+  verify(stack, expected);
+}

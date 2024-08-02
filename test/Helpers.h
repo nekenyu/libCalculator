@@ -14,16 +14,20 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef HELPERS_H
 #define HELPERS_H
 
+#include "Stack.h"
+
+#include "gtest/gtest.h"
+
 /** Verify every message and positionMessage in expected is in found; however,
  * it is not required that every in found be in expected.
  *
  * @param expected Result data to look for
  * @param found Result info actually received
  */
-inline void verifyMessagesFound(const Result& expected, const Result& found) {
+inline void verifyMessagesFound(const Calculator::Result& expected, const Calculator::Result& found) {
   for(auto message : expected.getMessages()) {
     const bool hasMessage = found.hasMessage(message);
-    CPPUNIT_ASSERT_MESSAGE(message, hasMessage);
+    EXPECT_TRUE(hasMessage) << "for: " << message;
   }
 
   for(auto positionMessage : expected.getPositionMessages()) {
@@ -32,7 +36,8 @@ inline void verifyMessagesFound(const Result& expected, const Result& found) {
       std::string str = std::to_string(positionMessage.first);
       str += ": ";
       str += positionMessage.second;
-      CPPUNIT_FAIL(str);
+      
+      FAIL() << str;
     }
   }
 }
@@ -42,8 +47,8 @@ inline void verifyMessagesFound(const Result& expected, const Result& found) {
  * @param stack to push onto
  * @param value to push as number
  */
-inline void push(Stack& stack, float value) {
-  stack.push(Number::create(value));
+inline void push(Calculator::Stack& stack, float value) {
+  stack.push(Calculator::Number::create(value));
 }
 
 /** Push all of input onto stack
@@ -53,7 +58,7 @@ inline void push(Stack& stack, float value) {
  * @param input array of values to push
  */
 template<unsigned int inputLength>
-  void push(Stack& stack, const float (&input)[inputLength]) {
+  void push(Calculator::Stack& stack, const float (&input)[inputLength]) {
     for(unsigned int i = 0; i < inputLength; ++i) {
       push(stack, input[i]);
     }
@@ -63,9 +68,9 @@ template<unsigned int inputLength>
  *
  * @param stack to test
  */
-inline void verify(Stack& stack) {
-  CPPUNIT_ASSERT(0 == stack.getDepth());
-  CPPUNIT_ASSERT(stack.end() == stack.begin());
+inline void verify(Calculator::Stack& stack) {
+  EXPECT_EQ(stack.getDepth(), static_cast<Calculator::Stack::Count>(0));
+  EXPECT_EQ(stack.end(), stack.begin());
 }
 
 /** Verify stack contains precisely the getValue()s and length of expected
@@ -78,17 +83,17 @@ inline void verify(Stack& stack) {
  * \note Failure to verify fails the test case.
  */
 template<unsigned int length>
-void verify(Stack& stack, const float(&expected)[length]) {
-  CPPUNIT_ASSERT(length <= stack.getDepth());
+void verify(Calculator::Stack& stack, const float(&expected)[length]) {
+  EXPECT_EQ(length, stack.getDepth());
   
-  StackIterator iter = stack.begin();
+  Calculator::StackIterator iter = stack.begin();
   for(unsigned int i = 0; i < length; ++i, ++iter) {
-    Number::Ptr value = iter.as<Number>();
-    CPPUNIT_ASSERT(value);
-    CPPUNIT_ASSERT(abs(expected[length - 1 - i] - value->getValue()) < 2 * std::numeric_limits<float>::epsilon());
+    Calculator::Number::Ptr value = iter.as<Calculator::Number>();
+    EXPECT_NE(value, nullptr);
+    EXPECT_LT(abs(expected[length - 1 - i] - value->getValue()), 2 * std::numeric_limits<float>::epsilon());
   }
 
-  CPPUNIT_ASSERT(stack.end() == iter);
+  EXPECT_EQ(stack.end(), iter);
 }
 
 #endif // HELPERS_H

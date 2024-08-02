@@ -14,6 +14,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef RESULT_H
 #define RESULT_H
 
+#include <vector>
+
 namespace Calculator {
   
   /** Collection of Result information for an operation.

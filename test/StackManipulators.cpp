@@ -11,8 +11,6 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <cppunit/extensions/HelperMacros.h>
-
 #include <memory>
 #include <limits>
 
@@ -23,193 +21,169 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "VariableSet.h"
 #include "StackManipulator.h"
 
-using namespace Calculator;
 #include "Helpers.h"
 
-class StackManipulatorsTest : public CppUnit::TestFixture {
-private:
-  CPPUNIT_TEST_SUITE(StackManipulatorsTest);
+#include "gtest/gtest.h"
 
-  CPPUNIT_TEST(testPopOfZero); 
-  CPPUNIT_TEST(testPopOfOne); 
-  CPPUNIT_TEST(testPopOfTwo); 
+using namespace Calculator;
 
-  CPPUNIT_TEST(testDupOfZero); 
-  CPPUNIT_TEST(testPopOfOne); 
-  CPPUNIT_TEST(testPopOfTwo); 
+template<unsigned int inputLength, unsigned int expectedLength>
+void test(const float (&input)[inputLength], StackManipulator::Operation oper, const float (&expected)[expectedLength]) {
+  Stack stack;
+  push(stack, input);
 
-  CPPUNIT_TEST(testSwapOfZero); 
-  CPPUNIT_TEST(testSwapOfOne); 
-  CPPUNIT_TEST(testSwapOfTwo); 
-  CPPUNIT_TEST(testSwapOfThree);
+  const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
 
-  CPPUNIT_TEST(testReset);
-  CPPUNIT_TEST(testPopAll);
-
-  CPPUNIT_TEST_SUITE_END();
-
-private:
-  template<unsigned int inputLength, unsigned int expectedLength>
-  void test(const float (&input)[inputLength], StackManipulator::Operation oper, const float (&expected)[expectedLength]) {
-    Stack stack;
-    push(stack, input);
-
-    const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
-
-    StackOperator::Ptr op = StackManipulator::create(oper);
-    const Result result =(*op)(stack, op);
-    if(inputLength < required) {
-      verifyMessagesFound(Result({0, Error::StackUnderflow}), result);
-      CPPUNIT_ASSERT(inputLength == stack.getDepth());
-      verify(stack, input);
-    } else {
-      verifyMessagesFound(Result({Error::Ok}), result);
-      CPPUNIT_ASSERT(expectedLength == stack.getDepth());
-      verify(stack, expected);
-    }
-  }
-
-  void test(StackManipulator::Operation oper) {
-    Stack stack;
-
-    // Disabled as unused; however, this likely needs to be tested as well
-    // const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
-
-    StackOperator::Ptr op = StackManipulator::create(oper);
-    const Result result =(*op)(stack, op);
-
-    verifyMessagesFound(Result({{0, Error::StackUnderflow}}), result);
-    CPPUNIT_ASSERT(stack.getDepth() == 0);
-  }
-
-public:
-  void testPopOfZero() {
-    test(StackManipulator::Operation::POP);
-  }
-
-  void testPopOfOne() {
-    float input[] = { 1.0 };
-    
-    Stack stack;
-    push(stack, input);
-
-    StackOperator::Ptr op = StackManipulator::create(StackManipulator::Operation::POP);
-    const Result result =(*op)(stack, op);
-    
-    verifyMessagesFound(Result({Error::Ok}), result);
-    verify(stack);
-  }
-
-  void testPopOfTwo() {
-    float input[] = { 1.0, 2.0 };
-    float expected[] = { 1.0 };
-    test(input, StackManipulator::Operation::POP, expected);
-  }
-
-  void testDupOfZero() {
-    test(StackManipulator::Operation::DUP);
-  }
-
-  void testDupOfOne() {
-    float input[] = { 1.0 };
-    float expected[] = { 1.0, 1.0 };
-    test(input, StackManipulator::Operation::DUP, expected);
-  }
-
-  void testDupOfTwo() {
-    float input[] = { 1.0, 2.0 };
-    float expected[] = { 1.0, 2.0, 2.0 };
-    test(input, StackManipulator::Operation::DUP, expected);
-  }
-
-  void testSwapOfZero() {
-    test(StackManipulator::Operation::SWAP);
-  }
-
-  void testSwapOfOne() {
-    float input[] = { 1.0 };
-
-    Stack stack;
-    push(stack, input);
-
-    StackOperator::Ptr op = StackManipulator::create(StackManipulator::Operation::SWAP);
-    const Result result =(*op)(stack, op);
-
-    verifyMessagesFound(Result({{1, Error::StackUnderflow}}), result);
+  StackOperator::Ptr op = StackManipulator::create(oper);
+  const Result result =(*op)(stack, op);
+  if(inputLength < required) {
+    verifyMessagesFound(Result({0, Error::StackUnderflow}), result);
+    EXPECT_EQ(inputLength, stack.getDepth());
     verify(stack, input);
-  }
-
-  void testSwapOfTwo() {
-    float input[] = { 1.0, 2.0 };
-    float expected[] = { 2.0, 1.0 };
-    test(input, StackManipulator::Operation::SWAP, expected);
-  }
-
-  void testSwapOfThree() {
-    float input[] = { 1.0, 2.0, 3.0 };
-    float expected[] = { 1.0, 3.0, 2.0 };
-    test(input, StackManipulator::Operation::SWAP, expected);
-  }
-
-  void testReset() {
-    const float num = 3.14;
-    Number::Ptr val = Number::create(num);
-    Variable::Ptr foo = Variable::create("$foo");
-    Variable::Ptr bar = Variable::create("$bar");
-
-    Stack stack;
-    stack.getVariables().set(bar->getName(), foo);
-    stack.getVariables().set(foo->getName(), val);
-
-    (*val)(stack, val);
-    (*val)(stack, val);
-    (*val)(stack, val);
-
-    float expected[] = { num, num, num };
+  } else {
+    verifyMessagesFound(Result({Error::Ok}), result);
+    EXPECT_EQ(expectedLength, stack.getDepth());
     verify(stack, expected);
-
-    StackManipulator::Ptr op = StackManipulator::create(StackManipulator::Operation::RESET);
-    (*op)(stack, val);
-
-    verify(stack);
-
-    StackItem::Ptr fooCheck = stack.getVariables().get(foo->getName());
-    StackItem::Ptr barCheck = stack.getVariables().get(bar->getName());
-
-    CPPUNIT_ASSERT(!fooCheck);
-    CPPUNIT_ASSERT(!barCheck);
   }
+}
 
-  void testPopAll() {
-    const float num = 3.14;
-    Number::Ptr val = Number::create(num);
-    Variable::Ptr foo = Variable::create("$foo");
-    Variable::Ptr bar = Variable::create("$bar");
+void test(StackManipulator::Operation oper) {
+  Stack stack;
 
-    Stack stack;
-    stack.getVariables().set(bar->getName(), foo);
-    stack.getVariables().set(foo->getName(), val);
+  // Disabled as unused; however, this likely needs to be tested as well
+  // const unsigned int required = StackManipulator::Operation::SWAP == oper ? 2 : 1;
 
-    (*val)(stack, val);
-    (*val)(stack, val);
-    (*val)(stack, val);
+  StackOperator::Ptr op = StackManipulator::create(oper);
+  const Result result =(*op)(stack, op);
 
-    float expected[] = { num, num, num };
-    verify(stack, expected);
+  verifyMessagesFound(Result({{0, Error::StackUnderflow}}), result);
+  EXPECT_EQ(stack.getDepth(), static_cast<Calculator::Stack::Count>(0));
+}
 
-    StackManipulator::Ptr op = StackManipulator::create(StackManipulator::Operation::POP_ALL);
-    (*op)(stack, val);
+TEST(StackManipulatorsTest, PopOfZero) {
+  test(StackManipulator::Operation::POP);
+}
 
-    verify(stack);
+TEST(StackManipulatorsTest, PopOfOne) {
+  float input[] = { 1.0 };
+  
+  Stack stack;
+  push(stack, input);
 
-    StackItem::Ptr fooCheck = stack.getVariables().get(foo->getName());
-    StackItem::Ptr barCheck = stack.getVariables().get(bar->getName());
+  StackOperator::Ptr op = StackManipulator::create(StackManipulator::Operation::POP);
+  const Result result =(*op)(stack, op);
+  
+  verifyMessagesFound(Result({Error::Ok}), result);
+  verify(stack);
+}
 
-    CPPUNIT_ASSERT(fooCheck);
-    CPPUNIT_ASSERT(fooCheck.get() == val.get());
-    CPPUNIT_ASSERT(barCheck);
-    CPPUNIT_ASSERT(barCheck.get() == foo.get());
-  }
-};
+TEST(StackManipulatorsTest, PopOfTwo) {
+  float input[] = { 1.0, 2.0 };
+  float expected[] = { 1.0 };
+  test(input, StackManipulator::Operation::POP, expected);
+}
 
-CPPUNIT_TEST_SUITE_REGISTRATION(StackManipulatorsTest);
+TEST(StackManipulatorsTest, DupOfZero) {
+  test(StackManipulator::Operation::DUP);
+}
+
+TEST(StackManipulatorsTest, DupOfOne) {
+  float input[] = { 1.0 };
+  float expected[] = { 1.0, 1.0 };
+  test(input, StackManipulator::Operation::DUP, expected);
+}
+
+TEST(StackManipulatorsTest, DupOfTwo) {
+  float input[] = { 1.0, 2.0 };
+  float expected[] = { 1.0, 2.0, 2.0 };
+  test(input, StackManipulator::Operation::DUP, expected);
+}
+
+TEST(StackManipulatorsTest, SwapOfZero) {
+  test(StackManipulator::Operation::SWAP);
+}
+
+TEST(StackManipulatorsTest, SwapOfOne) {
+  float input[] = { 1.0 };
+
+  Stack stack;
+  push(stack, input);
+
+  StackOperator::Ptr op = StackManipulator::create(StackManipulator::Operation::SWAP);
+  const Result result =(*op)(stack, op);
+
+  verifyMessagesFound(Result({{1, Error::StackUnderflow}}), result);
+  verify(stack, input);
+}
+
+TEST(StackManipulatorsTest, SwapOfTwo) {
+  float input[] = { 1.0, 2.0 };
+  float expected[] = { 2.0, 1.0 };
+  test(input, StackManipulator::Operation::SWAP, expected);
+}
+
+TEST(StackManipulatorsTest, SwapOfThree) {
+  float input[] = { 1.0, 2.0, 3.0 };
+  float expected[] = { 1.0, 3.0, 2.0 };
+  test(input, StackManipulator::Operation::SWAP, expected);
+}
+
+TEST(StackManipulatorsTest, Reset) {
+  const float num = 3.14;
+  Number::Ptr val = Number::create(num);
+  Variable::Ptr foo = Variable::create("$foo");
+  Variable::Ptr bar = Variable::create("$bar");
+
+  Stack stack;
+  stack.getVariables().set(bar->getName(), foo);
+  stack.getVariables().set(foo->getName(), val);
+
+  (*val)(stack, val);
+  (*val)(stack, val);
+  (*val)(stack, val);
+
+  float expected[] = { num, num, num };
+  verify(stack, expected);
+
+  StackManipulator::Ptr op = StackManipulator::create(StackManipulator::Operation::RESET);
+  (*op)(stack, val);
+
+  verify(stack);
+
+  StackItem::Ptr fooCheck = stack.getVariables().get(foo->getName());
+  StackItem::Ptr barCheck = stack.getVariables().get(bar->getName());
+
+  EXPECT_EQ(fooCheck, nullptr);
+  EXPECT_EQ(barCheck, nullptr);
+}
+
+TEST(StackManipulatorsTest, PopAll) {
+  const float num = 3.14;
+  Number::Ptr val = Number::create(num);
+  Variable::Ptr foo = Variable::create("$foo");
+  Variable::Ptr bar = Variable::create("$bar");
+
+  Stack stack;
+  stack.getVariables().set(bar->getName(), foo);
+  stack.getVariables().set(foo->getName(), val);
+
+  (*val)(stack, val);
+  (*val)(stack, val);
+  (*val)(stack, val);
+
+  float expected[] = { num, num, num };
+  verify(stack, expected);
+
+  StackManipulator::Ptr op = StackManipulator::create(StackManipulator::Operation::POP_ALL);
+  (*op)(stack, val);
+
+  verify(stack);
+
+  StackItem::Ptr fooCheck = stack.getVariables().get(foo->getName());
+  StackItem::Ptr barCheck = stack.getVariables().get(bar->getName());
+
+  EXPECT_NE(fooCheck, nullptr);
+  EXPECT_EQ(fooCheck.get(), val.get());
+  EXPECT_NE(barCheck, nullptr);
+  EXPECT_EQ(barCheck.get(), foo.get());
+}

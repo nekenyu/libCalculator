@@ -11,8 +11,6 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <cppunit/extensions/HelperMacros.h>
-
 #include <memory>
 #include <limits>
 
@@ -21,105 +19,88 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "Number.h"
 #include "BinaryMathOperator.h"
 
-using namespace Calculator;
 #include "Helpers.h"
 
-class MathOperatorsTest : public CppUnit::TestFixture {
-private:
-  CPPUNIT_TEST_SUITE(MathOperatorsTest);
+#include "gtest/gtest.h"
 
-  CPPUNIT_TEST(testAddOfZero);
-  CPPUNIT_TEST(testAddOfOne);
-  CPPUNIT_TEST(testAddOfTwo);
-  CPPUNIT_TEST(testAddOfThree);
+using namespace Calculator;
 
-  CPPUNIT_TEST(testSubtractOfThree);
-  CPPUNIT_TEST(testMultiplyOfThree);
-  CPPUNIT_TEST(testDivideOfThree);
+template<unsigned int inputLength, unsigned int expectedLength>
+void test(const float (&input)[inputLength], BinaryMathOperator::Operation oper, const float (&expected)[expectedLength]) {
+  Stack stack;
+  push(stack, input);
 
-  CPPUNIT_TEST_SUITE_END();
-
-private:
-  template<unsigned int inputLength, unsigned int expectedLength>
-  void test(const float (&input)[inputLength], BinaryMathOperator::Operation oper, const float (&expected)[expectedLength]) {
-    Stack stack;
-    push(stack, input);
-
-    StackOperator::Ptr op = BinaryMathOperator::create(oper);
-    const Result result = (*op)(stack, op);
-    if(inputLength < 2) {
-      verifyMessagesFound(Result({{0, Error::StackUnderflow}}), result);
-      CPPUNIT_ASSERT(inputLength == stack.getDepth());
-      verify(stack, input);
-    } else {
-      verifyMessagesFound(Result({Error::Ok}), result);
-      CPPUNIT_ASSERT(expectedLength == stack.getDepth());
-      verify(stack, expected);
-    }
-  }
-
-  template<unsigned int inputLength>
-  void test(const float (&input)[inputLength], BinaryMathOperator::Operation oper) {
-    Stack stack;
-    push(stack, input);
-
-    StackOperator::Ptr op = BinaryMathOperator::create(oper);
-    const Result result = (*op)(stack, op);
-
-    verifyMessagesFound(Result({{1, Error::StackUnderflow}}), result);
-    CPPUNIT_ASSERT(inputLength == stack.getDepth());
+  StackOperator::Ptr op = BinaryMathOperator::create(oper);
+  const Result result = (*op)(stack, op);
+  if(inputLength < 2) {
+    verifyMessagesFound(Result({{0, Error::StackUnderflow}}), result);
+    EXPECT_EQ(inputLength, stack.getDepth());
     verify(stack, input);
+  } else {
+    verifyMessagesFound(Result({Error::Ok}), result);
+    EXPECT_EQ(expectedLength, stack.getDepth());
+    verify(stack, expected);
   }
+}
 
-  void test(BinaryMathOperator::Operation oper) {
-    Stack stack;
+template<unsigned int inputLength>
+void test(const float (&input)[inputLength], BinaryMathOperator::Operation oper) {
+  Stack stack;
+  push(stack, input);
 
-    StackOperator::Ptr op = BinaryMathOperator::create(oper);
-    const Result result = (*op)(stack, op);
+  StackOperator::Ptr op = BinaryMathOperator::create(oper);
+  const Result result = (*op)(stack, op);
 
-    verifyMessagesFound(Result({{0, Error::StackUnderflow}, {1, Error::StackUnderflow}}), result);
-    CPPUNIT_ASSERT(stack.getDepth() == 0);
-  }
+  verifyMessagesFound(Result({{1, Error::StackUnderflow}}), result);
+  EXPECT_EQ(inputLength, stack.getDepth());
+  verify(stack, input);
+}
 
-public:
-  void testAddOfZero() {
-    test(BinaryMathOperator::Operation::ADD);
-  }
+void test(BinaryMathOperator::Operation oper) {
+  Stack stack;
 
-  void testAddOfOne() {
-    float input[] = { 1.0 };
-    test(input, BinaryMathOperator::Operation::ADD);
-  }
+  StackOperator::Ptr op = BinaryMathOperator::create(oper);
+  const Result result = (*op)(stack, op);
 
-  void testAddOfTwo() {
-    float input[] = { 1.0, 2.0 };
-    float expected[] = { 3.0 };
-    test(input, BinaryMathOperator::Operation::ADD, expected);
-  }
+  verifyMessagesFound(Result({{0, Error::StackUnderflow}, {1, Error::StackUnderflow}}), result);
+  EXPECT_EQ(stack.getDepth(), static_cast<Calculator::Stack::Count>(0));
+}
 
-  void testAddOfThree() {
-    float input[] = { 0.0, 1.0, 2.0 };
-    float expected[] = { 0.0, 3.0 };
-    test(input, BinaryMathOperator::Operation::ADD, expected);
-  }
+TEST(MathOperatorsTest, AddOfZero) {
+  test(BinaryMathOperator::Operation::ADD);
+}
 
-  void testSubtractOfThree() {
-    float input[] = { 0.0, 1.0, 2.0 };
-    float expected[] = { 0.0, 1.0 };
-    test(input, BinaryMathOperator::Operation::SUBTRACT, expected);
-  }
+TEST(MathOperatorsTest, AddOfOne) {
+  float input[] = { 1.0 };
+  test(input, BinaryMathOperator::Operation::ADD);
+}
 
-  void testMultiplyOfThree() {
-    float input[] = { 0.0, 1.0, 2.0 };
-    float expected[] = { 0.0, 2.0 };
-    test(input, BinaryMathOperator::Operation::MULTIPLY, expected);
-  }
+TEST(MathOperatorsTest, AddOfTwo) {
+  float input[] = { 1.0, 2.0 };
+  float expected[] = { 3.0 };
+  test(input, BinaryMathOperator::Operation::ADD, expected);
+}
 
-  void testDivideOfThree() {
-    float input[] = { 0.0, 2.0, 1.0 };
-    float expected[] = { 0.0, 0.5 };
-    test(input, BinaryMathOperator::Operation::DIVIDE, expected);
-  }
-};
+TEST(MathOperatorsTest, AddOfThree) {
+  float input[] = { 0.0, 1.0, 2.0 };
+  float expected[] = { 0.0, 3.0 };
+  test(input, BinaryMathOperator::Operation::ADD, expected);
+}
 
-CPPUNIT_TEST_SUITE_REGISTRATION(MathOperatorsTest);
+TEST(MathOperatorsTest, SubtractOfThree) {
+  float input[] = { 0.0, 1.0, 2.0 };
+  float expected[] = { 0.0, 1.0 };
+  test(input, BinaryMathOperator::Operation::SUBTRACT, expected);
+}
+
+TEST(MathOperatorsTest, MultiplyOfThree) {
+  float input[] = { 0.0, 1.0, 2.0 };
+  float expected[] = { 0.0, 2.0 };
+  test(input, BinaryMathOperator::Operation::MULTIPLY, expected);
+}
+
+TEST(MathOperatorsTest, DivideOfThree) {
+  float input[] = { 0.0, 2.0, 1.0 };
+  float expected[] = { 0.0, 0.5 };
+  test(input, BinaryMathOperator::Operation::DIVIDE, expected);
+}

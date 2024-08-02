@@ -14,6 +14,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifndef ERROR_H
 #define ERROR_H
 
+#include <string>
+
 namespace Calculator {
 
   namespace Error {

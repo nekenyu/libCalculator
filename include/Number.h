@@ -18,6 +18,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "StackItem.h"
 #endif // STACK_ITEM_H
 
+#include <string>
+
 namespace Calculator {
   
   class Stack;

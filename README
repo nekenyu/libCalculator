@@ -7,4 +7,6 @@ Code, documentation, examples and test are built with: make build
 Documentation is stored in dox/ in doxygen markup style or can be viewed as built by doxygen.
 
 Dependencies:
-- cppunit: https://www.freedesktop.org/wiki/Software/cppunit/, (libreoffice mirror link)
+- googletest -- https://github.com/google/googletest
+  - git clone in directory next to this directory, or update Make/Makefile.googletest.incl
+  - build googletest (including googlemock)
