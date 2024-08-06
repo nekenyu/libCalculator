@@ -51,7 +51,7 @@ TEST(StackTest, PushFive) {
   verify(stack, input);
 }
 
-TEST(StackTest, PopAfterEmpty) {
+TEST(StackTest, PopAfterZeroOfZero) {
   Stack stack;
   verify(stack);
 
@@ -64,7 +64,7 @@ TEST(StackTest, PopAfterEmpty) {
   verify(stack);
 }
 
-TEST(StackTest, PopAfterOne) {
+TEST(StackTest, PopAfterZeroOfOne) {
   float input[] = { 1.0 };
   Stack stack;
   push(stack, input);

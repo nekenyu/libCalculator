@@ -21,6 +21,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "StackOperatorFactory.h"
 
 #include "gtest/gtest.h"
+
 using namespace Calculator;
 
 void testNumberCreatorInvalid(const std::string& input) {
